@@ -4,7 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.desitum.twist.com.desitum.twist.screens.MainScreen;
+import com.desitum.twist.screens.MainScreen;
 
 public class TwistGame extends ApplicationAdapter {
 	SpriteBatch batch;

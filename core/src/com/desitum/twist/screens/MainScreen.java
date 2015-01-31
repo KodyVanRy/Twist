@@ -1,4 +1,4 @@
-package com.desitum.twist.com.desitum.twist.screens;
+package com.desitum.twist.screens;
 
 import com.badlogic.gdx.ScreenAdapter;
 
