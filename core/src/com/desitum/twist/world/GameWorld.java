@@ -16,7 +16,7 @@ public class GameWorld {
     public GameWorld () {
 
         bars = new ArrayList<Bar>();
-        kipper = new Kipper(Settings.kipperSpeed, Settings.);
+        kipper = new Kipper(Settings.kipperSpeed, Settings.kipperSize, Settings.kipperColor, Settings.kipperX, Settings.kipperY);
 
     }
 

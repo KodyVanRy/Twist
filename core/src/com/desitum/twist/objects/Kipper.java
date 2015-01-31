@@ -78,7 +78,7 @@ public class Kipper {
         return kipperOrientation;
     }
 
-    public void setKipperDirection(int kipperOrientation){
+    public void toggleKipperOrientation(int kipperOrientation){
         this.kipperOrientation = kipperOrientation;
 
         if(kipperOrientation == VERTICAL)
