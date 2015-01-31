@@ -15,7 +15,7 @@ public class Assets {
 
     public static void loadMenuTextures(){
         playButtonTexture = new Texture(Gdx.files.internal("menu/play.png"));
-        highscoreButtonTexture = new Texture(Gdx.files.internal("menu/high_score.png"));
+        highscoreButtonTexture = new Texture(Gdx.files.internal("menu/high_scores.png"));
         volumeOnButtonTexture = new Texture(Gdx.files.internal("menu/volume_on.png"));
         volumeOffButtonTexture = new Texture(Gdx.files.internal("menu/volume_off.png"));
     }

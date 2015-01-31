@@ -11,12 +11,15 @@ public class MenuButton extends Sprite {
     private String command;
     private String text;
 
-    private static int SIZE_X;
-    private static int SIZE_Y;
+    private static int SIZE_X = 8;
+    private static int SIZE_Y = 1;
 
-    public MenuButton(String command, String text, float locX, float locY) {
+    public MenuButton(String command, String text, float locX, float locY, Texture texture) {
         this.command = command;
         this.text = text;
+        this.setPosition(locX, locY);
+        setTexture(texture);
+        this.setSize(SIZE_X, SIZE_Y);
     }
 
     public String getCommand() {

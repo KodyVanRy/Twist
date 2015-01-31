@@ -18,6 +18,7 @@ public class MenuRenderer {
         this.world = world;
         this.menuBatch = batch;
         menuCam = new OrthographicCamera(MainScreen.FRUSTUM_WIDTH, MainScreen.FRUSTUM_HEIGHT);
+        menuCam.position.set(MainScreen.FRUSTUM_WIDTH/2, MainScreen.FRUSTUM_HEIGHT/2, 0);
     }
 
     public void render(){
