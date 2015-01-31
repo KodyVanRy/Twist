@@ -25,7 +25,7 @@ public class MenuRenderer {
         menuBatch.setProjectionMatrix(menuCam.combined);
 
         for (MenuButton menuItem: this.world.getMenuButtons()){
-
+            menuItem.draw(menuBatch);
         }
     }
 

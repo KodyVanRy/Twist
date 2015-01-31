@@ -1,5 +1,6 @@
 package com.desitum.twist.objects;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 /**
@@ -34,4 +35,7 @@ public class MenuButton extends Sprite {
         this.text = text;
     }
 
+    public void setImage(Texture image){
+        setTexture(image);
+    }
 }
