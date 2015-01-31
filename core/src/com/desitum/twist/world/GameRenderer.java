@@ -2,6 +2,7 @@ package com.desitum.twist.world;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.desitum.twist.objects.Bar;
 import com.desitum.twist.screens.MainScreen;
 
 /**
@@ -24,7 +25,9 @@ public class GameRenderer {
         menuCam.update();
         gameBatch.setProjectionMatrix(menuCam.combined);
 
-
+        for (Bar bar: world.getBars()){
+            bar.draw(gameBatch);
+        }
 
     }
 

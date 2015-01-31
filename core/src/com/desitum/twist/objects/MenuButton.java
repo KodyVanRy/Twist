@@ -39,7 +39,7 @@ public class MenuButton extends Sprite {
         this.text = text;
     }
 
-    public void setImage(Texture image){
+    public void setImage(Texture image) {
         setTexture(image);
     }
 }

@@ -18,10 +18,10 @@ public class Kipper {
     private float kipperSpeed; //Max is 8 (4 is lowest, 8 is highest, 4 = slow)
     private float kipperLength; //Max is 5 (1 is lowest, 5 is highest, 1 = small)
     private int kipperOrientation; //Vertical or Horizontal (0 is Vertical, 1 is Horizontal)
-    
+
     //This color is going to be used for a blur trail
     private Color kipperColor; //Color of Kipper (Blue?)
-    
+
     private Rectangle kipperRect;
 
     public Kipper(float kipperSpeed, float kipperSize, Color kipperColor, float kipperPositionX, float kipperPositionY) {
@@ -35,7 +35,6 @@ public class Kipper {
 
     public void update(float delta) {
 
-        
 
         if (kipperOrientation == HORIZONTAL) //Placeholder to prevent error
         {
@@ -45,53 +44,45 @@ public class Kipper {
                 kipperSpeed *= -1;
             }
 
-            
-            kipperRect.setX(kipperRect.getX() + kipperSpeed * delta); 
 
-        } else if (kipperOrientation == VERTICAL){
+            kipperRect.setX(kipperRect.getX() + kipperSpeed * delta);
+
+        } else if (kipperOrientation == VERTICAL) {
             kipperRect.setY(kipperRect.getY() + kipperSpeed * delta);
         }
     }
 
-    public float getKipperSpeed()
-    {
+    public float getKipperSpeed() {
         return kipperSpeed;
     }
 
-    public void setKipperSpeed(float kipperSpeed)
-    {
+    public void setKipperSpeed(float kipperSpeed) {
         this.kipperSpeed = kipperSpeed;
     }
 
-    public float getKipperLength()
-    {
+    public float getKipperLength() {
         return kipperLength;
     }
 
-    public void setKipperLength(float kipperLength)
-    {
+    public void setKipperLength(float kipperLength) {
         this.kipperLength = kipperLength;
     }
 
-    public int getKipperOrientation()
-    {
+    public int getKipperOrientation() {
         return kipperOrientation;
     }
 
-    public void toggleKipperOrientation(int kipperOrientation){
+    public void toggleKipperOrientation(int kipperOrientation) {
         this.kipperOrientation = kipperOrientation;
 
-        if(kipperOrientation == VERTICAL)
-        {
+        if (kipperOrientation == VERTICAL) {
             kipperOrientation = HORIZONTAL;
-        }
-        else
-        {
+        } else {
             kipperOrientation = VERTICAL;
         }
     }
 
-    public Rectangle getKipperRect(){
+    public Rectangle getKipperRect() {
         return kipperRect;
     }
 

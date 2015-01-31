@@ -27,5 +27,11 @@ public class GameWorld {
             bar.update(delta);
         }
 
+        kipper.update(delta);
+
+    }
+
+    public ArrayList<Bar> getBars(){
+        return bars;
     }
 }
