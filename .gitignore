@@ -58,6 +58,7 @@ nb-configuration.xml
 
 .gradle
 gradle-app.setting
+*.bat
 build/
 
 ## OS Specific
