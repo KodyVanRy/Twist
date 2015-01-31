@@ -12,8 +12,8 @@ public class Kipper {
      the name of the cube in the game is "Kipper" Like Kipper the Kube.
       Name inspired by KopperKow*/
 
-    private static final int HORIZONTAL = 0;
-    private static final int VERTICAL = 1;
+    public static final int HORIZONTAL = 0;
+    public static final int VERTICAL = 1;
 
     private float kipperSpeed; //Max is 8 (4 is lowest, 8 is highest, 4 = slow)
     private float kipperLength; //Max is 5 (1 is lowest, 5 is highest, 1 = small)
@@ -25,11 +25,12 @@ public class Kipper {
     // GOT rid of because it bounces off the sides private int kipperStoppingPointRight;
     private Rectangle kipperRect;
 
-    public Kipper(float kipperSpeed, float kipperLength, int kipperOrientation, Color kipperColor, int kipperPositionX, int kipperPositionY) {
+    public Kipper(float kipperSpeed, float kipperSize, Color kipperColor, int kipperPositionX, int kipperPositionY) {
         this.kipperSpeed = kipperSpeed;
-        this.kipperLength = kipperLength;
-        this.kipperOrientation = kipperOrientation;
+        this.kipperOrientation = VERTICAL;
         this.kipperColor = kipperColor;
+
+        kipperRect = new Rectangle(kipperPositionX, kipperPositionY, kipperSize, kipperSize);
 
     }
 
@@ -78,8 +79,7 @@ public class Kipper {
         return kipperOrientation;
     }
 
-    public void setKipperOrientation(int kipperOrientation)
-    {
+    public void setKipperOrientation(int kipperOrientation){
         this.kipperOrientation = kipperOrientation;
     }
 

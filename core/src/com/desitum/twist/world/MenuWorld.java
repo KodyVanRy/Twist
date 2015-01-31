@@ -28,9 +28,7 @@ public class MenuWorld {
         //Create each button and their parameters
         MenuButton playButton = new MenuButton("play", "Play", 1, 4, Assets.playButtonTexture);
         MenuButton volumeButton = new MenuButton("volume", "Volume", 1, 6, Assets.volumeOnButtonTexture);
-        volumeButton.setTexture(Assets.volumeOnButtonTexture);
         MenuButton scoreButton = new MenuButton("openScores","High Scores", 1, 8, Assets.highscoreButtonTexture);
-        scoreButton.setTexture(Assets.highscoreButtonTexture);
 
         //Add Buttons to the MenuButtons ArrayList
         menuButtons.add(playButton);

@@ -1,6 +1,5 @@
 package com.desitum.twist.objects;
 
-import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
@@ -21,7 +20,7 @@ public class MenuButton extends Sprite {
         this.text = text;
         this.setPosition(locX, locY);
         this.setSize(SIZE_X, SIZE_Y);
-        Pixmap pm = new Pixmap(40, 10, Pixmap.Format.RGB888);
+
     }
 
     public String getCommand() {
