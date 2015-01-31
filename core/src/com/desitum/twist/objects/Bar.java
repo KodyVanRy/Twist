@@ -18,7 +18,8 @@ public class Bar {
 
     public void update(float delta)
     {
-
+        //TODO add side bounce detection
+        //TODO add movement
     }
 
     public float getMoveSpeed()
