@@ -26,12 +26,12 @@ public class MenuWorld {
     private void createItems() {
         //Create each button and their parameters
         MenuButton playButton = new MenuButton("play", "Play", 1, 4);
-        MenuButton exitButton = new MenuButton("exit", "Exit", 1, 6);
+        MenuButton volumeButton = new MenuButton("volume", "Volume", 1, 6);
         MenuButton scoreButton = new MenuButton("openScores","High Scores", 1, 8);
 
         //Add Buttons to the MenuButtons ArrayList
         menuButtons.add(playButton);
-        menuButtons.add(exitButton);
+        menuButtons.add(volumeButton);
         menuButtons.add(scoreButton);
     }
 
