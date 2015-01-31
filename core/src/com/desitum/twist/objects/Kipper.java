@@ -50,7 +50,7 @@ public class Kipper {
             kipperRect.setX(kipperRect.getX() + kipperSpeed * delta); //CHANGED because we need rects for collision detection
 
         } else if (kipperOrientation == VERTICAL){
-
+            //TODO make it move up
         }
     }
 
@@ -88,7 +88,6 @@ public class Kipper {
     }
 
     //TODO need a toggle for direction
-    //TODO need new orientation ROTATING (won't be used til end, but need variable and elseif for later)
 
 }
 
