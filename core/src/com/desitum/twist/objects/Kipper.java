@@ -1,6 +1,7 @@
 package com.desitum.twist.objects;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Rectangle;
 import com.desitum.twist.screens.MainScreen;
 
 /**
@@ -17,12 +18,12 @@ public class Kipper {
     private float kipperSpeed; //Max is 8 (4 is lowest, 8 is highest, 4 = slow)
     private float kipperLength; //Max is 5 (1 is lowest, 5 is highest, 1 = small)
     private int kipperOrientation; //Vertical or Horizontal (0 is Vertical, 1 is Horizontal)
-    private int kipperPositionX;
-    private int kipperPositionY;
+    // GOT RID of positionx and positiony, should be stored in rectangle
     //This color is going to be used for a blur trail
     private Color kipperColor; //Color of Kipper (Blue?)
-    private int kipperStoppingPointLeft;
-    private int kipperStoppingPointRight;
+    // GOT rid of because it bounces off the sides private int kipperStoppingPointLeft;
+    // GOT rid of because it bounces off the sides private int kipperStoppingPointRight;
+    private Rectangle kipperRect;
 
     public Kipper(float kipperSpeed, float kipperLength, int kipperOrientation, Color kipperColor, int kipperPositionX, int kipperPositionY) {
         this.kipperSpeed = kipperSpeed;
@@ -34,17 +35,21 @@ public class Kipper {
 
     public void update(float delta) {
 
+        //TODO Add Collision with Bars here actually will be in World
 
         if (kipperOrientation == HORIZONTAL) //Placeholder to prevent error
         {
-            //TODO Add Collision with Bars here
-            if (kipperPositionX <= MainScreen.FRUSTUM_WIDTH) {
+            if (kipperRect.getX() <= MainScreen.FRUSTUM_WIDTH) {
                 kipperSpeed *= -1;
-            } else if (kipperPositionX + kipperLength >= MainScreen.FRUSTUM_WIDTH) {
+            } else if (kipperRect.getX() + kipperLength >= MainScreen.FRUSTUM_WIDTH) {
                 kipperSpeed *= -1;
-            } else {
-                kipperPositionX += kipperSpeed * delta;
             }
+
+            //took out else statement, the box needs to move every time through
+            kipperRect.setX(kipperRect.getX() + kipperSpeed * delta); //CHANGED because we need rects for collision detection
+
+        } else if (kipperOrientation == VERTICAL){
+
         }
     }
 
@@ -77,5 +82,13 @@ public class Kipper {
     {
         this.kipperOrientation = kipperOrientation;
     }
+
+    public Rectangle getKipperRect(){
+        return kipperRect;
+    }
+
+    //TODO need a toggle for direction
+    //TODO need new orientation ROTATING (won't be used til end, but need variable and elseif for later)
+
 }
 
