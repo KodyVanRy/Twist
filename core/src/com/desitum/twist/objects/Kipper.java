@@ -24,7 +24,7 @@ public class Kipper {
     
     private Rectangle kipperRect;
 
-    public Kipper(float kipperSpeed, float kipperSize, Color kipperColor, int kipperPositionX, int kipperPositionY) {
+    public Kipper(float kipperSpeed, float kipperSize, Color kipperColor, float kipperPositionX, float kipperPositionY) {
         this.kipperSpeed = kipperSpeed;
         this.kipperOrientation = VERTICAL;
         this.kipperColor = kipperColor;
