@@ -7,6 +7,9 @@ import com.badlogic.gdx.ScreenAdapter;
  */
 public class MainScreen extends ScreenAdapter {
 
+    public static final int FRUSTUM_WIDTH = 10;
+    public static final int FRUSTUM_HEIGHT = 15;
+
     @Override
     public void render (float delta) {
     }
