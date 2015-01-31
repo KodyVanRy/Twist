@@ -1,6 +1,7 @@
 package com.desitum.twist.objects;
 
 import com.badlogic.gdx.graphics.Color;
+import com.desitum.twist.screens.MainScreen;
 
 /**
  * Created by Zmyth on 1/30/2015.
@@ -29,9 +30,19 @@ public class Kipper {
 
     public void update(float delta)
     {
-        //TODO Add Movement
-        //TODO Add Collision Detection
-        //TODO Annoy Kody
+
+
+            if(kipperOrientation == 0) //Placeholder to prevent error
+            {
+                //TODO Add Collision with Bars here
+            }
+            else if (kipperPositionX <= MainScreen.FRUSTUM_WIDTH) {
+                kipperSpeed *= -1;
+            } else if (kipperPositionX + kipperLength >= MainScreen.FRUSTUM_WIDTH) {
+                kipperSpeed *= -1;
+            } else {
+                kipperPositionX += kipperSpeed * delta;
+            }
     }
 
     public float getKipperSpeed()
