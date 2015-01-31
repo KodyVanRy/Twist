@@ -11,11 +11,15 @@ public class Kipper {
      the name of the cube in the game is "Kipper" Like Kipper the Kube.
       Name inspired by KopperKow*/
 
+    private static final int HORIZONTAL = 0;
+    private static final int VERTICAL = 1;
+
     private float kipperSpeed; //Max is 8 (4 is lowest, 8 is highest, 4 = slow)
     private float kipperLength; //Max is 5 (1 is lowest, 5 is highest, 1 = small)
     private int kipperOrientation; //Vertical or Horizontal (0 is Vertical, 1 is Horizontal)
     private int kipperPositionX;
     private int kipperPositionY;
+    //This color is going to be used for a blur trail
     private Color kipperColor; //Color of Kipper (Blue?)
     private int kipperStoppingPointLeft;
     private int kipperStoppingPointRight;
@@ -28,21 +32,20 @@ public class Kipper {
 
     }
 
-    public void update(float delta)
-    {
+    public void update(float delta) {
 
 
-            if(kipperOrientation == 0) //Placeholder to prevent error
-            {
-                //TODO Add Collision with Bars here
-            }
-            else if (kipperPositionX <= MainScreen.FRUSTUM_WIDTH) {
+        if (kipperOrientation == HORIZONTAL) //Placeholder to prevent error
+        {
+            //TODO Add Collision with Bars here
+            if (kipperPositionX <= MainScreen.FRUSTUM_WIDTH) {
                 kipperSpeed *= -1;
             } else if (kipperPositionX + kipperLength >= MainScreen.FRUSTUM_WIDTH) {
                 kipperSpeed *= -1;
             } else {
                 kipperPositionX += kipperSpeed * delta;
             }
+        }
     }
 
     public float getKipperSpeed()
