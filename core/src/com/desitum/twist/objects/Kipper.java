@@ -18,11 +18,10 @@ public class Kipper {
     private float kipperSpeed; //Max is 8 (4 is lowest, 8 is highest, 4 = slow)
     private float kipperLength; //Max is 5 (1 is lowest, 5 is highest, 1 = small)
     private int kipperOrientation; //Vertical or Horizontal (0 is Vertical, 1 is Horizontal)
-    // GOT RID of positionx and positiony, should be stored in rectangle
+    
     //This color is going to be used for a blur trail
     private Color kipperColor; //Color of Kipper (Blue?)
-    // GOT rid of because it bounces off the sides private int kipperStoppingPointLeft;
-    // GOT rid of because it bounces off the sides private int kipperStoppingPointRight;
+    
     private Rectangle kipperRect;
 
     public Kipper(float kipperSpeed, float kipperSize, Color kipperColor, int kipperPositionX, int kipperPositionY) {
@@ -36,7 +35,7 @@ public class Kipper {
 
     public void update(float delta) {
 
-        //TODO Add Collision with Bars here actually will be in World
+        
 
         if (kipperOrientation == HORIZONTAL) //Placeholder to prevent error
         {
@@ -46,11 +45,11 @@ public class Kipper {
                 kipperSpeed *= -1;
             }
 
-            //took out else statement, the box needs to move every time through
-            kipperRect.setX(kipperRect.getX() + kipperSpeed * delta); //CHANGED because we need rects for collision detection
+            
+            kipperRect.setX(kipperRect.getX() + kipperSpeed * delta); 
 
         } else if (kipperOrientation == VERTICAL){
-            //TODO make it move up
+            kipperRect.setY(kipperRect.getY() + kipperSpeed * delta);
         }
     }
 
@@ -79,15 +78,23 @@ public class Kipper {
         return kipperOrientation;
     }
 
-    public void setKipperOrientation(int kipperOrientation){
+    public void setKipperDirection(int kipperOrientation){
         this.kipperOrientation = kipperOrientation;
+
+        if(kipperOrientation == VERTICAL)
+        {
+            kipperOrientation = HORIZONTAL;
+        }
+        else
+        {
+            kipperOrientation = VERTICAL;
+        }
     }
 
     public Rectangle getKipperRect(){
         return kipperRect;
     }
 
-    //TODO need a toggle for direction
 
 }
 
