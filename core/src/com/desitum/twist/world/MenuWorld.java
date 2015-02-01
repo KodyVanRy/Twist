@@ -2,6 +2,7 @@ package com.desitum.twist.world;
 
 import com.desitum.twist.data.Assets;
 import com.desitum.twist.objects.MenuButton;
+import com.desitum.twist.screens.MainScreen;
 
 import java.util.ArrayList;
 
@@ -26,9 +27,9 @@ public class MenuWorld {
 
     private void createItems() {
         //Create each button and their parameters
-        MenuButton playButton = new MenuButton("play", "Play", 1, 4, Assets.playButtonTexture);
-        MenuButton volumeButton = new MenuButton("volume", "Volume", 1, 6, Assets.volumeOnButtonTexture);
-        MenuButton scoreButton = new MenuButton("openScores","High Scores", 1, 8, Assets.highscoreButtonTexture);
+        MenuButton playButton = new MenuButton(MainScreen.PLAY, "Play", 1, 8, Assets.playButtonTexture);
+        MenuButton scoreButton = new MenuButton(MainScreen.OPEN_SCORES ,"High Scores", 1, 6, Assets.highscoreButtonTexture);
+        MenuButton volumeButton = new MenuButton(MainScreen.VOLUMES, "Volume", 1, 4, Assets.volumeOnButtonTexture);
 
         //Add Buttons to the MenuButtons ArrayList
         menuButtons.add(playButton);
