@@ -68,6 +68,7 @@ public class Bar extends Sprite {
 
     public void setBarOrientation(int barOrientation) {
         this.barOrientation = barOrientation;
+        //Hahaha, I hid it inside a collapsed method! Sneaky Sneaky. MainScreen is the last one!
     }
 
 }

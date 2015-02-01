@@ -27,6 +27,7 @@ public class GameRenderer {
 
         for (Bar bar: world.getBars()){
             bar.draw(gameBatch);
+            //Did you actually follow the trail? Good for you! Go to Bar next! (Delete these as you go.......)
         }
 
     }

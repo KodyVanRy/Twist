@@ -166,12 +166,9 @@ public class MainScreen implements Screen {
             menuWorld.getMenuButtons().get(0).moveOffScreen(); // start it moving
         } else if (!menuWorld.getMenuButtons().get(1).isMoving() && menuWorld.getMenuButtons().get(0).getX() >= 6) { // if first menu button isn't moving
             menuWorld.getMenuButtons().get(1).moveOffScreen(); // start it moving
-        } else if (!menuWorld.getMenuButtons().get(2).isMoving() && menuWorld.getMenuButtons().get(1).getX() >= 6) {
+        } else if (!menuWorld.getMenuButtons().get(2).isMoving() && menuWorld.getMenuButtons().get(1).getX() >= 6) { //You win if you see this! The answer is 42.
             menuWorld.getMenuButtons().get(2).moveOffScreen();
         }
-        //TODO else if menuworld button 2 (1 on get) isn't moving and the first is at x position 6 or more
-        // start moving it
-        // then once the second button is at x position 6 move the last button
 
     }
 
