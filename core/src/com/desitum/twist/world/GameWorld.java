@@ -34,4 +34,9 @@ public class GameWorld {
     public ArrayList<Bar> getBars(){
         return bars;
     }
+
+    public void toggleKipperDirection() {
+        kipper.toggleKipperOrientation();
+    }
+
 }

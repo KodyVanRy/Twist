@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
+import com.desitum.twist.libraries.CollisionDetection;
+import com.desitum.twist.objects.MenuButton;
 import com.desitum.twist.world.MenuRenderer;
 import com.desitum.twist.world.MenuWorld;
 
@@ -90,19 +92,31 @@ public class MainScreen implements Screen {
     }
 
     private void onClickMenuWaiting(){
-
+        for (MenuButton mb: menuWorld.getMenuButtons()){
+            if (CollisionDetection.pointInRectangle(mb.getBoundingRectangle(), touchPoint)){
+                if (mb.getCommand().equals(PLAY)){
+                    state = MENU_TRANSITION;
+                } else if (mb.getCommand().equals(OPEN_SCORES)){
+                    //TODO add in Google Play Game Services (I'll do that)
+                } else if (mb.getCommand().equals(VOLUMES)){
+                    //TODO switch texture on mb from Assets.VOLUME_ON to Assets.VOLUME_OFF
+                    // hint it uses a setter on mb
+                }
+            }
+        }
     }
 
     private void onClickGameBefore(){
-
+        state = GAME_RUNNING;
     }
 
     private void onClickGamePaused(){
-
+        state = GAME_RUNNING;
     }
 
     private void onClickGameRunning(){
-
+        //TODO need to toggle kipper direction
+        // hint added toggle in menuWorld ;)
     }
 
     private void onClickGameOver(){
@@ -170,6 +184,8 @@ public class MainScreen implements Screen {
             case GAME_RUNNING:
                 drawGameRunning();
                 break;
+
+            //TODO need MENU_WAITING, MENU_TRANSITION, GAME_BEFORE, GAME_PAUSED
         }
     }
 
