@@ -45,28 +45,28 @@ public class MainScreen implements Screen {
 
     private Vector3 touchPoint;
 
-    public MainScreen () {
+    public MainScreen() {
         cam = new OrthographicCamera(FRUSTUM_WIDTH, FRUSTUM_HEIGHT);
-        cam.position.set(FRUSTUM_WIDTH/2, FRUSTUM_HEIGHT/2, 0);
+        cam.position.set(FRUSTUM_WIDTH / 2, FRUSTUM_HEIGHT / 2, 0);
         spriteBatch = new SpriteBatch();
         menuWorld = new MenuWorld();
         menuRenderer = new MenuRenderer(menuWorld, spriteBatch);
     }
 
     @Override
-    public void render (float delta) {
+    public void render(float delta) {
         System.out.println(delta);
 
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        Gdx.gl.glClearColor(1,0,1,1);
+        Gdx.gl.glClearColor(1, 0, 1, 1);
 
-        if (Gdx.input.justTouched()){
+        if (Gdx.input.justTouched()) {
             touchPoint = cam.unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
             onClick();
         }
 
         update(delta);
-        draw();
+        //draw();
 
         cam.update();
         spriteBatch.begin();
@@ -77,8 +77,8 @@ public class MainScreen implements Screen {
     }
 
     //region onClicks
-    private void onClick(){
-        switch (state){
+    private void onClick() {
+        switch (state) {
             case MENU_WAITING:
                 onClickMenuWaiting();
                 break;
@@ -105,38 +105,36 @@ public class MainScreen implements Screen {
                 } else if (mb.getCommand().equals(OPEN_SCORES)) {
                     //TODO add in Google Play Game Services (I'll do that)
                 } else if (mb.getCommand().equals(VOLUMES)) {
-                    if(Settings.volumeOn) {
+                    if (Settings.volumeOn) {
                         mb.setTexture(Assets.volumeOnButtonTexture);
-                    }
-                    else
-                    {
-                       mb.setTexture(Assets.volumeOffButtonTexture);
+                    } else {
+                        mb.setTexture(Assets.volumeOffButtonTexture);
                     }
                 }
             }
         }
     }
 
-    private void onClickGameBefore(){
+    private void onClickGameBefore() {
         state = GAME_RUNNING;
     }
 
-    private void onClickGamePaused(){
+    private void onClickGamePaused() {
         state = GAME_RUNNING;
     }
 
-    private void onClickGameRunning(){
+    private void onClickGameRunning() {
         kipper.toggleKipperOrientation();
     }
 
-    private void onClickGameOver(){
+    private void onClickGameOver() {
 
     }
     //endregion
 
     //region folding for update methods
-    private void update(float delta){
-        switch (state){
+    private void update(float delta) {
+        switch (state) {
             case MENU_WAITING:
                 updateMenuWaiting(delta);
                 break;
@@ -160,22 +158,29 @@ public class MainScreen implements Screen {
 
 
     private void updateMenuWaiting(float delta) {
+        //Does nothing for now
     }
 
     private void updateMenuTransition(float delta) {
-        
+        if (!menuWorld.getMenuButtons().get(0).isMoving()) { // if first menu button isn't moving
+            menuWorld.getMenuButtons().get(0).moveOffScreen(); // start it moving
+        }
+
+        //else if menuworld button 2 (1 on get) isn't moving and the first is at x position 6 or more
+        // start moving it
+        // then once the second button is at x position 6 move the last button
     }
 
     private void updateGameBefore(float delta) {
-        
+
     }
 
     private void updateGameRunning(float delta) {
-        
+
     }
 
     private void updateGamePaused(float delta) {
-        
+
     }
 
     private void updateGameOver(float delta) {
@@ -193,18 +198,18 @@ public class MainScreen implements Screen {
             case GAME_RUNNING:
                 drawGameRunning();
                 break;
-                case MENU_WAITING:
-                    drawMenuWaiting();
-                    break;
-                case MENU_TRANSITION:
-                    drawMenuTransition();
-                    break;
-                case GAME_BEFORE:
-                    drawGameBefore();
-                    break;
-                case GAME_PAUSED:
-                    drawGamePaused();
-                    break;
+            case MENU_WAITING:
+                drawMenuWaiting();
+                break;
+            case MENU_TRANSITION:
+                drawMenuTransition();
+                break;
+            case GAME_BEFORE:
+                drawGameBefore();
+                break;
+            case GAME_PAUSED:
+                drawGamePaused();
+                break;
         }
     }
 
@@ -225,33 +230,33 @@ public class MainScreen implements Screen {
 
 
     private void drawGameRunning() {
-        }
+    }
 
-        private void drawGameOver() {
-        }
+    private void drawGameOver() {
+    }
     //endregion
 
     @Override
-    public void resize (int width, int height) {
+    public void resize(int width, int height) {
     }
 
     @Override
-    public void show () {
+    public void show() {
     }
 
     @Override
-    public void hide () {
+    public void hide() {
     }
 
     @Override
-    public void pause () {
+    public void pause() {
     }
 
     @Override
-    public void resume () {
+    public void resume() {
     }
 
     @Override
-    public void dispose () {
+    public void dispose() {
     }
 }
