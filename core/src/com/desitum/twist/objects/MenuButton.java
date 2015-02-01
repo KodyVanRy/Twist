@@ -11,6 +11,9 @@ public class MenuButton extends Sprite {
     private String command;
     private String text;
 
+    private boolean moving = true;
+    private float speed = 2;
+
     private static float SIZE_X = 8;
     private static float SIZE_Y = 1.5f;
 
@@ -21,6 +24,17 @@ public class MenuButton extends Sprite {
         this.setPosition(locX, locY);
         this.setSize(SIZE_X, SIZE_Y);
 
+    }
+
+    public void update(float delta){
+        if (moving){
+            this.setX(this.getX() + speed * delta);
+            speed += 2 * delta;
+        }
+    }
+
+    public boolean isMoving(){
+        return this.moving;
     }
 
     public String getCommand() {
@@ -41,5 +55,9 @@ public class MenuButton extends Sprite {
 
     public void setImage(Texture image) {
         setTexture(image);
+    }
+
+    public void moveOffScreen(){
+
     }
 }
