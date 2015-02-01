@@ -114,22 +114,22 @@ public class MainScreen implements Screen {
     private void update(float delta){
         switch (state){
             case MENU_WAITING:
-                updateMenuWating();
+                updateMenuWating(delta);
                 break;
             case MENU_TRANSITION():
-                updateMenuTransition();
+                updateMenuTransition(delta);
                 break;
             case GAME_BEFORE:
-                updateGameBefore();
+                updateGameBefore(delta);
                 break;
             case GAME_PAUSED:
-                updateGamePaused();
+                updateGamePaused(delta);
                 break;
             case GAME_RUNNING:
-                updateGameRunning();
+                updateGameRunning(delta);
                 break;
             case GAME_OVER():
-                updateGameOver();
+                updateGameOver(delta);
                 break;
         }
     }
