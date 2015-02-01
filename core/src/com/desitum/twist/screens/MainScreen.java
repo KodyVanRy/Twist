@@ -164,15 +164,10 @@ public class MainScreen implements Screen {
     private void updateMenuTransition(float delta) {
         if (!menuWorld.getMenuButtons().get(0).isMoving()) { // if first menu button isn't moving
             menuWorld.getMenuButtons().get(0).moveOffScreen(); // start it moving
-        }
-        else if(!menuWorld.getMenuButtons().get(1).isMoving() && menuWorld.getMenuButtons().get(0).getX() >= 6)// if first menu button isn't moving
-        {
+        } else if (!menuWorld.getMenuButtons().get(1).isMoving() && menuWorld.getMenuButtons().get(0).getX() >= 6) { // if first menu button isn't moving
             menuWorld.getMenuButtons().get(1).moveOffScreen(); // start it moving
-
-            while(menuWorld.getMenuButtons().get(1).getX() == 6)
-            {
-                menuWorld.getMenuButtons().get(2).moveOffScreen(); // start it moving
-            }
+        } else if (!menuWorld.getMenuButtons().get(2).isMoving() && menuWorld.getMenuButtons().get(1).getX() >= 6) {
+            menuWorld.getMenuButtons().get(2).moveOffScreen();
         }
         //TODO else if menuworld button 2 (1 on get) isn't moving and the first is at x position 6 or more
         // start moving it
