@@ -166,7 +166,7 @@ public class MainScreen implements Screen {
             menuWorld.getMenuButtons().get(0).moveOffScreen(); // start it moving
         }
 
-        //else if menuworld button 2 (1 on get) isn't moving and the first is at x position 6 or more
+        //TODO else if menuworld button 2 (1 on get) isn't moving and the first is at x position 6 or more
         // start moving it
         // then once the second button is at x position 6 move the last button
     }
