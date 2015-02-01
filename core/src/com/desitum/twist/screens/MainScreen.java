@@ -114,9 +114,9 @@ public class MainScreen implements Screen {
     private void update(float delta){
         switch (state){
             case MENU_WAITING:
-                updateMenuWating(delta);
+                updateMenuWaiting(delta);
                 break;
-            case MENU_TRANSITION():
+            case MENU_TRANSITION:
                 updateMenuTransition(delta);
                 break;
             case GAME_BEFORE:
@@ -128,20 +128,57 @@ public class MainScreen implements Screen {
             case GAME_RUNNING:
                 updateGameRunning(delta);
                 break;
-            case GAME_OVER():
+            case GAME_OVER:
                 updateGameOver(delta);
                 break;
         }
     }
 
-    //TODO add in update methods (if this is just busy work to you I'll do it (remember the code generation shortuct ;)
+
+    private void updateMenuWaiting(float delta) {
+    }
+
+    private void updateMenuTransition(float delta) {
+        
+    }
+
+    private void updateGameBefore(float delta) {
+        
+    }
+
+    private void updateGameRunning(float delta) {
+        
+    }
+
+    private void updateGamePaused(float delta) {
+        
+    }
+
+    private void updateGameOver(float delta) {
+    }
+
 
     //endregion
 
     //region folding for drawing methods
-    private void draw(){
+    private void draw() {
         //TODO need switch case for drawing i.e. drawGameOver, drawGameRunning
+        switch (state) {
+            case GAME_OVER:
+                drawGameOver();
+                break;
+            case GAME_RUNNING:
+                drawGameRunning();
+                break;
+        }
     }
+
+
+        private void drawGameRunning() {
+        }
+
+        private void drawGameOver() {
+        }
     //endregion
 
     @Override
