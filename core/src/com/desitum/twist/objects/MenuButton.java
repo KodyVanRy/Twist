@@ -58,6 +58,6 @@ public class MenuButton extends Sprite {
     }
 
     public void moveOffScreen(){
-
+        this.moving = true;
     }
 }
