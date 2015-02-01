@@ -60,4 +60,8 @@ public class MenuButton extends Sprite {
     public void moveOffScreen(){
         this.moving = true;
     }
+
+    public float getX(){
+        return this.getBoundingRectangle().getX();
+    }
 }
