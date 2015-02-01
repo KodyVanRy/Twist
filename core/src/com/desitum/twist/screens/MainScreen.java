@@ -6,7 +6,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
+import com.desitum.twist.data.Assets;
 import com.desitum.twist.libraries.CollisionDetection;
+import com.desitum.twist.objects.Kipper;
 import com.desitum.twist.objects.MenuButton;
 import com.desitum.twist.world.MenuRenderer;
 import com.desitum.twist.world.MenuWorld;
@@ -15,6 +17,8 @@ import com.desitum.twist.world.MenuWorld;
  * Created by kody on 1/30/15.
  */
 public class MainScreen implements Screen {
+
+    Kipper kipper;
 
     public static final float FRUSTUM_WIDTH = 10;
     public static final float FRUSTUM_HEIGHT = 15;
@@ -60,7 +64,7 @@ public class MainScreen implements Screen {
         }
 
         update(delta);
-        draw();
+        draw(delta);
 
         cam.update();
         spriteBatch.begin();
@@ -91,16 +95,19 @@ public class MainScreen implements Screen {
         }
     }
 
-    private void onClickMenuWaiting(){
-        for (MenuButton mb: menuWorld.getMenuButtons()){
-            if (CollisionDetection.pointInRectangle(mb.getBoundingRectangle(), touchPoint)){
-                if (mb.getCommand().equals(PLAY)){
+    private void onClickMenuWaiting() {
+        for (MenuButton mb : menuWorld.getMenuButtons()) {
+            if (CollisionDetection.pointInRectangle(mb.getBoundingRectangle(), touchPoint)) {
+                if (mb.getCommand().equals(PLAY)) {
                     state = MENU_TRANSITION;
-                } else if (mb.getCommand().equals(OPEN_SCORES)){
+                } else if (mb.getCommand().equals(OPEN_SCORES)) {
                     //TODO add in Google Play Game Services (I'll do that)
-                } else if (mb.getCommand().equals(VOLUMES)){
+                } else if (mb.getCommand().equals(VOLUMES)) {
                     //TODO switch texture on mb from Assets.VOLUME_ON to Assets.VOLUME_OFF
                     // hint it uses a setter on mb
+                    switch (state) {
+
+                    }
                 }
             }
         }
@@ -115,8 +122,7 @@ public class MainScreen implements Screen {
     }
 
     private void onClickGameRunning(){
-        //TODO need to toggle kipper direction
-        // hint added toggle in menuWorld ;)
+        kipper.toggleKipperOrientation();
     }
 
     private void onClickGameOver(){
@@ -175,8 +181,8 @@ public class MainScreen implements Screen {
     //endregion
 
     //region folding for drawing methods
-    private void draw() {
-        //TODO need switch case for drawing i.e. drawGameOver, drawGameRunning
+    private void draw(float delta) {
+
         switch (state) {
             case GAME_OVER:
                 drawGameOver();
@@ -184,8 +190,20 @@ public class MainScreen implements Screen {
             case GAME_RUNNING:
                 drawGameRunning();
                 break;
+            case MENU_WAITING:
+                updateMenuWaiting(delta);
+                break;
+            case MENU_TRANSITION:
+                updateMenuTransition(delta);
+                break;
+            case GAME_BEFORE:
+                updateGameBefore(delta);
+                break;
+            case GAME_PAUSED:
+                updateGamePaused(delta);
+                break;
 
-            //TODO need MENU_WAITING, MENU_TRANSITION, GAME_BEFORE, GAME_PAUSED
+            //That what you wanted Mr. Scriptaster?
         }
     }
 
