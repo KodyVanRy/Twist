@@ -30,7 +30,9 @@ public class MenuButton extends Sprite {
         if (moving){
             this.setX(this.getX() + speed * delta);
             speed += 2 * delta;
+            System.out.println("MenuButton Moving = " + command);
         }
+
     }
 
     public boolean isMoving(){
@@ -61,7 +63,4 @@ public class MenuButton extends Sprite {
         this.moving = true;
     }
 
-    public float getX(){
-        return this.getBoundingRectangle().getX();
-    }
 }

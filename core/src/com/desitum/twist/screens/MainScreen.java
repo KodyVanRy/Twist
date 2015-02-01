@@ -55,8 +55,6 @@ public class MainScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        System.out.println(delta);
-
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glClearColor(1, 0, 1, 1);
 
@@ -165,11 +163,14 @@ public class MainScreen implements Screen {
         if (!menuWorld.getMenuButtons().get(0).isMoving()) { // if first menu button isn't moving
             menuWorld.getMenuButtons().get(0).moveOffScreen(); // start it moving
         } else if (!menuWorld.getMenuButtons().get(1).isMoving() && menuWorld.getMenuButtons().get(0).getX() >= 6) { // if first menu button isn't moving
+            System.out.println("MenuButton 1: " + menuWorld.getMenuButtons().get(0).getX());
             menuWorld.getMenuButtons().get(1).moveOffScreen(); // start it moving
-        } else if (!menuWorld.getMenuButtons().get(2).isMoving() && menuWorld.getMenuButtons().get(1).getX() >= 6) { //You win if you see this! The answer is 42.
+        } else if (!menuWorld.getMenuButtons().get(2).isMoving() && menuWorld.getMenuButtons().get(1).getX() >= 6) {
             menuWorld.getMenuButtons().get(2).moveOffScreen();
         }
-
+        for (MenuButton mb: menuWorld.getMenuButtons()){
+            mb.update(delta);
+        }
     }
 
     private void updateGameBefore(float delta) {
