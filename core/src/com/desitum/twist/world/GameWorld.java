@@ -1,8 +1,9 @@
 package com.desitum.twist.world;
 
+import com.desitum.twist.data.Settings;
 import com.desitum.twist.objects.Bar;
 import com.desitum.twist.objects.Kipper;
-import com.desitum.twist.data.Settings;
+import com.desitum.twist.screens.MainScreen;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,12 @@ public class GameWorld {
 
     }
 
-    public void update(float delta){
+    public void update(int state, float delta){
+
+        if (state == MainScreen.GAME_RUNNING){
+            // TODO need algorithm for producing new bars that don't overlap
+            // will do while talking on phone
+        }
 
         for (Bar bar: bars){
             bar.update(delta);

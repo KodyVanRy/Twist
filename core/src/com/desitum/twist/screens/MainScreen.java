@@ -9,8 +9,9 @@ import com.badlogic.gdx.math.Vector3;
 import com.desitum.twist.data.Assets;
 import com.desitum.twist.data.Settings;
 import com.desitum.twist.libraries.CollisionDetection;
-import com.desitum.twist.objects.Kipper;
 import com.desitum.twist.objects.MenuButton;
+import com.desitum.twist.world.GameRenderer;
+import com.desitum.twist.world.GameWorld;
 import com.desitum.twist.world.MenuRenderer;
 import com.desitum.twist.world.MenuWorld;
 
@@ -18,9 +19,6 @@ import com.desitum.twist.world.MenuWorld;
  * Created by kody on 1/30/15.
  */
 public class MainScreen implements Screen {
-
-
-    Kipper kipper;
 
     public static final float FRUSTUM_WIDTH = 10;
     public static final float FRUSTUM_HEIGHT = 15;
@@ -40,8 +38,12 @@ public class MainScreen implements Screen {
 
     private OrthographicCamera cam;
     private SpriteBatch spriteBatch;
+
     private MenuWorld menuWorld;
+    private GameWorld gameWorld;
+
     private MenuRenderer menuRenderer;
+    private GameRenderer gameRenderer;
 
     private Vector3 touchPoint;
 
@@ -49,8 +51,12 @@ public class MainScreen implements Screen {
         cam = new OrthographicCamera(FRUSTUM_WIDTH, FRUSTUM_HEIGHT);
         cam.position.set(FRUSTUM_WIDTH / 2, FRUSTUM_HEIGHT / 2, 0);
         spriteBatch = new SpriteBatch();
+
         menuWorld = new MenuWorld();
+        gameWorld = new GameWorld();
+
         menuRenderer = new MenuRenderer(menuWorld, spriteBatch);
+        gameRenderer = new GameRenderer(gameWorld, spriteBatch);
     }
 
     @Override
@@ -122,11 +128,11 @@ public class MainScreen implements Screen {
     }
 
     private void onClickGameRunning() {
-        kipper.toggleKipperOrientation();
+        gameWorld.toggleKipperDirection();
     }
 
     private void onClickGameOver() {
-
+        //TODO (will be done later) check for button and do accordingly
     }
     //endregion
 
@@ -163,7 +169,6 @@ public class MainScreen implements Screen {
         if (!menuWorld.getMenuButtons().get(0).isMoving()) { // if first menu button isn't moving
             menuWorld.getMenuButtons().get(0).moveOffScreen(); // start it moving
         } else if (!menuWorld.getMenuButtons().get(1).isMoving() && menuWorld.getMenuButtons().get(0).getX() >= 4) { // if first menu button isn't moving
-            System.out.println("MenuButton 1: " + menuWorld.getMenuButtons().get(0).getX());
             menuWorld.getMenuButtons().get(1).moveOffScreen(); // start it moving
         } else if (!menuWorld.getMenuButtons().get(2).isMoving() && menuWorld.getMenuButtons().get(1).getX() >= 4) {
             menuWorld.getMenuButtons().get(2).moveOffScreen();
@@ -174,11 +179,11 @@ public class MainScreen implements Screen {
     }
 
     private void updateGameBefore(float delta) {
-
+        gameWorld.update(state, delta);
     }
 
     private void updateGameRunning(float delta) {
-
+        gameWorld.update(state, delta);
     }
 
     private void updateGamePaused(float delta) {
@@ -219,7 +224,6 @@ public class MainScreen implements Screen {
     }
 
     private void drawGameBefore() {
-
     }
 
     private void drawMenuTransition() {
@@ -248,10 +252,16 @@ public class MainScreen implements Screen {
 
     @Override
     public void hide() {
+        if (state == GAME_RUNNING){
+            state = GAME_PAUSED;
+        }
     }
 
     @Override
     public void pause() {
+        if (state == GAME_RUNNING){
+            state = GAME_PAUSED;
+        }
     }
 
     @Override

@@ -29,6 +29,8 @@ public class GameRenderer {
             bar.draw(gameBatch);
         }
 
+        this.world.kipper.draw(gameBatch);
+
     }
 
 }

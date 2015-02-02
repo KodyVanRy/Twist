@@ -1,6 +1,6 @@
 package com.desitum.twist.objects;
 
-import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 /**
@@ -13,23 +13,31 @@ public class Bar extends Sprite {
     private static final int VERTICAL = 0;
     private static final int HORIZANTAL = 1;
 
+    public static final float BAR_WIDTH = 1;
+
     private int barOrientation; //Vertical or Horizontal (0 is Vertical, 1 is Horizontal)
     private float barPositionX;
     private float barPositionY;
-    private Color barColor; //Color of the Bar (Orange?)
-
 
     private float barStoppingPointTop;
     private float barStoppingPointBottom;
     private float barStoppingPointLeft;
     private float barStoppingPointRight;
 
-    public Bar(float moveSpeed, float barLength, int barOrientation, Color barColor, int[] position) {
+    public Bar(float moveSpeed, float barLength, int barOrientation, int[] position, Texture texture) {
+        super(texture, 0, 0, texture.getWidth(), texture.getHeight());
+
         this.moveSpeed = moveSpeed;
         this.barLength = barLength;
         this.barOrientation = barOrientation;
-        this.barColor = barColor;
 
+        if (barOrientation == HORIZANTAL){
+            this.setSize(barLength, BAR_WIDTH);
+        } else if (barOrientation == VERTICAL){
+            this.setSize(BAR_WIDTH, barLength);
+        }
+
+        this.setPosition(position[0], position[1]);
     }
 
     public void update(float delta) {
