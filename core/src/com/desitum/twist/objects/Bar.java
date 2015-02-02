@@ -9,14 +9,17 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 public class Bar extends Sprite {
     private float moveSpeed; //Max is 8 (4 is lowest, 8 is highest, 4 = slow)
     private float barLength; //Max is 5 (1 is lowest, 5 is highest, 1 = small)
+
+    //TODO change all 0's and 1's to be static final ints named HORIZONTAL and VERTICAL
+    // look at what we did in Kipper
     private int barOrientation; //Vertical or Horizontal (0 is Vertical, 1 is Horizontal)
-    private int barPositionX;
-    private int barPositionY;
+    private float barPositionX;
+    private float barPositionY;
     private Color barColor; //Color of the Bar (Orange?)
-    private int barStoppingPointTop;
-    private int barStoppingPointBottom;
-    private int barStoppingPointLeft;
-    private int barStoppingPointRight;
+    private float barStoppingPointTop;
+    private float barStoppingPointBottom;
+    private float barStoppingPointLeft;
+    private float barStoppingPointRight;
 
     public Bar(float moveSpeed, float barLength, int barOrientation, Color barColor, int[] position) {
         this.moveSpeed = moveSpeed;
@@ -70,5 +73,7 @@ public class Bar extends Sprite {
         this.barOrientation = barOrientation;
         //Hahaha, I hid it inside a collapsed method! Sneaky Sneaky. MainScreen is the last one!
     }
+
+    //TODO need setters for all the stopping point variables
 
 }
