@@ -100,7 +100,6 @@ public class MainScreen implements Screen {
             if (CollisionDetection.pointInRectangle(mb.getBoundingRectangle(), touchPoint)) {
                 if (mb.getCommand().equals(PLAY)) {
                     state = MENU_TRANSITION;
-                    mb.moveOffScreen();
                 } else if (mb.getCommand().equals(OPEN_SCORES)) {
                     //TODO add in Google Play Game Services (I'll do that)
                 } else if (mb.getCommand().equals(VOLUMES)) {

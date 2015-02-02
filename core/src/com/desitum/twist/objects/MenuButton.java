@@ -11,7 +11,7 @@ public class MenuButton extends Sprite {
     private String command;
     private String text;
 
-    private boolean moving = true;
+    private boolean moving;
     private float speed = 2;
 
     private static float SIZE_X = 8;
