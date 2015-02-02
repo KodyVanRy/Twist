@@ -8,14 +8,13 @@ import java.util.ArrayList;
 
 /**
  * Created by kody on 1/30/15.
+ * can be used by kody and people in [Zack]
  */
 public class MenuWorld {
     private ArrayList<MenuButton> menuButtons;
 
-    private ArrayList<String> commands;
-
     public MenuWorld () {
-        menuButtons = new ArrayList<MenuButton>();
+        menuButtons = new ArrayList<>();
         createItems();
     }
 
