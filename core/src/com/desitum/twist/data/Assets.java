@@ -13,10 +13,17 @@ public class Assets {
     public static Texture volumeOnButtonTexture;
     public static Texture volumeOffButtonTexture;
 
+    //TODO need public static texture for
+    // blueBar, purpleBar, yellowBar, redBar, orangeBar
+    // and kipper
+
     public static void loadMenuTextures(){
         playButtonTexture = new Texture(Gdx.files.internal("menu/play.png"));
         highscoreButtonTexture = new Texture(Gdx.files.internal("menu/high_scores.png"));
         volumeOnButtonTexture = new Texture(Gdx.files.internal("menu/volume_on.png"));
         volumeOffButtonTexture = new Texture(Gdx.files.internal("menu/volume_off.png"));
     }
+
+    // TODO need public static void loadGameTextures for the above TODO textures
+
 }

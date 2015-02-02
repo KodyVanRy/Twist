@@ -30,7 +30,6 @@ public class MenuButton extends Sprite {
         if (moving){
             this.setX(this.getX() + speed * delta);
             speed += 2 * delta;
-            System.out.println("MenuButton Moving = " + command);
         }
 
     }
@@ -61,6 +60,7 @@ public class MenuButton extends Sprite {
 
     public void moveOffScreen(){
         this.moving = true;
+        System.out.println("Start moving: " + getCommand());
     }
 
 }
