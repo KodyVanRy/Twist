@@ -12,10 +12,11 @@ public class Assets {
     public static Texture highscoreButtonTexture;
     public static Texture volumeOnButtonTexture;
     public static Texture volumeOffButtonTexture;
-
-    //TODO need public static texture for
-    // blueBar, purpleBar, yellowBar, redBar, orangeBar
-    // and kipper
+    public static Texture purpleBarTexture;
+    public static Texture yellowBarTexture;
+    public static Texture redBarTexture;
+    public static Texture orangeBarTexture;
+    public static Texture kipperTexture;
 
     public static void loadMenuTextures(){
         playButtonTexture = new Texture(Gdx.files.internal("menu/play.png"));
@@ -24,6 +25,12 @@ public class Assets {
         volumeOffButtonTexture = new Texture(Gdx.files.internal("menu/volume_off.png"));
     }
 
-    // TODO need public static void loadGameTextures for the above TODO textures
+    public static void loadGameTextures(){
+        purpleBarTexture = new Texture(Gdx.files.internal("menu/purple_bar.png"));
+        orangeBarTexture = new Texture(Gdx.files.internal("menu/orange_bar.png"));
+        redBarTexture = new Texture(Gdx.files.internal("menu/red_bar.png"));
+        yellowBarTexture = new Texture(Gdx.files.internal("menu/yellow_bar.png"));
+        kipperTexture = new Texture(Gdx.files.internal("menu/kipper.png"));
+    }
 
 }
