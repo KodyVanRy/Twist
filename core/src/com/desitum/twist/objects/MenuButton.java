@@ -23,7 +23,6 @@ public class MenuButton extends Sprite {
         this.text = text;
         this.setPosition(locX, locY);
         this.setSize(SIZE_X, SIZE_Y);
-        //TODO Kody look here! If you see this, go to GameRenderer for the next clue!
     }
 
     public void update(float delta){

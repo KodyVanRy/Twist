@@ -10,12 +10,15 @@ public class Bar extends Sprite {
     private float moveSpeed; //Max is 8 (4 is lowest, 8 is highest, 4 = slow)
     private float barLength; //Max is 5 (1 is lowest, 5 is highest, 1 = small)
 
-    //TODO change all 0's and 1's to be static final ints named HORIZONTAL and VERTICAL
-    // look at what we did in Kipper
+    private static final int VERTICAL = 0;
+    private static final int HORIZANTAL = 1;
+
     private int barOrientation; //Vertical or Horizontal (0 is Vertical, 1 is Horizontal)
     private float barPositionX;
     private float barPositionY;
     private Color barColor; //Color of the Bar (Orange?)
+
+
     private float barStoppingPointTop;
     private float barStoppingPointBottom;
     private float barStoppingPointLeft;
@@ -30,19 +33,19 @@ public class Bar extends Sprite {
     }
 
     public void update(float delta) {
-        if (barOrientation == 0) {
+        if (barOrientation == VERTICAL) {
             if (barPositionY <= barStoppingPointBottom) {
-                moveSpeed *= -1;
+                moveSpeed *= -HORIZANTAL;
             } else if (barPositionY + barLength >= barStoppingPointTop) {
-                moveSpeed *= -1;
+                moveSpeed *= -HORIZANTAL;
             } else {
                 barPositionY += moveSpeed * delta;
             }
         } else {
             if (barPositionX <= barStoppingPointLeft) {
-                moveSpeed *= -1;
+                moveSpeed *= -HORIZANTAL;
             } else if (barPositionX + barLength >= barStoppingPointRight) {
-                moveSpeed *= -1;
+                moveSpeed *= -HORIZANTAL;
             } else {
                 barPositionX += moveSpeed * delta;
             }
@@ -71,9 +74,21 @@ public class Bar extends Sprite {
 
     public void setBarOrientation(int barOrientation) {
         this.barOrientation = barOrientation;
-        //Hahaha, I hid it inside a collapsed method! Sneaky Sneaky. MainScreen is the last one!
     }
 
-    //TODO need setters for all the stopping point variables
+    public void setBarStoppingPointTop(float barStoppingPointTop) {
+        this.barStoppingPointTop = barStoppingPointTop;
+    }
 
+    public void setBarStoppingPointBottom(float barStoppingPointBottom) {
+        this.barStoppingPointBottom = barStoppingPointBottom;
+    }
+
+    public void setBarStoppingPointLeft(float barStoppingPointLeft) {
+        this.barStoppingPointLeft = barStoppingPointLeft;
+    }
+
+    public void setBarStoppingPointRight(float barStoppingPointRight) {
+        this.barStoppingPointRight = barStoppingPointRight;
+    }
 }

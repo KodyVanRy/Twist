@@ -10,7 +10,6 @@ import java.util.ArrayList;
  * Created by kody on 1/30/15.
  */
 public class MenuWorld {
-
     private ArrayList<MenuButton> menuButtons;
 
     private ArrayList<String> commands;
@@ -44,5 +43,7 @@ public class MenuWorld {
     public ArrayList<MenuButton> getMenuButtons(){
         return this.menuButtons;
     }
-
 }
+
+
+
