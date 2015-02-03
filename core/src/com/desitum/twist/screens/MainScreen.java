@@ -81,6 +81,10 @@ public class MainScreen implements Screen {
     }
 
     //region onClicks
+
+    /**
+     * handles Gdx.input.justTouched() input
+     */
     private void onClick() {
         switch (state) {
             case MENU_WAITING:
@@ -101,15 +105,19 @@ public class MainScreen implements Screen {
         }
     }
 
+    /**
+     * called when click input when game state is MENU_WAITING
+     */
     private void onClickMenuWaiting() {
         for (MenuButton mb : menuWorld.getMenuButtons()) {
-            if (CollisionDetection.pointInRectangle(mb.getBoundingRectangle(), touchPoint)) {
-                if (mb.getCommand().equals(PLAY)) {
+            if (CollisionDetection.pointInRectangle(mb.getBoundingRectangle(), touchPoint)) { // if touched a rectangle
+                if (mb.getCommand().equals(PLAY)) { // if the button was play
                     state = MENU_TRANSITION;
-                } else if (mb.getCommand().equals(OPEN_SCORES)) {
+                } else if (mb.getCommand().equals(OPEN_SCORES)) { // if the button was high scores
                     //TODO add in Google Play Game Services (I'll do that)
-                } else if (mb.getCommand().equals(VOLUMES)) {
-                    if (Settings.volumeOn) {
+                } else if (mb.getCommand().equals(VOLUMES)) { // if the button was volumes
+                    Settings.volumeOn = !Settings.volumeOn; // toggle whether volume is on
+                    if (Settings.volumeOn) { // update texture for the Volume button
                         mb.setTexture(Assets.volumeOnButtonTexture);
                     } else {
                         mb.setTexture(Assets.volumeOffButtonTexture);
@@ -119,24 +127,41 @@ public class MainScreen implements Screen {
         }
     }
 
+    /**
+     * called when click input when game state is GAME_BEFORE
+     */
     private void onClickGameBefore() {
         state = GAME_RUNNING;
     }
 
+    /**
+     * called when click input when game state is GAME_PAUSED
+     */
     private void onClickGamePaused() {
         state = GAME_RUNNING;
     }
 
+    /**
+     * called when click input when game state is GAME_RUNNING
+     */
     private void onClickGameRunning() {
         gameWorld.toggleKipperDirection();
     }
 
+    /**
+     * called when click input when game state is GAME_OVER
+     */
     private void onClickGameOver() {
         //TODO (will be done later) check for button and do accordingly
     }
     //endregion
 
     //region folding for update methods
+
+    /**
+     * update in general, switch case determines what area to update
+     * @param delta delta time
+     */
     private void update(float delta) {
         switch (state) {
             case MENU_WAITING:
@@ -161,10 +186,18 @@ public class MainScreen implements Screen {
     }
 
 
+    /**
+     * method to update game when state equals MENU_WAITING
+     * @param delta delta time
+     */
     private void updateMenuWaiting(float delta) {
         //Does nothing for now
     }
 
+    /**
+     * method to update game when state equals MENU_TRANSITION
+     * @param delta delta time
+     */
     private void updateMenuTransition(float delta) {
         if (!menuWorld.getMenuButtons().get(0).isMoving()) { // if first menu button isn't moving
             menuWorld.getMenuButtons().get(0).moveOffScreen(); // start it moving
@@ -178,18 +211,34 @@ public class MainScreen implements Screen {
         }
     }
 
+    /**
+     * method to update game when state equals GAME_BEFORE
+     * @param delta delta time
+     */
     private void updateGameBefore(float delta) {
         gameWorld.update(state, delta);
     }
 
+    /**
+     * method to update game when state equals GAME_RUNNING
+     * @param delta delta time
+     */
     private void updateGameRunning(float delta) {
         gameWorld.update(state, delta);
     }
 
+    /**
+     * method to update game when state equals GAME_PAUSED
+     * @param delta delta time
+     */
     private void updateGamePaused(float delta) {
 
     }
 
+    /**
+     * method to update game when state equals GAME_OVER
+     * @param delta delta time
+     */
     private void updateGameOver(float delta) {
     }
 

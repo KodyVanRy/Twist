@@ -14,7 +14,7 @@ public class MenuWorld {
     private ArrayList<MenuButton> menuButtons;
 
     public MenuWorld () {
-        menuButtons = new ArrayList<>();
+        menuButtons = new ArrayList<MenuButton>();
         createItems();
     }
 
