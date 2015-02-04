@@ -322,4 +322,6 @@ public class MainScreen implements Screen {
     @Override
     public void dispose() {
     }
+
+    //TODO need to create a background manager class
 }

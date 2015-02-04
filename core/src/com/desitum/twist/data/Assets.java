@@ -32,11 +32,11 @@ public class Assets {
     }
 
     public static void loadGameTextures(){
-        purpleBarTexture = new Texture(Gdx.files.internal("menu/purple_bar.png"));
-        orangeBarTexture = new Texture(Gdx.files.internal("menu/orange_bar.png"));
-        redBarTexture = new Texture(Gdx.files.internal("menu/red_bar.png"));
-        yellowBarTexture = new Texture(Gdx.files.internal("menu/yellow_bar.png"));
-        kipperTexture = new Texture(Gdx.files.internal("menu/kipper.png"));
+        purpleBarTexture = new Texture(Gdx.files.internal("game/purple_bar.png"));
+        orangeBarTexture = new Texture(Gdx.files.internal("game/orange_bar.png"));
+        redBarTexture = new Texture(Gdx.files.internal("game/red_bar.png"));
+        yellowBarTexture = new Texture(Gdx.files.internal("game/yellow_bar.png"));
+        kipperTexture = new Texture(Gdx.files.internal("game/kipper.png"));
     }
 
     public static void loadBackgroundTextures(){

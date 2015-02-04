@@ -14,6 +14,8 @@ public class TwistGame extends Game {
 	@Override
 	public void create () {
         Assets.loadMenuTextures();
+        Assets.loadGameTextures();
+        Assets.loadBackgroundTextures();
         Screen mainScreen = new MainScreen();
         this.setScreen(mainScreen);
 	}
