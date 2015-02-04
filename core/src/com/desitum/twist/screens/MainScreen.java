@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.desitum.twist.data.Assets;
+import com.desitum.twist.data.BackgroundManager;
 import com.desitum.twist.data.Settings;
 import com.desitum.twist.libraries.CollisionDetection;
 import com.desitum.twist.objects.MenuButton;
@@ -47,16 +48,19 @@ public class MainScreen implements Screen {
 
     private Vector3 touchPoint;
 
+    private BackgroundManager backgroundManager;
+
     public MainScreen() {
         cam = new OrthographicCamera(FRUSTUM_WIDTH, FRUSTUM_HEIGHT);
         cam.position.set(FRUSTUM_WIDTH / 2, FRUSTUM_HEIGHT / 2, 0);
         spriteBatch = new SpriteBatch();
+        backgroundManager = new BackgroundManager();
 
         menuWorld = new MenuWorld();
         gameWorld = new GameWorld();
 
-        menuRenderer = new MenuRenderer(menuWorld, spriteBatch);
-        gameRenderer = new GameRenderer(gameWorld, spriteBatch);
+        menuRenderer = new MenuRenderer(menuWorld, spriteBatch, backgroundManager);
+        gameRenderer = new GameRenderer(gameWorld, spriteBatch, backgroundManager);
     }
 
     @Override
@@ -75,7 +79,7 @@ public class MainScreen implements Screen {
         cam.update();
         spriteBatch.begin();
 
-        menuRenderer.render();
+        draw();
 
         spriteBatch.end();
     }
@@ -206,6 +210,7 @@ public class MainScreen implements Screen {
         } else if (!menuWorld.getMenuButtons().get(2).isMoving() && menuWorld.getMenuButtons().get(1).getX() >= 4) {
             menuWorld.getMenuButtons().get(2).moveOffScreen();
         } else if (menuWorld.getMenuButtons().get(2).getX() >= FRUSTUM_WIDTH){
+            System.out.println("Switched states");
             state = GAME_BEFORE;
         }
         for (MenuButton mb: menuWorld.getMenuButtons()){
@@ -275,14 +280,15 @@ public class MainScreen implements Screen {
     }
 
     private void drawGameBefore() {
+        gameRenderer.render();
     }
 
     private void drawMenuTransition() {
-
+        menuRenderer.render();
     }
 
     private void drawMenuWaiting() {
-
+        menuRenderer.render();
     }
 
 

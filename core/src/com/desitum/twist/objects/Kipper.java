@@ -3,6 +3,7 @@ package com.desitum.twist.objects;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
+import com.desitum.twist.data.Assets;
 import com.desitum.twist.screens.MainScreen;
 
 /**
@@ -25,6 +26,8 @@ public class Kipper extends Sprite {
     private Color kipperColor; //Color of Kipper (Blue?)
 
     public Kipper(float kipperSpeed, float kipperSize, Color kipperColor, float kipperPositionX, float kipperPositionY) {
+        super(Assets.kipperTexture, 0, 0, Assets.kipperTexture.getWidth(), Assets.kipperTexture.getHeight());
+
         this.kipperSpeed = kipperSpeed;
         this.kipperOrientation = VERTICAL;
         this.kipperColor = kipperColor;
@@ -39,17 +42,17 @@ public class Kipper extends Sprite {
 
         if (kipperOrientation == HORIZONTAL) //Placeholder to prevent error
         {
-            if (getBoundingRectangle().getX() <= MainScreen.FRUSTUM_WIDTH) {
+            if (getX() <= MainScreen.FRUSTUM_WIDTH) {
                 kipperSpeed *= -1;
-            } else if (getBoundingRectangle().getX() + getBoundingRectangle().getWidth() >= MainScreen.FRUSTUM_WIDTH) {
+            } else if (getX() + getWidth() >= MainScreen.FRUSTUM_WIDTH) {
                 kipperSpeed *= -1;
             }
 
 
-            getBoundingRectangle().setX(getBoundingRectangle().getX() + kipperSpeed * delta);
+            setX(getBoundingRectangle().getX() + kipperSpeed * delta);
 
         } else if (kipperOrientation == VERTICAL) {
-            getBoundingRectangle().setY(getBoundingRectangle().getY() + kipperSpeed * delta);
+            setY(getY() + kipperSpeed * delta);
         }
     }
 

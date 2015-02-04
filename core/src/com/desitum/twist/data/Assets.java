@@ -23,6 +23,9 @@ public class Assets {
     public static Texture backgroundTexture2;
     public static Texture backgroundTexture3;
     public static Texture backgroundTexture4;
+    public static Texture backgroundTexture5;
+    public static Texture backgroundTexture6;
+    public static Texture backgroundTexture7;
 
     public static void loadMenuTextures(){
         playButtonTexture = new Texture(Gdx.files.internal("menu/play.png"));
@@ -44,5 +47,8 @@ public class Assets {
         backgroundTexture2 = new Texture(Gdx.files.internal("bg/bg_2.png"));
         backgroundTexture3 = new Texture(Gdx.files.internal("bg/bg_3.png"));
         backgroundTexture4 = new Texture(Gdx.files.internal("bg/bg_4.png"));
+        backgroundTexture5 = new Texture(Gdx.files.internal("bg/bg_5.png"));
+        backgroundTexture6 = new Texture(Gdx.files.internal("bg/bg_6.png"));
+        backgroundTexture7 = new Texture(Gdx.files.internal("bg/bg_7.png"));
     }
 }
