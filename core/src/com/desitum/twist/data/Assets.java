@@ -12,11 +12,17 @@ public class Assets {
     public static Texture highscoreButtonTexture;
     public static Texture volumeOnButtonTexture;
     public static Texture volumeOffButtonTexture;
+
     public static Texture purpleBarTexture;
     public static Texture yellowBarTexture;
     public static Texture redBarTexture;
     public static Texture orangeBarTexture;
     public static Texture kipperTexture;
+
+    public static Texture backgroundTexture1;
+    public static Texture backgroundTexture2;
+    public static Texture backgroundTexture3;
+    public static Texture backgroundTexture4;
 
     public static void loadMenuTextures(){
         playButtonTexture = new Texture(Gdx.files.internal("menu/play.png"));
@@ -33,4 +39,10 @@ public class Assets {
         kipperTexture = new Texture(Gdx.files.internal("menu/kipper.png"));
     }
 
+    public static void loadBackgroundTextures(){
+        backgroundTexture1 = new Texture(Gdx.files.internal("bg/bg_1.png"));
+        backgroundTexture2 = new Texture(Gdx.files.internal("bg/bg_2.png"));
+        backgroundTexture3 = new Texture(Gdx.files.internal("bg/bg_3.png"));
+        backgroundTexture4 = new Texture(Gdx.files.internal("bg/bg_4.png"));
+    }
 }

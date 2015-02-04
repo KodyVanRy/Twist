@@ -205,6 +205,8 @@ public class MainScreen implements Screen {
             menuWorld.getMenuButtons().get(1).moveOffScreen(); // start it moving
         } else if (!menuWorld.getMenuButtons().get(2).isMoving() && menuWorld.getMenuButtons().get(1).getX() >= 4) {
             menuWorld.getMenuButtons().get(2).moveOffScreen();
+        } else if (menuWorld.getMenuButtons().get(2).getX() >= FRUSTUM_WIDTH){
+            state = GAME_BEFORE;
         }
         for (MenuButton mb: menuWorld.getMenuButtons()){
             mb.update(delta);

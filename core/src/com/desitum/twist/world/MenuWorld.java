@@ -15,10 +15,13 @@ public class MenuWorld {
 
     public MenuWorld () {
         menuButtons = new ArrayList<MenuButton>();
-        createItems();
+        createButtons();
     }
 
-    private void createItems() {
+    /**
+     * creates menu buttons
+     */
+    private void createButtons() {
         //Create each button and their parameters
         MenuButton playButton = new MenuButton(MainScreen.PLAY, 1, 8, Assets.playButtonTexture);
         MenuButton scoreButton = new MenuButton(MainScreen.OPEN_SCORES, 1, 6, Assets.highscoreButtonTexture);
