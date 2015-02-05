@@ -20,6 +20,7 @@ public class BackgroundManager {
 
     public BackgroundManager() {
         backgroundImages = loadBackgroundImages();
+        currentBackgroundImages = new ArrayList<BackgroundImage>();
         currentBackgroundImages = getCurrent();
     }
 
@@ -31,7 +32,7 @@ public class BackgroundManager {
                 iter.remove();
             }
         }
-        if (currentBackgroundImages.size() < 3){
+        if (currentBackgroundImages.size() < 4){
             currentBackgroundImages = getCurrent();
         }
     }
@@ -58,13 +59,14 @@ public class BackgroundManager {
         ArrayList<BackgroundImage> returnArray = (ArrayList<BackgroundImage>) currentBackgroundImages.clone();
         Random rand = new Random();
 
-        while (returnArray.size() < 3){
+        while (returnArray.size() < 4){
             Texture nextImage = backgroundImages.get(rand.nextInt(backgroundImages.size()));
             float nextY = 0;
-            if (returnArray.size() > 0){ nextY = returnArray.get(returnArray.size()-1).getY(); }
+            if (returnArray.size() > 0){ nextY = returnArray.get(returnArray.size()-1).getY() + returnArray.get(returnArray.size()-1).getHeight(); }
             BackgroundImage imageToAdd = new BackgroundImage(nextImage, MainScreen.FRUSTUM_WIDTH, 0, nextY);
             returnArray.add(imageToAdd);
         }
+        System.out.println("Size : " + returnArray.size());
         return returnArray;
     }
 }

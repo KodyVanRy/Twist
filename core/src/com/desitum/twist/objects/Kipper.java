@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 import com.desitum.twist.data.Assets;
+import com.desitum.twist.data.Settings;
 import com.desitum.twist.screens.MainScreen;
 
 /**
@@ -42,14 +43,14 @@ public class Kipper extends Sprite {
 
         if (kipperOrientation == HORIZONTAL) //Placeholder to prevent error
         {
-            if (getX() <= MainScreen.FRUSTUM_WIDTH) {
-                kipperSpeed *= -1;
+            if (getX() <= 0) {
+                kipperSpeed = Settings.kipperSpeed;
             } else if (getX() + getWidth() >= MainScreen.FRUSTUM_WIDTH) {
-                kipperSpeed *= -1;
+                kipperSpeed = -Settings.kipperSpeed;
             }
 
 
-            setX(getBoundingRectangle().getX() + kipperSpeed * delta);
+            setX(getX() + kipperSpeed * delta);
 
         } else if (kipperOrientation == VERTICAL) {
             setY(getY() + kipperSpeed * delta);
@@ -81,6 +82,7 @@ public class Kipper extends Sprite {
             kipperOrientation = HORIZONTAL;
         } else {
             kipperOrientation = VERTICAL;
+            kipperSpeed = Settings.kipperSpeed;
         }
     }
 

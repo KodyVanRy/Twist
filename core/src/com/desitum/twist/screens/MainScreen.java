@@ -293,6 +293,7 @@ public class MainScreen implements Screen {
 
 
     private void drawGameRunning() {
+        gameRenderer.render();
     }
 
     private void drawGameOver() {

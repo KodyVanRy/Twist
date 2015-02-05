@@ -13,7 +13,7 @@ import com.desitum.twist.screens.MainScreen;
 public class GameRenderer {
 
     private SpriteBatch gameBatch;
-    private OrthographicCamera menuCam;
+    private OrthographicCamera gameCam;
     private GameWorld world;
     private BackgroundManager backgroundManager;
 
@@ -21,13 +21,19 @@ public class GameRenderer {
         this.world = world;
         this.gameBatch = batch;
         this.backgroundManager = backgroundManager;
-        menuCam = new OrthographicCamera(MainScreen.FRUSTUM_WIDTH, MainScreen.FRUSTUM_HEIGHT);
-        menuCam.position.set(MainScreen.FRUSTUM_WIDTH/2, MainScreen.FRUSTUM_HEIGHT/2, 0);
+        gameCam = new OrthographicCamera(MainScreen.FRUSTUM_WIDTH, MainScreen.FRUSTUM_HEIGHT);
+        gameCam.position.set(MainScreen.FRUSTUM_WIDTH/2, MainScreen.FRUSTUM_HEIGHT/2, 0);
     }
 
     public void render(){
-        menuCam.update();
-        gameBatch.setProjectionMatrix(menuCam.combined);
+
+        if (this.world.kipper.getY() > 3) {
+            gameCam.position.set(MainScreen.FRUSTUM_WIDTH/2, this.world.kipper.getY() + 4.5f, 0);
+            backgroundManager.update(gameCam);
+        }
+
+        gameCam.update();
+        gameBatch.setProjectionMatrix(gameCam.combined);
 
         for (BackgroundImage bgImage: backgroundManager.getBackgroundImages()){
             bgImage.draw(gameBatch);
@@ -38,8 +44,6 @@ public class GameRenderer {
         }
 
         this.world.kipper.draw(gameBatch);
-
-        System.out.println("Drawing");
 
     }
 
