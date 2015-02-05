@@ -45,13 +45,13 @@ public class Pattern {
     {
         pattern2 = new ArrayList<Bar>();
         Bar pattern2_bar1 = new Bar(4, 4, Bar.HORIZONTAL, new float[]{1, 0}, Assets.redBarTexture);
-        pattern2_bar1.setBarStoppingPointRight(6);
+        pattern2_bar1.setBarStoppingPointRight(12);
         Bar pattern2_bar2 = new Bar(3, 4, Bar.HORIZONTAL, new float[]{3, 1.5f}, Assets.redBarTexture);
-        pattern2_bar2.setBarStoppingPointLeft(4);
+        pattern2_bar2.setBarStoppingPointBottom(8);
         Bar pattern2_bar3 = new Bar(4, 4, Bar.VERTICAL, new float[]{2, 8}, Assets.redBarTexture);
-        pattern2_bar3.setBarStoppingPointRight(6);
+        pattern2_bar3.setBarStoppingPointRight(12);
         Bar pattern2_bar4 = new Bar(3, 4, Bar.HORIZONTAL, new float[]{6, 6.5f}, Assets.redBarTexture);
-        pattern2_bar4.setBarStoppingPointLeft(4);
+        pattern2_bar4.setBarStoppingPointLeft(8);
         pattern1.add(pattern2_bar1);
         pattern1.add(pattern2_bar2);
         pattern1.add(pattern2_bar3);
