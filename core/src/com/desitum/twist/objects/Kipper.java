@@ -22,7 +22,6 @@ public class Kipper extends Sprite {
     private float kipperSpeed; //Max is 8 (4 is lowest, 8 is highest, 4 = slow)
     private int kipperOrientation; //Vertical or Horizontal (0 is Vertical, 1 is Horizontal)
     private float lastHorizontalSpeed; //Left or Right (- or +)
-    private int kipperLastOrientation;
 
     //This color is going to be used for a blur trail
     private Color kipperColor; //Color of Kipper (Blue?)
@@ -33,6 +32,7 @@ public class Kipper extends Sprite {
         this.kipperSpeed = kipperSpeed;
         this.kipperOrientation = VERTICAL;
         this.kipperColor = kipperColor;
+        this.lastHorizontalSpeed = kipperSpeed;
 
         this.setSize(kipperSize, kipperSize);
         this.setX(kipperPositionX);
