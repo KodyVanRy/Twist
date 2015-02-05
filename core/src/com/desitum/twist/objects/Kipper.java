@@ -21,6 +21,7 @@ public class Kipper extends Sprite {
 
     private float kipperSpeed; //Max is 8 (4 is lowest, 8 is highest, 4 = slow)
     private int kipperOrientation; //Vertical or Horizontal (0 is Vertical, 1 is Horizontal)
+    private float lastHorizontalSpeed; //Left or Right (- or +)
     private int kipperLastOrientation;
 
     //This color is going to be used for a blur trail
@@ -41,7 +42,7 @@ public class Kipper extends Sprite {
     public void update(float delta) {
 
 
-        if (kipperOrientation == HORIZONTAL) //Placeholder to prevent error
+        if (kipperOrientation == HORIZONTAL)
         {
             if (getX() <= 0) {
                 kipperSpeed = Settings.kipperSpeed;
@@ -80,8 +81,10 @@ public class Kipper extends Sprite {
     public void toggleKipperOrientation() {
         if (kipperOrientation == VERTICAL) {
             kipperOrientation = HORIZONTAL;
+            kipperSpeed = lastHorizontalSpeed;
         } else {
             kipperOrientation = VERTICAL;
+            lastHorizontalSpeed = kipperSpeed;
             kipperSpeed = Settings.kipperSpeed;
         }
     }
