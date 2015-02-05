@@ -17,6 +17,7 @@ public class Assets {
     public static Texture yellowBarTexture;
     public static Texture redBarTexture;
     public static Texture orangeBarTexture;
+    public static Texture blueBarTexture;
     public static Texture kipperTexture;
 
     public static Texture backgroundTexture1;
@@ -39,6 +40,7 @@ public class Assets {
         orangeBarTexture = new Texture(Gdx.files.internal("game/orange_bar.png"));
         redBarTexture = new Texture(Gdx.files.internal("game/red_bar.png"));
         yellowBarTexture = new Texture(Gdx.files.internal("game/yellow_bar.png"));
+        blueBarTexture = new Texture(Gdx.files.internal("game/blue_bar.png"));
         kipperTexture = new Texture(Gdx.files.internal("game/kipper.png"));
     }
 
