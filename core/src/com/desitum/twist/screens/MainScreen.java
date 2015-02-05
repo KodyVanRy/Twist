@@ -223,7 +223,7 @@ public class MainScreen implements Screen {
      * @param delta delta time
      */
     private void updateGameBefore(float delta) {
-        gameWorld.update(state, delta);
+        gameWorld.update(state, gameRenderer.getCam(), delta);
     }
 
     /**
@@ -231,7 +231,7 @@ public class MainScreen implements Screen {
      * @param delta delta time
      */
     private void updateGameRunning(float delta) {
-        gameWorld.update(state, delta);
+        gameWorld.update(state, gameRenderer.getCam(), delta);
     }
 
     /**
@@ -277,6 +277,7 @@ public class MainScreen implements Screen {
     }
 
     private void drawGamePaused() {
+        gameRenderer.render();
     }
 
     private void drawGameBefore() {
@@ -297,6 +298,7 @@ public class MainScreen implements Screen {
     }
 
     private void drawGameOver() {
+        gameRenderer.render();
     }
     //endregion
 

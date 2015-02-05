@@ -47,4 +47,8 @@ public class GameRenderer {
 
     }
 
+    public OrthographicCamera getCam(){
+        return gameCam;
+    }
+
 }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.desitum.twist.data.Assets;
+import com.desitum.twist.data.Pattern;
 import com.desitum.twist.screens.MainScreen;
 
 public class TwistGame extends Game {
@@ -16,6 +17,7 @@ public class TwistGame extends Game {
         Assets.loadMenuTextures();
         Assets.loadGameTextures();
         Assets.loadBackgroundTextures();
+        Pattern.loadPatterns();
         Screen mainScreen = new MainScreen();
         this.setScreen(mainScreen);
 	}

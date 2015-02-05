@@ -1,11 +1,14 @@
 package com.desitum.twist.world;
 
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.desitum.twist.data.Pattern;
 import com.desitum.twist.data.Settings;
 import com.desitum.twist.objects.Bar;
 import com.desitum.twist.objects.Kipper;
 import com.desitum.twist.screens.MainScreen;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by kody on 1/31/15.
@@ -22,15 +25,26 @@ public class GameWorld {
 
     }
 
-    public void update(int state, float delta){
+    public void update(int state, OrthographicCamera cam, float delta){
 
         if (state == MainScreen.GAME_RUNNING){
-            // TODO need algorithm for producing new bars that don't overlap
-            // will do while talking on phone
+            if (bars.size() < 1){
+                ArrayList<Bar> barsToAdd = Pattern.getRandomPattern((bars.size() > 0) ? bars.get(bars.size() - 1).getY() : kipper.getY() + 15);
+
+                for (Bar bar: barsToAdd){
+                    bars.add(bar);
+                }
+            }
         }
 
-        for (Bar bar: bars){
+        Iterator<Bar> iter = bars.iterator();
+        while (iter.hasNext()){
+            Bar bar = iter.next();
             bar.update(delta);
+
+            if (bar.getY() < cam.position.y - MainScreen.FRUSTUM_HEIGHT){
+                iter.remove();
+            }
         }
 
         kipper.update(delta);
