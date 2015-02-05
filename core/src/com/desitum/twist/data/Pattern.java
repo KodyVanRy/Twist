@@ -19,7 +19,8 @@ public class Pattern {
     public static void loadPatterns(){
         patterns = new ArrayList<ArrayList<Bar>>();
 
-
+        loadPattern1();
+        loadPattern2();
     }
 
     public static void loadPattern1()
