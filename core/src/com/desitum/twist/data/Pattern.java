@@ -14,37 +14,43 @@ public class Pattern {
     private ArrayList<Bar> pattern;
     private float topY;
 
-    private static ArrayList<Bar> pattern1;
-    private static ArrayList<Bar> pattern2;
-    private static ArrayList<Bar> pattern3;
-    private static ArrayList<Bar> pattern4;
-    private static ArrayList<Bar> pattern5;
-    private static ArrayList<Bar> pattern6;
-    private static ArrayList<Bar> pattern7;
-
     private static ArrayList<ArrayList<Bar>> patterns;
 
     private Pattern(int patternNum, float yPos){
         topY = 0;
-        this.pattern = patterns.get(patternNum);
+        if (patternNum == 0){
+            pattern = loadPattern1();
+        } else if (patternNum == 1){
+            pattern = loadPattern2();
+        } else if (patternNum == 2){
+            pattern = loadPattern3();
+        } else if (patternNum == 3){
+            pattern = loadPattern4();
+        } else if (patternNum == 4){
+            pattern = loadPattern5();
+        } else if (patternNum == 5){
+            pattern = loadPattern6();
+        } else if (patternNum == 6){
+            pattern = loadPattern7();
+        }
         topY = yPos + 13;
     }
 
     public static void loadPatterns(){
         patterns = new ArrayList<ArrayList<Bar>>();
 
-        loadPattern1();
-        loadPattern2();
-        loadPattern3();
-        loadPattern4();
-        loadPattern5();
-        loadPattern6();
-        loadPattern7();
+        patterns.add(loadPattern1());
+        patterns.add(loadPattern2());
+        patterns.add(loadPattern3());
+        patterns.add(loadPattern4());
+        patterns.add(loadPattern5());
+        patterns.add(loadPattern6());
+        patterns.add(loadPattern7());
     }
 
-    public static void loadPattern1()
+    private static ArrayList<Bar> loadPattern1()
     {
-        pattern1 = new ArrayList<Bar>();
+        ArrayList<Bar> pattern1 = new ArrayList<Bar>();
         Bar pattern1_bar1 = new Bar(3, 4, Bar.HORIZONTAL, new float[]{1, 0}, Assets.purpleBarTexture);
         pattern1_bar1.setBarStoppingPointRight(6);
         Bar pattern1_bar2 = new Bar(3, 4, Bar.HORIZONTAL, new float[]{6, 2.5f}, Assets.purpleBarTexture);
@@ -58,12 +64,12 @@ public class Pattern {
         pattern1.add(pattern1_bar3);
         pattern1.add(pattern1_bar4);
 
-        patterns.add(pattern1);
+        return pattern1;
     }
 
-    public static void loadPattern2()
+    private static ArrayList<Bar> loadPattern2()
     {
-        pattern2 = new ArrayList<Bar>();
+        ArrayList<Bar> pattern2 = new ArrayList<Bar>();
         Bar pattern2_bar1 = new Bar(4, 4, Bar.HORIZONTAL, new float[]{1, 0}, Assets.purpleBarTexture);
         pattern2_bar1.setBarStoppingPointRight(6);
         Bar pattern2_bar2 = new Bar(3, 3, Bar.HORIZONTAL, new float[]{3, 3}, Assets.purpleBarTexture);
@@ -78,12 +84,12 @@ public class Pattern {
         pattern2.add(pattern2_bar3);
         pattern2.add(pattern2_bar4);
 
-        patterns.add(pattern2);
+        return pattern2;
     }
 
-    public static void loadPattern3()
+    private static ArrayList<Bar> loadPattern3()
     {
-        pattern3 = new ArrayList<Bar>();
+        ArrayList<Bar> pattern3 = new ArrayList<Bar>();
         Bar pattern3_bar1 = new Bar(4, 2, Bar.HORIZONTAL, new float[]{0, 0}, Assets.purpleBarTexture);
         pattern3_bar1.setBarStoppingPointRight(5);
         Bar pattern3_bar2 = new Bar(4, 2, Bar.HORIZONTAL, new float[]{8, 0}, Assets.purpleBarTexture);
@@ -97,12 +103,12 @@ public class Pattern {
         pattern3.add(pattern3_bar3);
         pattern3.add(pattern3_bar4);
 
-        patterns.add(pattern3);
+        return pattern3;
     }
 
-    public static void loadPattern4()
+    private static ArrayList<Bar> loadPattern4()
     {
-        pattern4 = new ArrayList<Bar>();
+        ArrayList<Bar> pattern4 = new ArrayList<Bar>();
         Bar pattern4_bar1 = new Bar(7, 4, Bar.HORIZONTAL, new float[]{0, 0}, Assets.blueBarTexture);
         Bar pattern4_bar2 = new Bar(7, 4, Bar.HORIZONTAL, new float[]{8, 3.8f}, Assets.blueBarTexture);
         Bar pattern4_bar3 = new Bar(7, 4, Bar.HORIZONTAL, new float[]{0, 7.6f}, Assets.blueBarTexture);
@@ -112,12 +118,12 @@ public class Pattern {
         pattern4.add(pattern4_bar3);
         pattern4.add(pattern4_bar4);
 
-        patterns.add(pattern4);
+        return pattern4;
     }
 
-    public static void loadPattern5()
+    private static ArrayList<Bar> loadPattern5()
     {
-        pattern5 = new ArrayList<Bar>();
+        ArrayList<Bar> pattern5 = new ArrayList<Bar>();
         Bar pattern5_bar1 = new Bar(2, 4, Bar.VERTICAL, new float[]{0, 10}, Assets.orangeBarTexture);
         pattern5_bar1.setBarStoppingPointTop(12);
         pattern5_bar1.setBarStoppingPointBottom(0);
@@ -133,12 +139,12 @@ public class Pattern {
         pattern5.add(pattern5_bar3);
         pattern5.add(pattern5_bar4);
 
-        patterns.add(pattern5);
+        return pattern5;
     }
 
-    public static void loadPattern6()
+    private static ArrayList<Bar> loadPattern6()
     {
-        pattern6 = new ArrayList<Bar>();
+        ArrayList<Bar> pattern6 = new ArrayList<Bar>();
         Bar pattern6_bar1 = new Bar(2, 4, Bar.VERTICAL, new float[]{0, 10}, Assets.yellowBarTexture);
         pattern6_bar1.setBarStoppingPointTop(10);
         pattern6_bar1.setBarStoppingPointBottom(0);
@@ -154,12 +160,12 @@ public class Pattern {
         pattern6.add(pattern6_bar3);
         pattern6.add(pattern6_bar4);
 
-        patterns.add(pattern6);
+        return pattern6;
     }
 
-    public static void loadPattern7()
+    private static ArrayList<Bar> loadPattern7()
     {
-        pattern7 = new ArrayList<Bar>();
+        ArrayList<Bar> pattern7 = new ArrayList<Bar>();
         Bar pattern7_bar1 = new Bar(2, 4, Bar.VERTICAL, new float[]{0, 10}, Assets.redBarTexture);
         pattern7_bar1.setBarStoppingPointTop(10);
         pattern7_bar1.setBarStoppingPointBottom(0);
@@ -175,7 +181,7 @@ public class Pattern {
         pattern7.add(pattern7_bar3);
         pattern7.add(pattern7_bar4);
 
-        patterns.add(pattern7);
+        return pattern7;
     }
 
     public static Pattern getRandomPattern(float y){

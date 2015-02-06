@@ -28,8 +28,13 @@ public class GameWorld {
 
     public void update(int state, OrthographicCamera cam, float delta){
         if (state == MainScreen.GAME_RUNNING){
-            if (patterns.size() < 3){
-                Pattern patternToAdd = Pattern.getRandomPattern((patterns.size() > 0) ? nextY: kipper.getY() + 10);
+            if (patterns.size() == 0){
+                Pattern patternToAdd = Pattern.getRandomPattern(kipper.getY() + 15);
+                patterns.add(patternToAdd);
+                nextY = patternToAdd.getY();
+            }
+            else if (patterns.size() < 4){
+                Pattern patternToAdd = Pattern.getRandomPattern(nextY);
 
                 patterns.add(patternToAdd);
 
