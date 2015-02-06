@@ -15,34 +15,41 @@ import java.util.Iterator;
  */
 public class GameWorld {
 
-    ArrayList<Bar> bars;
+    ArrayList<ArrayList<Bar>> bars;
     Kipper kipper;
+    private float nextY = 0;
 
     public GameWorld () {
 
-        bars = new ArrayList<Bar>();
+        bars = new ArrayList<ArrayList<Bar>>();
         kipper = new Kipper(Settings.kipperSpeed, Settings.kipperSize, Settings.kipperColor, Settings.kipperX, Settings.kipperY);
 
     }
 
     public void update(int state, OrthographicCamera cam, float delta){
-        System.out.println("kippery : " + kipper.getY());
         if (state == MainScreen.GAME_RUNNING){
             if (bars.size() < 12){
-                ArrayList<Bar> barsToAdd = Pattern.getRandomPattern((bars.size() > 0) ? bars.get(bars.size() - 1).getY() + 3 : kipper.getY() + 15);
+                ArrayList<Bar> barsToAdd = Pattern.getRandomPattern((bars.size() > 0) ? nextY + 3: kipper.getY() + 15);
 
-                for (Bar bar: barsToAdd){
-                    bars.add(bar);
-                }
+                System.out.println("nextY: " + ((bars.size() > 0) ? nextY + 3 : kipper.getY() + 15));
             }
         }
 
-        Iterator<Bar> iter = bars.iterator();
+        Iterator<ArrayList<Bar>> iter = bars.iterator();
         while (iter.hasNext()){
-            Bar bar = iter.next();
+            ArrayList<Bar> pattern = iter.next();
+            Iterator<Bar> iter2 = pattern.iterator();
+            while (iter2.hasNext()){
             bar.update(delta);
 
-            if (bar.getY() < cam.position.y - MainScreen.FRUSTUM_HEIGHT){
+            if (bar.getY() > kipper.getY() + 30){
+                System.out.println("PROBLEM: " + (bar.getY() - kipper.getY()));
+            }
+
+            if (bar.getY() > nextY){
+                nextY = bar.getY();
+            }
+            if (bar.getY() < cam.position.y - MainScreen.FRUSTUM_HEIGHT/2){
                 iter.remove();
             }
         }

@@ -11,6 +11,9 @@ import java.util.Random;
  */
 public class Pattern {
 
+    private ArrayList<Bar> pattern;
+    private float topY;
+
     private static ArrayList<Bar> pattern1;
     private static ArrayList<Bar> pattern2;
     private static ArrayList<Bar> pattern3;
@@ -19,6 +22,16 @@ public class Pattern {
     private static ArrayList<Bar> pattern6;
 
     private static ArrayList<ArrayList<Bar>> patterns;
+
+    private Pattern(int pattern){
+        topY = 0;
+        this.pattern = patterns.get(pattern);
+        for (Bar b: this.pattern){
+            if (b.getBoundingRectangle().getY() + b.getBoundingRectangle().getHeight() > topY){
+                topY = b.getBoundingRectangle().getY() + b.getBoundingRectangle().getHeight();
+            }
+        }
+    }
 
     public static void loadPatterns(){
         patterns = new ArrayList<ArrayList<Bar>>();
@@ -150,13 +163,15 @@ public class Pattern {
         patterns.add(pattern6);
     }
 
-    public static ArrayList<Bar> getRandomPattern(float y){
-        ArrayList<Bar> returnPattern;
+    public static Pattern getRandomPattern(float y){
+        Pattern returnPattern;
+        ArrayList<Bar> returnArray;
 
         Random rand = new Random();
-        returnPattern = (ArrayList<Bar>) patterns.get(rand.nextInt(patterns.size())).clone();
+        returnPattern = new Pattern(rand.nextInt(patterns.size()));
+        returnArray = returnPattern.pattern;
 
-        for (Bar bar: returnPattern){
+        for (Bar bar: returnArray){
             bar.setBarY(y);
         }
 

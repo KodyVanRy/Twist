@@ -63,11 +63,6 @@ public class Bar extends Sprite {
                 moveSpeed = -originalMoveSpeed;
             } else {
                 barPositionY += moveSpeed * delta;
-                System.out.println("barPositionY: " + barPositionY);
-                System.out.println("barTop: " + barStoppingPointTop);
-                System.out.println("barBottom: " +  barStoppingPointBottom);
-                System.out.println("speed: " + moveSpeed);
-                System.out.println("-----------");
             }
         } else {
             if (barPositionX <= barStoppingPointLeft && moveSpeed < 0) {
