@@ -30,6 +30,16 @@ public class Bar extends Sprite {
     public Bar(float moveSpeed, float barLength, int barOrientation, float[] position, Texture texture) {
         super(texture, 0, 0, texture.getWidth(), texture.getHeight());
 
+
+        this.setSize(barLength, BAR_WIDTH);
+
+        if (barOrientation == HORIZONTAL){
+            setRotation(0);
+        } else if (barOrientation == VERTICAL){
+            setOriginCenter();
+            setRotation(90);
+        }
+
         this.moveSpeed = moveSpeed;
         this.originalMoveSpeed = moveSpeed;
         this.barLength = barLength;
@@ -40,11 +50,7 @@ public class Bar extends Sprite {
         this.barPositionX = position[0];
         this.barPositionY = position[1];
 
-        if (barOrientation == HORIZONTAL){
-            this.setSize(barLength, BAR_WIDTH);
-        } else if (barOrientation == VERTICAL){
-            this.setSize(BAR_WIDTH, barLength);
-        }
+
 
         this.setPosition(position[0], position[1]);
     }
@@ -57,13 +63,16 @@ public class Bar extends Sprite {
                 moveSpeed = -originalMoveSpeed;
             } else {
                 barPositionY += moveSpeed * delta;
+                System.out.println("barPositionY: " + barPositionY);
+                System.out.println("barTop: " + barStoppingPointTop);
+                System.out.println("barBottom: " +  barStoppingPointBottom);
+                System.out.println("speed: " + moveSpeed);
+                System.out.println("-----------");
             }
         } else {
             if (barPositionX <= barStoppingPointLeft && moveSpeed < 0) {
-                System.out.println("Hrm1: " + barPositionX);
                 moveSpeed = originalMoveSpeed;
             } else if (barPositionX + barLength >= barStoppingPointRight && moveSpeed > 0) {
-                System.out.println("Hrm2: " + barPositionX);
                 moveSpeed = -originalMoveSpeed;
             } else {
                 barPositionX += moveSpeed * delta;
@@ -114,10 +123,9 @@ public class Bar extends Sprite {
     }
 
     public void setBarY(float y){
-        float difference = y - this.barPositionY;
-        this.barStoppingPointTop += difference;
-        this.barStoppingPointTop += difference;
-        this.barPositionY = y;
+        this.barPositionY += y;
+        this.barStoppingPointTop += y;
+        this.barStoppingPointBottom += y;
         setY(y);
     }
 

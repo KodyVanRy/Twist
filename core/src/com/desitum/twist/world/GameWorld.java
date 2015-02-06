@@ -26,7 +26,7 @@ public class GameWorld {
     }
 
     public void update(int state, OrthographicCamera cam, float delta){
-
+        System.out.println("kippery : " + kipper.getY());
         if (state == MainScreen.GAME_RUNNING){
             if (bars.size() < 1){
                 ArrayList<Bar> barsToAdd = Pattern.getRandomPattern((bars.size() > 0) ? bars.get(bars.size() - 1).getY() : kipper.getY() + 15);

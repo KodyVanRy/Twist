@@ -111,7 +111,7 @@ public class Pattern {
         returnPattern = (ArrayList<Bar>) patterns.get(rand.nextInt(patterns.size())).clone();
 
         for (Bar bar: returnPattern){
-            bar.setBarY(bar.getY() + y);
+            bar.setBarY(y);
         }
 
         return returnPattern;
