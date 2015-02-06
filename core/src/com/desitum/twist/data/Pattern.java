@@ -27,11 +27,7 @@ public class Pattern {
     private Pattern(int patternNum, float yPos){
         topY = 0;
         this.pattern = patterns.get(patternNum);
-        for (Bar b: this.pattern){
-            if (b.getBoundingRectangle().getY() + b.getBoundingRectangle().getHeight() > topY){
-                topY = yPos + 13;
-            }
-        }
+        topY = yPos + 13;
     }
 
     public static void loadPatterns(){

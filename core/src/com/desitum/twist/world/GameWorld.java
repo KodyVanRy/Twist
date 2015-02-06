@@ -29,9 +29,11 @@ public class GameWorld {
     public void update(int state, OrthographicCamera cam, float delta){
         if (state == MainScreen.GAME_RUNNING){
             if (patterns.size() < 3){
-                Pattern patternToAdd = Pattern.getRandomPattern((patterns.size() > 0) ? nextY + 3: kipper.getY() + 10);
+                Pattern patternToAdd = Pattern.getRandomPattern((patterns.size() > 0) ? nextY: kipper.getY() + 10);
 
                 patterns.add(patternToAdd);
+
+                nextY = patternToAdd.getY();
             }
         }
 
@@ -43,12 +45,8 @@ public class GameWorld {
                 Bar bar = iter2.next();
                 bar.update(delta);
             }
-            if (pattern.getY() < cam.position.y - MainScreen.FRUSTUM_HEIGHT / 2) {
+            if (pattern.getY() < kipper.getY() - 3) {
                 iter.remove();
-            }
-
-            if (pattern.getY() > nextY) {
-                nextY = pattern.getY() + 10;
             }
         }
 
