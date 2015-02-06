@@ -18,9 +18,10 @@ public class GameWorld {
     ArrayList<Pattern> patterns;
     Kipper kipper;
     private float nextY = 0;
+    float score;
 
     public GameWorld () {
-
+        score = 0;
         patterns = new ArrayList<Pattern>();
         kipper = new Kipper(Settings.kipperSpeed, Settings.kipperSize, Settings.kipperColor, Settings.kipperX, Settings.kipperY);
 
@@ -39,6 +40,9 @@ public class GameWorld {
                 patterns.add(patternToAdd);
 
                 nextY = patternToAdd.getY();
+            }
+            if (kipper.getKipperOrientation() == Kipper.VERTICAL){
+                score += delta;
             }
         }
 

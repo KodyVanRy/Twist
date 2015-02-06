@@ -51,4 +51,7 @@ public class GameRenderer {
         return gameCam;
     }
 
+    public void resetCam(){
+        gameCam.position.set(MainScreen.FRUSTUM_WIDTH/2, MainScreen.FRUSTUM_HEIGHT/2, 0);
+    }
 }

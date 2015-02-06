@@ -38,4 +38,8 @@ public class MenuRenderer {
         }
     }
 
+    public void resetCam(){
+        menuCam.position.set(MainScreen.FRUSTUM_WIDTH/2, MainScreen.FRUSTUM_HEIGHT/2, 0);
+    }
+
 }
