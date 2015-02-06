@@ -296,6 +296,8 @@ public class MainScreen implements Screen {
 
         if (state == GAME_BEFORE && gameWorld.getKipper().getY() > 3){
             spriteBatch.draw(Assets.tappingHand, FRUSTUM_WIDTH / 2 - 1, gameWorld.getKipper().getY() + 4.5f, 2, 3);
+        } else {
+            spriteBatch.draw(Assets.tappingHand, FRUSTUM_WIDTH/2 - 1, FRUSTUM_HEIGHT/2, 2, 3);
         }
     }
 
