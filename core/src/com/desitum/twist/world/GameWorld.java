@@ -15,42 +15,40 @@ import java.util.Iterator;
  */
 public class GameWorld {
 
-    ArrayList<ArrayList<Bar>> bars;
+    ArrayList<Pattern> patterns;
     Kipper kipper;
     private float nextY = 0;
 
     public GameWorld () {
 
-        bars = new ArrayList<ArrayList<Bar>>();
+        patterns = new ArrayList<Pattern>();
         kipper = new Kipper(Settings.kipperSpeed, Settings.kipperSize, Settings.kipperColor, Settings.kipperX, Settings.kipperY);
 
     }
 
     public void update(int state, OrthographicCamera cam, float delta){
         if (state == MainScreen.GAME_RUNNING){
-            if (bars.size() < 12){
-                Pattern patternToAdd = Pattern.getRandomPattern((bars.size() > 0) ? nextY + 3: kipper.getY() + 15);
+            if (patterns.size() < 3){
+                Pattern patternToAdd = Pattern.getRandomPattern((patterns.size() > 0) ? nextY + 3: kipper.getY() + 10);
 
-                for (Bar b: patternToAdd.getPattern());
+                patterns.add(patternToAdd);
             }
         }
 
-        Iterator<ArrayList<Bar>> iter = bars.iterator();
+        Iterator<Pattern> iter = patterns.iterator();
         while (iter.hasNext()){
-            ArrayList<Bar> pattern = iter.next();
-            Iterator<Bar> iter2 = pattern.iterator();
-            while (iter2.hasNext()){
-            bar.update(delta);
-
-            if (bar.getY() > kipper.getY() + 30){
-                System.out.println("PROBLEM: " + (bar.getY() - kipper.getY()));
+            Pattern pattern = iter.next();
+            Iterator<Bar> iter2 = pattern.getPattern().iterator();
+            while (iter2.hasNext()) {
+                Bar bar = iter2.next();
+                bar.update(delta);
             }
-
-            if (bar.getY() > nextY){
-                nextY = bar.getY();
-            }
-            if (bar.getY() < cam.position.y - MainScreen.FRUSTUM_HEIGHT/2){
+            if (pattern.getY() < cam.position.y - MainScreen.FRUSTUM_HEIGHT / 2) {
                 iter.remove();
+            }
+
+            if (pattern.getY() > nextY) {
+                nextY = pattern.getY();
             }
         }
 
@@ -63,6 +61,14 @@ public class GameWorld {
     }
 
     public ArrayList<Bar> getBars(){
+        ArrayList<Bar> bars = new ArrayList<Bar>();
+
+        for (Pattern p: patterns){
+            for (Bar b: p.getPattern()){
+                bars.add(b);
+            }
+        }
+
         return bars;
     }
 
