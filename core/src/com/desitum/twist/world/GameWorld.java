@@ -48,7 +48,7 @@ public class GameWorld {
             }
 
             if (pattern.getY() > nextY) {
-                nextY = pattern.getY();
+                nextY = pattern.getY() + 10;
             }
         }
 

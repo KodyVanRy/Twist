@@ -29,7 +29,7 @@ public class Pattern {
         this.pattern = patterns.get(patternNum);
         for (Bar b: this.pattern){
             if (b.getBoundingRectangle().getY() + b.getBoundingRectangle().getHeight() > topY){
-                topY = b.getBoundingRectangle().getY() + b.getBoundingRectangle().getHeight() + yPos;
+                topY = yPos + 13;
             }
         }
     }
@@ -40,6 +40,10 @@ public class Pattern {
         loadPattern1();
         loadPattern2();
         loadPattern3();
+        loadPattern4();
+        loadPattern5();
+        loadPattern6();
+        loadPattern7();
     }
 
     public static void loadPattern1()
@@ -179,7 +183,6 @@ public class Pattern {
     }
 
     public static Pattern getRandomPattern(float y){
-        System.out.println("new pattern: " + y);
         Pattern returnPattern;
         ArrayList<Bar> returnArray;
 
