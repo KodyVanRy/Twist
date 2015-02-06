@@ -51,8 +51,11 @@ public class Bar extends Sprite {
         this.barPositionY = position[1];
 
 
-
-        this.setPosition(position[0], position[1]);
+        if (barOrientation == HORIZONTAL) {
+            this.setPosition(position[0], position[1]);
+        } else {
+            this.setPosition(position[0] - barLength/2, position[1]);
+        }
     }
 
     public void update(float delta) {
