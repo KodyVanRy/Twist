@@ -24,7 +24,7 @@ public class MainScreen implements Screen {
     public static final float FRUSTUM_WIDTH = 10;
     public static final float FRUSTUM_HEIGHT = 15;
 
-    private int state = 0;
+    public static int state = 0;
 
     public static final int MENU_WAITING = 0;
     public static final int MENU_TRANSITION = 1;
@@ -282,6 +282,10 @@ public class MainScreen implements Screen {
 
     private void drawGameBefore() {
         gameRenderer.render();
+
+        if (state == GAME_BEFORE && gameWorld.getKipper().getY() > 3){
+            spriteBatch.draw(Assets.tappingHand, FRUSTUM_WIDTH/2 - 1, gameWorld.getKipper().getY() + 4.5f, 2, 3);
+        }
     }
 
     private void drawMenuTransition() {

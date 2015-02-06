@@ -51,6 +51,10 @@ public class GameWorld {
 
     }
 
+    public Kipper getKipper() {
+        return kipper;
+    }
+
     public ArrayList<Bar> getBars(){
         return bars;
     }

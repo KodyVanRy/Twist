@@ -18,6 +18,7 @@ public class Assets {
     public static Texture redBarTexture;
     public static Texture orangeBarTexture;
     public static Texture kipperTexture;
+    public static Texture tappingHand;
 
     public static Texture backgroundTexture1;
     public static Texture backgroundTexture2;
@@ -40,6 +41,7 @@ public class Assets {
         redBarTexture = new Texture(Gdx.files.internal("game/red_bar.png"));
         yellowBarTexture = new Texture(Gdx.files.internal("game/yellow_bar.png"));
         kipperTexture = new Texture(Gdx.files.internal("game/kipper.png"));
+        tappingHand = new Texture(Gdx.files.internal("game/tapping_hand.png"));
     }
 
     public static void loadBackgroundTextures(){
