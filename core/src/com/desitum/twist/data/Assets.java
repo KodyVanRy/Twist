@@ -14,10 +14,15 @@ public class Assets {
     public static Texture volumeOffButtonTexture;
 
     public static Texture purpleBarTexture;
+    public static Texture purpleBarVerticalTexture;
     public static Texture yellowBarTexture;
+    public static Texture yellowBarVerticalTexture;
     public static Texture redBarTexture;
+    public static Texture redBarVerticalTexture;
     public static Texture orangeBarTexture;
+    public static Texture orangeBarVerticalTexture;
     public static Texture blueBarTexture;
+    public static Texture blueBarVerticalTexture;
     public static Texture kipperTexture;
     public static Texture tappingHand;
 
@@ -38,10 +43,15 @@ public class Assets {
 
     public static void loadGameTextures(){
         purpleBarTexture = new Texture(Gdx.files.internal("game/purple_bar.png"));
+        purpleBarVerticalTexture = new Texture(Gdx.files.internal("game/purple_bar_vertical.png"));
         orangeBarTexture = new Texture(Gdx.files.internal("game/orange_bar.png"));
+        orangeBarVerticalTexture = new Texture(Gdx.files.internal("game/orange_bar_vertical.png"));
         redBarTexture = new Texture(Gdx.files.internal("game/red_bar.png"));
+        redBarVerticalTexture = new Texture(Gdx.files.internal("game/red_bar_vertical.png"));
         yellowBarTexture = new Texture(Gdx.files.internal("game/yellow_bar.png"));
+        yellowBarVerticalTexture = new Texture(Gdx.files.internal("game/yellow_bar_vertical.png"));
         blueBarTexture = new Texture(Gdx.files.internal("game/blue_bar.png"));
+        blueBarVerticalTexture = new Texture(Gdx.files.internal("game/purple_bar_vertical.png"));
         kipperTexture = new Texture(Gdx.files.internal("game/kipper.png"));
         tappingHand = new Texture(Gdx.files.internal("game/tapping_hand.png"));
     }
