@@ -29,9 +29,9 @@ public class GameWorld {
     public void update(int state, OrthographicCamera cam, float delta){
         if (state == MainScreen.GAME_RUNNING){
             if (bars.size() < 12){
-                ArrayList<Bar> barsToAdd = Pattern.getRandomPattern((bars.size() > 0) ? nextY + 3: kipper.getY() + 15);
+                Pattern patternToAdd = Pattern.getRandomPattern((bars.size() > 0) ? nextY + 3: kipper.getY() + 15);
 
-                System.out.println("nextY: " + ((bars.size() > 0) ? nextY + 3 : kipper.getY() + 15));
+                for (Bar b: patternToAdd.getPattern());
             }
         }
 

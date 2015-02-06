@@ -178,4 +178,8 @@ public class Pattern {
         return returnPattern;
     }
 
+    public ArrayList<Bar> getPattern(){
+        return pattern;
+    }
+
 }
