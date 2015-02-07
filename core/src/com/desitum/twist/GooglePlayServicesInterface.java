@@ -1,4 +1,4 @@
-package com.desitum.twist.android;
+package com.desitum.twist;
 
 /**
  * Created by kody on 1/31/15.

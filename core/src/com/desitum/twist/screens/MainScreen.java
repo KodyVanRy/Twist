@@ -158,6 +158,10 @@ public class MainScreen implements Screen {
      */
     private void onClickGameOver() {
         //TODO (will be done later) check for button and do accordingly
+        cam.position.set(FRUSTUM_WIDTH/2, FRUSTUM_HEIGHT/2, 0);
+        gameRenderer.resetCam();
+        menuRenderer.resetCam();
+        //backgroundManager.reset();
     }
     //endregion
 
@@ -236,10 +240,6 @@ public class MainScreen implements Screen {
 
         for (Bar b: gameWorld.getBars()){
             if (CollisionDetection.overlapRectangles(b.getBoundingRectangle(), gameWorld.getKipper().getBoundingRectangle())) {
-                //cam.position.set(FRUSTUM_WIDTH/2, FRUSTUM_HEIGHT/2, 0);
-                //gameRenderer.resetCam();
-                //menuRenderer.resetCam();
-                //backgroundManager.reset();
                 state = GAME_OVER;
             }
         }
