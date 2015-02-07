@@ -51,7 +51,7 @@ public class Assets {
         yellowBarTexture = new Texture(Gdx.files.internal("game/yellow_bar.png"));
         yellowBarVerticalTexture = new Texture(Gdx.files.internal("game/yellow_bar_vertical.png"));
         blueBarTexture = new Texture(Gdx.files.internal("game/blue_bar.png"));
-        blueBarVerticalTexture = new Texture(Gdx.files.internal("game/purple_bar_vertical.png"));
+        blueBarVerticalTexture = new Texture(Gdx.files.internal("game/blue_bar_vertical.png"));
         kipperTexture = new Texture(Gdx.files.internal("game/kipper.png"));
         tappingHand = new Texture(Gdx.files.internal("game/tapping_hand.png"));
     }
