@@ -161,7 +161,7 @@ public class MainScreen implements Screen {
         cam.position.set(FRUSTUM_WIDTH/2, FRUSTUM_HEIGHT/2, 0);
         gameRenderer.resetCam();
         menuRenderer.resetCam();
-        backgroundManager.reset();
+        //backgroundManager.reset();
     }
     //endregion
 
