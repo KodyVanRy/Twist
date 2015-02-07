@@ -174,13 +174,13 @@ public class Pattern {
     private static ArrayList<Bar> loadPattern7()
     {
         ArrayList<Bar> pattern7 = new ArrayList<Bar>();
-        Bar pattern7_bar1 = new Bar(4, 3, Bar.HORIZONTAL, new float[]{0, 6}, Assets.redBarTexture);
+        Bar pattern7_bar1 = new Bar(3.5f, 2.5f, Bar.HORIZONTAL, new float[]{0, 6}, Assets.redBarTexture);
         pattern7_bar1.setBarStoppingPointRight(5);
-        Bar pattern7_bar2 = new Bar(4, 3, Bar.HORIZONTAL, new float[]{7, 6}, Assets.redBarTexture);
+        Bar pattern7_bar2 = new Bar(3.5f, 2.5f, Bar.HORIZONTAL, new float[]{7, 6}, Assets.redBarTexture);
         pattern7_bar2.setBarStoppingPointLeft(5);
-        Bar pattern7_bar3 = new Bar(4, 3, Bar.HORIZONTAL, new float[]{0, 3}, Assets.redBarTexture);
+        Bar pattern7_bar3 = new Bar(3.5f, 2.5f, Bar.HORIZONTAL, new float[]{0, 3}, Assets.redBarTexture);
         pattern7_bar3.setBarStoppingPointRight(5);
-        Bar pattern7_bar4 = new Bar(4, 3, Bar.HORIZONTAL, new float[]{7, 3}, Assets.redBarTexture);
+        Bar pattern7_bar4 = new Bar(3.5f, 2.5f, Bar.HORIZONTAL, new float[]{7, 3}, Assets.redBarTexture);
         pattern7_bar4.setBarStoppingPointLeft(5);
         pattern7.add(pattern7_bar1);
         pattern7.add(pattern7_bar2);
