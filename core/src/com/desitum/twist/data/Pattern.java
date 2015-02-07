@@ -36,6 +36,8 @@ public class Pattern {
            pattern = loadPattern8();
         } else if (patternNum == 8){
             pattern = loadPattern9();
+        }else if (patternNum == 9){
+            pattern = loadPattern10();
         }
         topY = yPos + 13;
     }
@@ -52,6 +54,7 @@ public class Pattern {
         patterns.add(loadPattern7());
         patterns.add(loadPattern8());
         patterns.add(loadPattern9());
+        patterns.add(loadPattern10());
     }
 
     private static ArrayList<Bar> loadPattern1()
@@ -228,6 +231,24 @@ public class Pattern {
         return pattern9;
     }
 
+    private static ArrayList<Bar> loadPattern10()
+    {
+        ArrayList<Bar> pattern10 = new ArrayList<Bar>();
+        Bar pattern10_bar1 = new Bar(4, 2, Bar.HORIZONTAL, new float[]{0, 5}, Assets.purpleBarTexture);
+        pattern10_bar1.setBarStoppingPointRight(5);
+        Bar pattern10_bar2 = new Bar(4, 2, Bar.HORIZONTAL, new float[]{8, 5}, Assets.purpleBarTexture);
+        pattern10_bar2.setBarStoppingPointLeft(5);
+        Bar pattern10_bar3 = new Bar(4, 5, Bar.HORIZONTAL, new float[]{2, 2.5f}, Assets.purpleBarTexture);
+        pattern10_bar3.setBarStoppingPointRight(8);
+        Bar pattern10_bar4 = new Bar(4, 5, Bar.HORIZONTAL, new float[]{3, 0}, Assets.purpleBarTexture);
+        pattern10_bar4.setBarStoppingPointLeft(2);
+        pattern10.add(pattern10_bar1);
+        pattern10.add(pattern10_bar2);
+        pattern10.add(pattern10_bar3);
+        pattern10.add(pattern10_bar4);
+
+        return pattern10;
+    }
     public static Pattern getRandomPattern(float y){
         Pattern returnPattern;
         ArrayList<Bar> returnArray;
