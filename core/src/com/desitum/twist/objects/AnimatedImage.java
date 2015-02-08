@@ -17,6 +17,7 @@ public class AnimatedImage extends Sprite {
 
     private int animation;
 
+    private float duration;
     private float animationDistance;
     private float goToWidth;
     private float goToHeight;
