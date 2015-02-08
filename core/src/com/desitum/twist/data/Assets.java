@@ -15,6 +15,7 @@ public class Assets {
     public static Texture highscoreButtonTexture;
     public static Texture volumeOnButtonTexture;
     public static Texture volumeOffButtonTexture;
+    public static Texture menuLogoTexture;
 
     public static Texture purpleBarTexture;
     public static Texture purpleBarVerticalTexture;
@@ -50,6 +51,7 @@ public class Assets {
         highscoreButtonTexture = new Texture(Gdx.files.internal("menu/high_scores.png"));
         volumeOnButtonTexture = new Texture(Gdx.files.internal("menu/volume_on.png"));
         volumeOffButtonTexture = new Texture(Gdx.files.internal("menu/volume_off.png"));
+        menuLogoTexture = new Texture(Gdx.files.internal("menu/twist.png"));
         font = new BitmapFont(Gdx.files.internal("font/cartoon.fnt"), Gdx.files.internal("font/cartoon.png"), false);
     }
 

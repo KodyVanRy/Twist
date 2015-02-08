@@ -1,10 +1,7 @@
 package com.desitum.twist.world;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.desitum.twist.data.Assets;
 import com.desitum.twist.data.BackgroundManager;
 import com.desitum.twist.objects.BackgroundImage;
 import com.desitum.twist.objects.Bar;
@@ -47,8 +44,6 @@ public class GameRenderer {
         }
 
         this.world.kipper.draw(gameBatch);
-
-        Assets.font.draw(gameBatch, "" + world.score, MainScreen.FRUSTUM_WIDTH*0.5f, MainScreen.FRUSTUM_HEIGHT*0.5f);
 
     }
 

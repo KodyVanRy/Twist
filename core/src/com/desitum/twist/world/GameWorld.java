@@ -18,7 +18,7 @@ public class GameWorld {
     ArrayList<Pattern> patterns;
     Kipper kipper;
     private float nextY = 0;
-    float score;
+    private float score;
 
     public GameWorld () {
         score = 0;
@@ -83,4 +83,7 @@ public class GameWorld {
         kipper.toggleKipperOrientation();
     }
 
+    public int getScore(){
+        return (int) score;
+    }
 }

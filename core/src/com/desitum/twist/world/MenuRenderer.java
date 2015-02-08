@@ -2,6 +2,7 @@ package com.desitum.twist.world;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.desitum.twist.data.Assets;
 import com.desitum.twist.data.BackgroundManager;
 import com.desitum.twist.objects.BackgroundImage;
 import com.desitum.twist.objects.MenuButton;
@@ -36,6 +37,7 @@ public class MenuRenderer {
         for (MenuButton menuItem : this.world.getMenuButtons()) {
             menuItem.draw(menuBatch);
         }
+        menuBatch.draw(Assets.menuLogoTexture, 0.2f, 9.6f, 9.6f, 5.4f);
     }
 
     public void resetCam(){

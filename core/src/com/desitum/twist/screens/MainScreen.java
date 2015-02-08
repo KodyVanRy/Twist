@@ -321,6 +321,9 @@ public class MainScreen implements Screen {
 
     private void drawGameRunning() {
         gameRenderer.render();
+
+        Assets.font.setScale(0.005f);
+        Assets.font.draw(spriteBatch, "" + gameWorld.getScore(), gameWorld.getKipper().getX(), gameWorld.getKipper().getY());
     }
 
     private void drawGameOver() {
