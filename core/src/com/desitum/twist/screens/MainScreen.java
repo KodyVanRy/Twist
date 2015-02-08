@@ -69,6 +69,7 @@ public class MainScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glClearColor(1, 0, 1, 1);
 
+
         if (Gdx.input.justTouched()) {
             touchPoint = cam.unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
             onClick();
@@ -349,5 +350,4 @@ public class MainScreen implements Screen {
     public void dispose() {
     }
 
-    //TODO need to create a background manager class
 }

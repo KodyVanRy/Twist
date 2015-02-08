@@ -217,12 +217,12 @@ public class Pattern {
     private static ArrayList<Bar> loadPattern9()
     {
         ArrayList<Bar> pattern9 = new ArrayList<Bar>();
-        Bar pattern9_bar1 = new Bar(2, 3, Bar.HORIZONTAL, new float[]{0, 9}, Assets.blueBarTexture);
+        Bar pattern9_bar1 = new Bar(3, 3, Bar.HORIZONTAL, new float[]{0, 9}, Assets.blueBarTexture);
         Bar pattern9_bar2 = new Bar(3, 3, Bar.HORIZONTAL, new float[]{0, 4.5f}, Assets.blueBarTexture);
         pattern9_bar2.setBarStoppingPointRight(5);
         Bar pattern9_bar3 = new Bar(3, 3, Bar.HORIZONTAL, new float[]{7, 4.5f}, Assets.blueBarTexture);
         pattern9_bar3.setBarStoppingPointLeft(5);
-        Bar pattern9_bar4 = new Bar(2, 3, Bar.HORIZONTAL, new float[]{9, 0}, Assets.blueBarTexture);
+        Bar pattern9_bar4 = new Bar(3, 3, Bar.HORIZONTAL, new float[]{9, 0}, Assets.blueBarTexture);
         pattern9.add(pattern9_bar1);
         pattern9.add(pattern9_bar2);
         pattern9.add(pattern9_bar3);
