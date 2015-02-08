@@ -2,6 +2,7 @@ package com.desitum.twist.libraries;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.desitum.twist.data.Assets;
 
 /**
  * Created by kody on 1/31/15.
