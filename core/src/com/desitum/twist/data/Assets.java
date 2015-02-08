@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 /**
  * Created by kody on 1/30/15.
@@ -42,11 +43,14 @@ public class Assets {
 
     public static Music menuMusic;
 
+    public static BitmapFont font;
+
     public static void loadMenuTextures(){
         playButtonTexture = new Texture(Gdx.files.internal("menu/play.png"));
         highscoreButtonTexture = new Texture(Gdx.files.internal("menu/high_scores.png"));
         volumeOnButtonTexture = new Texture(Gdx.files.internal("menu/volume_on.png"));
         volumeOffButtonTexture = new Texture(Gdx.files.internal("menu/volume_off.png"));
+        font = new BitmapFont(Gdx.files.internal("font/cartoon.fnt"), Gdx.files.internal("font/cartoon.png"), false);
     }
 
     public static void loadGameTextures(){
