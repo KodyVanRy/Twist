@@ -44,7 +44,6 @@ public class GameRenderer {
         }
 
         this.world.kipper.draw(gameBatch);
-
     }
 
     public OrthographicCamera getCam(){

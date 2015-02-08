@@ -53,6 +53,7 @@ public class Assets {
         volumeOffButtonTexture = new Texture(Gdx.files.internal("menu/volume_off.png"));
         menuLogoTexture = new Texture(Gdx.files.internal("menu/twist.png"));
         font = new BitmapFont(Gdx.files.internal("font/cartoon.fnt"), Gdx.files.internal("font/cartoon.png"), false);
+        font.setScale(0.025f);
     }
 
     public static void loadGameTextures(){

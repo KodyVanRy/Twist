@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.desitum.twist.data.Assets;
@@ -39,6 +40,7 @@ public class MainScreen implements Screen {
     public static String OPEN_SCORES = "open_scores";
 
     private OrthographicCamera cam;
+    private OrthographicCamera textCam;
     private SpriteBatch spriteBatch;
 
     private MenuWorld menuWorld;
@@ -50,9 +52,11 @@ public class MainScreen implements Screen {
     private Vector3 touchPoint;
 
     private BackgroundManager backgroundManager;
+    private BitmapFont gameFont;
 
     public MainScreen() {
         cam = new OrthographicCamera(FRUSTUM_WIDTH, FRUSTUM_HEIGHT);
+        textCam = new OrthographicCamera(100, 150);
         cam.position.set(FRUSTUM_WIDTH / 2, FRUSTUM_HEIGHT / 2, 0);
         spriteBatch = new SpriteBatch();
         backgroundManager = new BackgroundManager();
@@ -64,6 +68,8 @@ public class MainScreen implements Screen {
 
         menuRenderer = new MenuRenderer(menuWorld, spriteBatch, backgroundManager);
         gameRenderer = new GameRenderer(gameWorld, spriteBatch, backgroundManager);
+        gameFont = new BitmapFont(Gdx.files.internal("font/font.fnt"), Gdx.files.internal("font/font.png"), false);
+        gameFont.setScale(0.05f);
     }
 
     @Override
@@ -81,6 +87,7 @@ public class MainScreen implements Screen {
         //draw();
 
         cam.update();
+        spriteBatch.enableBlending();
         spriteBatch.begin();
 
         draw();
@@ -321,8 +328,11 @@ public class MainScreen implements Screen {
 
     private void drawGameRunning() {
         gameRenderer.render();
+        spriteBatch.setProjectionMatrix(cam.combined);
 
-        Assets.font.draw(spriteBatch, "" + gameWorld.getScore(), gameWorld.getKipper().getX(), gameWorld.getKipper().getY());
+        float width = Assets.font.getBounds(String.valueOf(gameWorld.getScore())).width/2;
+        float height = Assets.font.getBounds("" + gameWorld.getScore()).height;
+        Assets.font.draw(spriteBatch, String.valueOf(gameWorld.getScore()), FRUSTUM_WIDTH/2 - width, height);
     }
 
     private void drawGameOver() {
