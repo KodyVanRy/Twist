@@ -121,14 +121,10 @@ public class MainScreen implements Screen {
         for (MenuButton mb : menuWorld.getMenuButtons()) {
             if (CollisionDetection.pointInRectangle(mb.getBoundingRectangle(), touchPoint)) { // if touched a rectangle
                 if (mb.getCommand().equals(PLAY)) { // if the button was play
-                    if(Settings.volumeOn = true) {
                         Assets.buttonSound.play();
-                    }
                     state = MENU_TRANSITION;
                 } else if (mb.getCommand().equals(OPEN_SCORES)) { // if the button was high scores
-                    if(Settings.volumeOn = true) {
                         Assets.buttonSound.play();
-                    }
                     //TODO add in Google Play Game Services (I'll do that)
                 } else if (mb.getCommand().equals(VOLUMES)) { // if the button was volumes
                     Settings.volumeOn = !Settings.volumeOn; // toggle whether volume is on
@@ -253,9 +249,7 @@ public class MainScreen implements Screen {
 
         for (Bar b: gameWorld.getBars()){
             if (CollisionDetection.overlapRectangles(b.getBoundingRectangle(), gameWorld.getKipper().getBoundingRectangle())) {
-                if(Settings.volumeOn == true) {
                     Assets.endGameSound.play();
-                }
                 state = GAME_OVER;
             }
         }
