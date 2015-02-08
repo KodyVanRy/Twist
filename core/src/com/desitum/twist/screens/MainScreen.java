@@ -120,17 +120,17 @@ public class MainScreen implements Screen {
         for (MenuButton mb : menuWorld.getMenuButtons()) {
             if (CollisionDetection.pointInRectangle(mb.getBoundingRectangle(), touchPoint)) { // if touched a rectangle
                 if (mb.getCommand().equals(PLAY)) { // if the button was play
-                        Assets.buttonSound.play();
+                        Assets.buttonSound.play(Settings.volume);
                     state = MENU_TRANSITION;
                 } else if (mb.getCommand().equals(OPEN_SCORES)) { // if the button was high scores
-                        Assets.buttonSound.play();
+                        Assets.buttonSound.play(Settings.volume);
                     //TODO add in Google Play Game Services (I'll do that)
                 } else if (mb.getCommand().equals(VOLUMES)) { // if the button was volumes
                     Settings.volumeOn = !Settings.volumeOn; // toggle whether volume is on
                     Settings.getSound(); //Gets the Sound (if volume is on)
                     if (Settings.volumeOn) { // update texture for the Volume button
                         mb.setTexture(Assets.volumeOnButtonTexture);
-                        Assets.buttonSound.play();
+                        Assets.buttonSound.play(Settings.volume);
                     } else {
                         mb.setTexture(Assets.volumeOffButtonTexture);
                     }
@@ -248,7 +248,7 @@ public class MainScreen implements Screen {
 
         for (Bar b: gameWorld.getBars()){
             if (CollisionDetection.overlapRectangles(b.getBoundingRectangle(), gameWorld.getKipper().getBoundingRectangle())) {
-                    Assets.endGameSound.play();
+                    Assets.endGameSound.play(Settings.volume);
                 state = GAME_OVER;
             }
         }
@@ -322,7 +322,6 @@ public class MainScreen implements Screen {
     private void drawGameRunning() {
         gameRenderer.render();
 
-        Assets.font.setScale(0.005f);
         Assets.font.draw(spriteBatch, "" + gameWorld.getScore(), gameWorld.getKipper().getX(), gameWorld.getKipper().getY());
     }
 
