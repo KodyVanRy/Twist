@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
+import com.desitum.twist.TwistGame;
 import com.desitum.twist.data.Assets;
 import com.desitum.twist.data.BackgroundManager;
 import com.desitum.twist.data.Settings;
@@ -56,6 +57,8 @@ public class MainScreen implements Screen {
         cam.position.set(FRUSTUM_WIDTH / 2, FRUSTUM_HEIGHT / 2, 0);
         spriteBatch = new SpriteBatch();
         backgroundManager = new BackgroundManager();
+
+        Assets.menuMusic.play();
 
         menuWorld = new MenuWorld();
         gameWorld = new GameWorld();
@@ -118,13 +121,21 @@ public class MainScreen implements Screen {
         for (MenuButton mb : menuWorld.getMenuButtons()) {
             if (CollisionDetection.pointInRectangle(mb.getBoundingRectangle(), touchPoint)) { // if touched a rectangle
                 if (mb.getCommand().equals(PLAY)) { // if the button was play
+                    if(Settings.volumeOn = true) {
+                        Assets.buttonSound.play();
+                    }
                     state = MENU_TRANSITION;
                 } else if (mb.getCommand().equals(OPEN_SCORES)) { // if the button was high scores
+                    if(Settings.volumeOn = true) {
+                        Assets.buttonSound.play();
+                    }
                     //TODO add in Google Play Game Services (I'll do that)
                 } else if (mb.getCommand().equals(VOLUMES)) { // if the button was volumes
                     Settings.volumeOn = !Settings.volumeOn; // toggle whether volume is on
+                    Settings.getSound(); //Gets the Sound (if volume is on)
                     if (Settings.volumeOn) { // update texture for the Volume button
                         mb.setTexture(Assets.volumeOnButtonTexture);
+                        Assets.buttonSound.play();
                     } else {
                         mb.setTexture(Assets.volumeOffButtonTexture);
                     }
@@ -209,6 +220,7 @@ public class MainScreen implements Screen {
      * @param delta delta time
      */
     private void updateMenuTransition(float delta) {
+        Assets.menuMusic.stop();
         if (!menuWorld.getMenuButtons().get(0).isMoving()) { // if first menu button isn't moving
             menuWorld.getMenuButtons().get(0).moveOffScreen(); // start it moving
         } else if (!menuWorld.getMenuButtons().get(1).isMoving() && menuWorld.getMenuButtons().get(0).getX() >= 4) { // if first menu button isn't moving
@@ -241,6 +253,9 @@ public class MainScreen implements Screen {
 
         for (Bar b: gameWorld.getBars()){
             if (CollisionDetection.overlapRectangles(b.getBoundingRectangle(), gameWorld.getKipper().getBoundingRectangle())) {
+                if(Settings.volumeOn == true) {
+                    Assets.endGameSound.play();
+                }
                 state = GAME_OVER;
             }
         }

@@ -14,4 +14,21 @@ public class Settings {
     public static float kipperY = -1;
 
     public static boolean volumeOn = true;
+
+    public static void getSound() {
+        if(Settings.volumeOn == true)
+        {
+            Assets.menuMusic.setVolume(1);
+            Assets.buttonSound.setVolume(0, 1);
+            Assets.endGameSound.setVolume(0, 1);
+            Assets.highscoreSound.setVolume(0, 1);
+        }
+        else
+        {
+            Assets.menuMusic.setVolume(0);
+            Assets.buttonSound.setVolume(0, 0);
+            Assets.endGameSound.setVolume(0, 0);
+            Assets.highscoreSound.setVolume(0, 0);
+        }
+    }
 }

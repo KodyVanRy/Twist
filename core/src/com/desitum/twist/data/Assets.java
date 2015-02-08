@@ -1,6 +1,8 @@
 package com.desitum.twist.data;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 
 /**
@@ -34,6 +36,12 @@ public class Assets {
     public static Texture backgroundTexture6;
     public static Texture backgroundTexture7;
 
+    public static Sound endGameSound;
+    public static Sound highscoreSound;
+    public static Sound buttonSound;
+
+    public static Music menuMusic;
+
     public static void loadMenuTextures(){
         playButtonTexture = new Texture(Gdx.files.internal("menu/play.png"));
         highscoreButtonTexture = new Texture(Gdx.files.internal("menu/high_scores.png"));
@@ -64,5 +72,17 @@ public class Assets {
         backgroundTexture5 = new Texture(Gdx.files.internal("bg/bg_5.png"));
         backgroundTexture6 = new Texture(Gdx.files.internal("bg/bg_6.png"));
         backgroundTexture7 = new Texture(Gdx.files.internal("bg/bg_7.png"));
+    }
+
+    public static void loadSounds()
+    {
+        //SFX
+        buttonSound = Gdx.audio.newSound(Gdx.files.internal("sound/button.mp3"));
+        highscoreSound = Gdx.audio.newSound(Gdx.files.internal("sound/highscore.mp3"));
+        endGameSound = Gdx.audio.newSound(Gdx.files.internal("sound/endGame.mp3"));
+        //Music
+        menuMusic = Gdx.audio.newMusic(Gdx.files.internal("sound/loop.mp3"));
+        menuMusic.setLooping(true);
+
     }
 }
