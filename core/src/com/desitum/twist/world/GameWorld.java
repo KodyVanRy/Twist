@@ -84,6 +84,6 @@ public class GameWorld {
     }
 
     public int getScore(){
-        return (int) score;
+        return Math.round(score);
     }
 }

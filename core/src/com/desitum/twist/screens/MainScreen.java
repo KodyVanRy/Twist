@@ -55,9 +55,9 @@ public class MainScreen implements Screen {
     private BitmapFont gameFont;
 
     public MainScreen() {
-        cam = new OrthographicCamera(FRUSTUM_WIDTH, FRUSTUM_HEIGHT);
+        cam = new OrthographicCamera(FRUSTUM_WIDTH * 10, FRUSTUM_HEIGHT * 10);
         textCam = new OrthographicCamera(100, 150);
-        cam.position.set(FRUSTUM_WIDTH / 2, FRUSTUM_HEIGHT / 2, 0);
+        cam.position.set(FRUSTUM_WIDTH * 10 / 2, FRUSTUM_HEIGHT * 10 / 2, 0);
         spriteBatch = new SpriteBatch();
         backgroundManager = new BackgroundManager();
 
@@ -79,7 +79,11 @@ public class MainScreen implements Screen {
 
 
         if (Gdx.input.justTouched()) {
-            touchPoint = cam.unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
+            if (state == MENU_WAITING || state == MENU_TRANSITION) {
+                touchPoint = menuRenderer.getCam().unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
+            } else if (state == GAME_BEFORE || state == GAME_RUNNING || state == GAME_PAUSED || state == GAME_OVER){
+                touchPoint = gameRenderer.getCam().unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
+            }
             onClick();
         }
 
@@ -256,7 +260,7 @@ public class MainScreen implements Screen {
         for (Bar b: gameWorld.getBars()){
             if (CollisionDetection.overlapRectangles(b.getBoundingRectangle(), gameWorld.getKipper().getBoundingRectangle())) {
                     Assets.endGameSound.play(Settings.volume);
-                state = GAME_OVER;
+                //state = GAME_OVER;
             }
         }
     }
@@ -332,7 +336,7 @@ public class MainScreen implements Screen {
 
         float width = Assets.font.getBounds(String.valueOf(gameWorld.getScore())).width/2;
         float height = Assets.font.getBounds("" + gameWorld.getScore()).height;
-        Assets.font.draw(spriteBatch, String.valueOf(gameWorld.getScore()), FRUSTUM_WIDTH/2 - width, height);
+        Assets.font.draw(spriteBatch, String.valueOf(gameWorld.getScore()), FRUSTUM_WIDTH*10/2 - width, height);
     }
 
     private void drawGameOver() {

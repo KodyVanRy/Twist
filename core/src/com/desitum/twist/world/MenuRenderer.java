@@ -44,4 +44,8 @@ public class MenuRenderer {
         menuCam.position.set(MainScreen.FRUSTUM_WIDTH/2, MainScreen.FRUSTUM_HEIGHT/2, 0);
     }
 
+    public OrthographicCamera getCam(){
+        return menuCam;
+    }
+
 }
