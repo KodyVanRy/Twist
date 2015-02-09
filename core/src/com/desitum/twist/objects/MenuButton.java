@@ -10,12 +10,20 @@ public class MenuButton extends Sprite {
 
     private String command;
 
-    private boolean moving;
+    private boolean movingOut;
+    private boolean movingIn;
     private float speed = 4;
 
     private static float acceleration = 64;
     private static float SIZE_X = 8;
     private static float SIZE_Y = 1.5f;
+
+    private float moveFromX = 0;
+    private float moveToX = 0;
+    private float totalMoveX = 0;
+    private float currentX = 0;
+    private float time = 0;
+    private float duration = 0.5f;
 
     public MenuButton(String command, float locX, float locY, Texture texture) {
         super(texture, 0, 0, texture.getWidth(), texture.getHeight());
@@ -25,15 +33,25 @@ public class MenuButton extends Sprite {
     }
 
     public void update(float delta){
-        if (moving){
+        time += delta;
+        if (time > 1){
+            time = 1;
+        }
+        if (movingOut){
             this.setX(this.getX() + speed * delta);
             speed += acceleration * delta;
+        } else if (movingIn){
+            currentX = (float) Math.pow(time, 2) * totalMoveX;
+            this.setX(moveToX - currentX);
         }
+    }
+
+    public void setMovement(float startX, float endX, float duration){
 
     }
 
     public boolean isMoving(){
-        return this.moving;
+        return this.movingOut || this.movingIn;
     }
 
     public String getCommand() {
@@ -45,7 +63,7 @@ public class MenuButton extends Sprite {
     }
 
     public void moveOffScreen(){
-        this.moving = true;
+        this.movingOut = true;
     }
 
 }

@@ -38,6 +38,7 @@ public class MainScreen implements Screen {
     public static String PLAY = "play";
     public static String VOLUMES = "volumes";
     public static String OPEN_SCORES = "open_scores";
+    public static String SHARE = "share";
 
     private OrthographicCamera cam;
     private OrthographicCamera textCam;

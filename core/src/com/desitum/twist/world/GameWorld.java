@@ -1,10 +1,12 @@
 package com.desitum.twist.world;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.desitum.twist.data.Assets;
 import com.desitum.twist.data.Pattern;
 import com.desitum.twist.data.Settings;
 import com.desitum.twist.objects.Bar;
 import com.desitum.twist.objects.Kipper;
+import com.desitum.twist.objects.MenuButton;
 import com.desitum.twist.screens.MainScreen;
 
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import java.util.Iterator;
 public class GameWorld {
 
     ArrayList<Pattern> patterns;
+    ArrayList<MenuButton> gameOverButtons;
     Kipper kipper;
     private float nextY = 0;
     private float score;
@@ -23,6 +26,12 @@ public class GameWorld {
     public GameWorld () {
         score = 0;
         patterns = new ArrayList<Pattern>();
+
+        gameOverButtons = new ArrayList<MenuButton>();
+        gameOverButtons.add(new MenuButton(MainScreen.PLAY, 1, 2, Assets.playButtonTexture));
+        gameOverButtons.add(new MenuButton(MainScreen.OPEN_SCORES, 1, 4, Assets.highscoreButtonTexture));
+        gameOverButtons.add(new MenuButton(MainScreen.SHARE, 1, 6, Assets.shareButtonTexture));
+
         kipper = new Kipper(Settings.kipperSpeed, Settings.kipperSize, Settings.kipperColor, Settings.kipperX, Settings.kipperY);
 
     }
@@ -44,6 +53,8 @@ public class GameWorld {
             if (kipper.getKipperOrientation() == Kipper.VERTICAL){
                 score += delta;
             }
+        } if (state == MainScreen.GAME_OVER){
+
         }
 
         Iterator<Pattern> iter = patterns.iterator();
