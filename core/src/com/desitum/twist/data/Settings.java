@@ -20,10 +20,12 @@ public class Settings {
         if(Settings.volumeOn == true)
         {
             Assets.menuMusic.setVolume(1);
+            volume = 1;
         }
         else
         {
             Assets.menuMusic.setVolume(0);
+            volume = 0;
         }
     }
 }

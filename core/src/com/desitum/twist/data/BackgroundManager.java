@@ -70,5 +70,9 @@ public class BackgroundManager {
         return returnArray;
     }
 
+    public void reset(){
+        currentBackgroundImages = new ArrayList<BackgroundImage>();
+        currentBackgroundImages = getCurrent();
+    }
 
 }

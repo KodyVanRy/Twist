@@ -44,11 +44,12 @@ public class GameRenderer {
             bar.draw(gameBatch);
         }
 
+        this.world.kipper.draw(gameBatch);
+
         for (MenuButton mb: world.getGameOverButtons()){
+            System.out.println(mb.getCommand() + ":" + mb.getX() + ":" + mb.getY());
             mb.draw(gameBatch);
         }
-
-        this.world.kipper.draw(gameBatch);
     }
 
     public OrthographicCamera getCam(){

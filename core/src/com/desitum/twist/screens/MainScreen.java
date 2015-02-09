@@ -35,6 +35,7 @@ public class MainScreen implements Screen {
     public static final int GAME_RUNNING = 4;
     public static final int GAME_PAUSED = 5;
     public static final int GAME_OVER = 6;
+    public static final int GAME_OVER_TRANSITION = 7;
 
     public static String PLAY = "play";
     public static String VOLUMES = "volumes";
@@ -177,11 +178,16 @@ public class MainScreen implements Screen {
      * called when click input when game state is GAME_OVER
      */
     private void onClickGameOver() {
-        //TODO (will be done later) check for button and do accordingly
-        cam.position.set(FRUSTUM_WIDTH/2, FRUSTUM_HEIGHT/2, 0);
-        gameRenderer.resetCam();
-        menuRenderer.resetCam();
-        //backgroundManager.reset();
+        for (MenuButton mb: gameWorld.getGameOverButtons()){
+            if (CollisionDetection.pointInRectangle(mb.getBoundingRectangle(), touchPoint)){
+                if (mb.getCommand().equals(PLAY) && mb.isInPlace()){
+                    Assets.buttonSound.play(Settings.volume);
+                    state = GAME_OVER_TRANSITION;
+                } else if (mb.getCommand().equals(OPEN_SCORES)){
+                    Assets.buttonSound.play(Settings.volume);
+                }
+            }
+        }
     }
     //endregion
 
@@ -213,6 +219,9 @@ public class MainScreen implements Screen {
                 break;
             case GAME_OVER:
                 updateGameOver(delta);
+                break;
+            case GAME_OVER_TRANSITION:
+                updateGameOverTransition(delta);
                 break;
         }
     }
@@ -304,6 +313,22 @@ public class MainScreen implements Screen {
         gameWorld.update(state, gameRenderer.getCam(), delta);
     }
 
+    private void updateGameOverTransition(float delta){
+        System.out.println("Hrm");
+        if (!gameWorld.getGameOverButtons().get(0).isMoving()) { // if first menu button isn't moving
+            gameWorld.getGameOverButtons().get(0).moveOffScreen(); // start it moving
+        } else if (!gameWorld.getGameOverButtons().get(1).isMoving() && gameWorld.getGameOverButtons().get(0).getX() >= 4) { // if first menu button isn't moving
+            gameWorld.getGameOverButtons().get(1).moveOffScreen(); // start it moving
+        } else if (!gameWorld.getGameOverButtons().get(2).isMoving() && gameWorld.getGameOverButtons().get(1).getX() >= 4) {
+            gameWorld.getGameOverButtons().get(2).moveOffScreen();
+        } else if (gameWorld.getGameOverButtons().get(2).getX() >= FRUSTUM_WIDTH){
+            resetGame();
+            state = GAME_BEFORE;
+        }
+        for (MenuButton mb: gameWorld.getGameOverButtons()){
+            mb.update(delta);
+        }
+    }
 
     //endregion
 
@@ -330,6 +355,9 @@ public class MainScreen implements Screen {
                 break;
             case GAME_PAUSED:
                 drawGamePaused();
+                break;
+            case GAME_OVER_TRANSITION:
+                drawGameOver();
                 break;
         }
     }
@@ -373,6 +401,15 @@ public class MainScreen implements Screen {
         gameRenderer.render();
     }
     //endregion
+
+    private void resetGame(){
+        //TODO (will be done later) check for button and do accordingly
+        cam.position.set(FRUSTUM_WIDTH * 10 / 2, FRUSTUM_HEIGHT * 10 / 2, 0);
+        gameWorld.reset();
+        gameRenderer.resetCam();
+        menuRenderer.resetCam();
+        backgroundManager.reset();
+    }
 
     @Override
     public void resize(int width, int height) {

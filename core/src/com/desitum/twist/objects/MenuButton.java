@@ -20,6 +20,7 @@ public class MenuButton extends Sprite {
 
     private float moveFromX = 0;
     private float moveToX = 0;
+    private float originalY = 0;
     private float totalMoveX = 0;
     private float currentX = 0;
     private float time = 0;
@@ -28,11 +29,13 @@ public class MenuButton extends Sprite {
     public MenuButton(String command, float locX, float locY, Texture texture) {
         super(texture, 0, 0, texture.getWidth(), texture.getHeight());
         this.command = command;
+        originalY = locY;
         this.setPosition(locX, locY);
         this.setSize(SIZE_X, SIZE_Y);
     }
 
     public void update(float delta){
+        System.out.println(getCommand() + ":" + getX());
         time += delta;
         if (time > 1){
             time = 1;
@@ -83,5 +86,12 @@ public class MenuButton extends Sprite {
             return true;
         }
         return false;
+    }
+
+    public void reset(){
+        setMovement(-MenuButton.SIZE_X, moveToX, 0.5f);
+        setY(originalY);
+        movingIn = false;
+        movingOut = false;
     }
 }

@@ -28,9 +28,9 @@ public class GameWorld {
         patterns = new ArrayList<Pattern>();
 
         gameOverButtons = new ArrayList<MenuButton>();
-        gameOverButtons.add(new MenuButton(MainScreen.PLAY, 1, 2, Assets.playButtonTexture));
+        gameOverButtons.add(new MenuButton(MainScreen.PLAY, 1, 6, Assets.playButtonTexture));
         gameOverButtons.add(new MenuButton(MainScreen.OPEN_SCORES, 1, 4, Assets.highscoreButtonTexture));
-        gameOverButtons.add(new MenuButton(MainScreen.SHARE, 1, 6, Assets.shareButtonTexture));
+        gameOverButtons.add(new MenuButton(MainScreen.SHARE, 1, 2, Assets.shareButtonTexture));
         for (MenuButton mb: gameOverButtons) {
             mb.setMovement(-MenuButton.SIZE_X, mb.getX(), 0.5f);
         }
@@ -58,12 +58,13 @@ public class GameWorld {
             }
         } if (state == MainScreen.GAME_OVER){
             for (MenuButton mb: gameOverButtons){
-                if (!mb.isMoving()){
+                if (!mb.isMoving() && !mb.isInPlace()){
                     mb.setY(mb.getY() + cam.position.y - MainScreen.FRUSTUM_HEIGHT/2);
                     mb.moveIn();
                 } else {
                     mb.update(delta);
                 }
+                mb.isInPlace();
             }
             return;
         }
@@ -111,5 +112,18 @@ public class GameWorld {
 
     public ArrayList<MenuButton> getGameOverButtons(){
         return gameOverButtons;
+    }
+
+    public void reset(){
+        kipper.reset();
+        gameOverButtons = new ArrayList<MenuButton>();
+        gameOverButtons.add(new MenuButton(MainScreen.PLAY, 1, 6, Assets.playButtonTexture));
+        gameOverButtons.add(new MenuButton(MainScreen.OPEN_SCORES, 1, 4, Assets.highscoreButtonTexture));
+        gameOverButtons.add(new MenuButton(MainScreen.SHARE, 1, 2, Assets.shareButtonTexture));
+        for (MenuButton mb: gameOverButtons) {
+            mb.setMovement(-MenuButton.SIZE_X, mb.getX(), 0.5f);
+        }
+        patterns = new ArrayList<Pattern>();
+        nextY = 0;
     }
 }

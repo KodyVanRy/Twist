@@ -93,6 +93,10 @@ public class Kipper extends Sprite {
         return getBoundingRectangle();
     }
 
-
+    public void reset(){
+        setPosition(Settings.kipperX, Settings.kipperY);
+        kipperOrientation = VERTICAL;
+        kipperSpeed = Settings.kipperSpeed;
+    }
 }
 
