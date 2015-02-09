@@ -116,6 +116,7 @@ public class GameWorld {
 
     public void reset(){
         kipper.reset();
+        score = 0;
         gameOverButtons = new ArrayList<MenuButton>();
         gameOverButtons.add(new MenuButton(MainScreen.PLAY, 1, 6, Assets.playButtonTexture));
         gameOverButtons.add(new MenuButton(MainScreen.OPEN_SCORES, 1, 4, Assets.highscoreButtonTexture));

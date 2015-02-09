@@ -387,7 +387,6 @@ public class MainScreen implements Screen {
         menuRenderer.render();
     }
 
-
     private void drawGameRunning() {
         gameRenderer.render();
         spriteBatch.setProjectionMatrix(cam.combined);
@@ -399,6 +398,11 @@ public class MainScreen implements Screen {
 
     private void drawGameOver() {
         gameRenderer.render();
+        spriteBatch.setProjectionMatrix(cam.combined);
+
+        float width = Assets.font.getBounds(String.valueOf(gameWorld.getScore())).width/2;
+        float height = Assets.font.getBounds("" + gameWorld.getScore()).height;
+        Assets.font.draw(spriteBatch, String.valueOf(gameWorld.getScore()), FRUSTUM_WIDTH*10/2 - width, 8 * 10 + height);
     }
     //endregion
 
