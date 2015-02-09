@@ -31,6 +31,9 @@ public class GameWorld {
         gameOverButtons.add(new MenuButton(MainScreen.PLAY, 1, 2, Assets.playButtonTexture));
         gameOverButtons.add(new MenuButton(MainScreen.OPEN_SCORES, 1, 4, Assets.highscoreButtonTexture));
         gameOverButtons.add(new MenuButton(MainScreen.SHARE, 1, 6, Assets.shareButtonTexture));
+        for (MenuButton mb: gameOverButtons) {
+            mb.setMovement(-MenuButton.SIZE_X, mb.getX(), 0.5f);
+        }
 
         kipper = new Kipper(Settings.kipperSpeed, Settings.kipperSize, Settings.kipperColor, Settings.kipperX, Settings.kipperY);
 
@@ -54,7 +57,15 @@ public class GameWorld {
                 score += delta;
             }
         } if (state == MainScreen.GAME_OVER){
-
+            for (MenuButton mb: gameOverButtons){
+                if (!mb.isMoving()){
+                    mb.setY(mb.getY() + cam.position.y - MainScreen.FRUSTUM_HEIGHT/2);
+                    mb.moveIn();
+                } else {
+                    mb.update(delta);
+                }
+            }
+            return;
         }
 
         Iterator<Pattern> iter = patterns.iterator();
@@ -96,5 +107,9 @@ public class GameWorld {
 
     public int getScore(){
         return Math.round(score);
+    }
+
+    public ArrayList<MenuButton> getGameOverButtons(){
+        return gameOverButtons;
     }
 }

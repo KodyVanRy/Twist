@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.desitum.twist.data.BackgroundManager;
 import com.desitum.twist.objects.BackgroundImage;
 import com.desitum.twist.objects.Bar;
+import com.desitum.twist.objects.MenuButton;
 import com.desitum.twist.screens.MainScreen;
 
 /**
@@ -41,6 +42,10 @@ public class GameRenderer {
 
         for (Bar bar: world.getBars()){
             bar.draw(gameBatch);
+        }
+
+        for (MenuButton mb: world.getGameOverButtons()){
+            mb.draw(gameBatch);
         }
 
         this.world.kipper.draw(gameBatch);

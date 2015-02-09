@@ -15,8 +15,8 @@ public class MenuButton extends Sprite {
     private float speed = 4;
 
     private static float acceleration = 64;
-    private static float SIZE_X = 8;
-    private static float SIZE_Y = 1.5f;
+    public static float SIZE_X = 8;
+    public static float SIZE_Y = 1.5f;
 
     private float moveFromX = 0;
     private float moveToX = 0;
@@ -41,13 +41,24 @@ public class MenuButton extends Sprite {
             this.setX(this.getX() + speed * delta);
             speed += acceleration * delta;
         } else if (movingIn){
-            currentX = (float) Math.pow(time, 2) * totalMoveX;
+            currentX = (float) Math.pow(time - 1, 2) * totalMoveX;
             this.setX(moveToX - currentX);
         }
     }
 
     public void setMovement(float startX, float endX, float duration){
+        this.moveFromX = startX;
+        this.moveToX = endX;
+        if (startX > endX){
+            this.totalMoveX = startX - endX;
+        } else {
+            this.totalMoveX = endX - startX;
+        }
+        this.setX(moveToX - totalMoveX);
+    }
 
+    public void moveIn(){
+        this.movingIn = true;
     }
 
     public boolean isMoving(){
@@ -66,4 +77,11 @@ public class MenuButton extends Sprite {
         this.movingOut = true;
     }
 
+    public boolean isInPlace(){
+        if (moveToX == getX()){
+            movingIn = false;
+            return true;
+        }
+        return false;
+    }
 }

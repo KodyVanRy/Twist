@@ -24,8 +24,11 @@ public class MenuWorld {
     private void createButtons() {
         //Create each button and their parameters
         MenuButton playButton = new MenuButton(MainScreen.PLAY, 1, 8, Assets.playButtonTexture);
+        playButton.setMovement(-playButton.getWidth(), playButton.getX(), 1);
         MenuButton scoreButton = new MenuButton(MainScreen.OPEN_SCORES, 1, 6, Assets.highscoreButtonTexture);
+        scoreButton.setMovement(-scoreButton.getWidth(), scoreButton.getX(), 1);
         MenuButton volumeButton = new MenuButton(MainScreen.VOLUMES, 1, 4, Assets.volumeOnButtonTexture);
+        volumeButton.setMovement(-volumeButton.getWidth(), volumeButton.getX(), 1);
 
         //Add Buttons to the MenuButtons ArrayList
         menuButtons.add(playButton);

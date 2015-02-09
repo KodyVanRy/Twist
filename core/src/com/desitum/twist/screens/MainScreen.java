@@ -28,12 +28,13 @@ public class MainScreen implements Screen {
 
     public static int state = 0;
 
-    public static final int MENU_WAITING = 0;
-    public static final int MENU_TRANSITION = 1;
-    public static final int GAME_BEFORE = 2;
-    public static final int GAME_RUNNING = 3;
-    public static final int GAME_PAUSED = 4;
-    public static final int GAME_OVER = 5;
+    public static final int MENU_BEFORE_TRANSITION = 0;
+    public static final int MENU_WAITING = 1;
+    public static final int MENU_TRANSITION = 2;
+    public static final int GAME_BEFORE = 3;
+    public static final int GAME_RUNNING = 4;
+    public static final int GAME_PAUSED = 5;
+    public static final int GAME_OVER = 6;
 
     public static String PLAY = "play";
     public static String VOLUMES = "volumes";
@@ -192,6 +193,9 @@ public class MainScreen implements Screen {
      */
     private void update(float delta) {
         switch (state) {
+            case MENU_BEFORE_TRANSITION:
+                updateMenuBeforeTransition(delta);
+                break;
             case MENU_WAITING:
                 updateMenuWaiting(delta);
                 break;
@@ -213,6 +217,24 @@ public class MainScreen implements Screen {
         }
     }
 
+    private void updateMenuBeforeTransition(float delta){
+        boolean canMoveOn = true;
+        for (MenuButton mb: menuWorld.getMenuButtons()){
+            //System.out.println(mb.getCommand() + ":" + mb.getX());
+            if (!mb.isMoving()){
+                mb.moveIn();
+                canMoveOn = false;
+            } else {
+                mb.update(delta);
+                if (!mb.isInPlace()){
+                    canMoveOn = false;
+                }
+            }
+        }
+        if (canMoveOn){
+            state = MENU_WAITING;
+        }
+    }
 
     /**
      * method to update game when state equals MENU_WAITING
@@ -261,7 +283,7 @@ public class MainScreen implements Screen {
         for (Bar b: gameWorld.getBars()){
             if (CollisionDetection.overlapRectangles(b.getBoundingRectangle(), gameWorld.getKipper().getBoundingRectangle())) {
                     Assets.endGameSound.play(Settings.volume);
-                //state = GAME_OVER;
+                state = GAME_OVER;
             }
         }
     }
@@ -279,6 +301,7 @@ public class MainScreen implements Screen {
      * @param delta delta time
      */
     private void updateGameOver(float delta) {
+        gameWorld.update(state, gameRenderer.getCam(), delta);
     }
 
 
@@ -287,6 +310,9 @@ public class MainScreen implements Screen {
     //region folding for drawing methods
     private void draw() {
         switch (state) {
+            case MENU_BEFORE_TRANSITION:
+                drawMenuBeforeTransition();
+                break;
             case GAME_OVER:
                 drawGameOver();
                 break;
@@ -308,6 +334,9 @@ public class MainScreen implements Screen {
         }
     }
 
+    private void drawMenuBeforeTransition(){
+        menuRenderer.render();
+    }
     private void drawGamePaused() {
         gameRenderer.render();
     }
