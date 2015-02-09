@@ -139,7 +139,7 @@ public class Pattern {
         Bar pattern5_bar2 = new Bar(2, 4, Bar.VERTICAL, new float[]{9, 0}, Assets.orangeBarTexture);
         pattern5_bar2.setBarStoppingPointTop(10);
         pattern5_bar2.setBarStoppingPointBottom(0);
-        Bar pattern5_bar3 = new Bar(4, 3, Bar.HORIZONTAL, new float[]{1, 8}, Assets.orangeBarTexture);
+        Bar pattern5_bar3 = new Bar(4, 3, Bar.HORIZONTAL, new float[]{1, 9}, Assets.orangeBarTexture);
         pattern5_bar3.setBarStoppingPointLeft(2);
         pattern5_bar3.setBarStoppingPointRight(8);
         Bar pattern5_bar4 = new Bar(4, 3, Bar.HORIZONTAL, new float[]{8, 0}, Assets.orangeBarTexture);
@@ -198,12 +198,12 @@ public class Pattern {
         ArrayList<Bar> pattern8 = new ArrayList<Bar>();
         Bar pattern8_bar1 = new Bar(4, 3, Bar.HORIZONTAL, new float[]{0, 9}, Assets.blueBarTexture);
         Bar pattern8_bar2 = new Bar(4, 4, Bar.VERTICAL, new float[]{1, 0}, Assets.blueBarTexture);
-        pattern8_bar2.setBarStoppingPointTop(8);
+        pattern8_bar2.setBarStoppingPointTop(7.5f);
         pattern8_bar2.setBarStoppingPointBottom(0);
         Bar pattern8_bar3 = new Bar(4, 4, Bar.VERTICAL, new float[]{4.5f, 8}, Assets.blueBarTexture);
         pattern8_bar3.setBarStoppingPointTop(7.5f);
         pattern8_bar3.setBarStoppingPointBottom(0);
-        Bar pattern8_bar4 = new Bar(4, 4, Bar.VERTICAL, new float[]{9, 0}, Assets.blueBarTexture);
+        Bar pattern8_bar4 = new Bar(4, 4, Bar.VERTICAL, new float[]{8, 0}, Assets.blueBarTexture);
         pattern8_bar4.setBarStoppingPointTop(7.5f);
         pattern8_bar4.setBarStoppingPointBottom(0);
         pattern8.add(pattern8_bar1);
