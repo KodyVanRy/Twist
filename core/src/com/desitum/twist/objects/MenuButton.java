@@ -35,7 +35,6 @@ public class MenuButton extends Sprite {
     }
 
     public void update(float delta){
-        System.out.println(getCommand() + ":" + getX());
         time += delta;
         if (time > 1){
             time = 1;

@@ -12,7 +12,11 @@ import com.desitum.twist.screens.MainScreen;
 public class TwistGame extends Game {
 	SpriteBatch batch;
 	Texture img;
-	
+    GooglePlayServicesInterface googlePlay;
+
+    public TwistGame(){
+    }
+
 	@Override
 	public void create () {
         Assets.loadMenuTextures();
