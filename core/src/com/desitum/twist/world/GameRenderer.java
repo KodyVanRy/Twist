@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.desitum.twist.data.BackgroundManager;
 import com.desitum.twist.objects.BackgroundImage;
 import com.desitum.twist.objects.Bar;
+import com.desitum.twist.objects.KipperTrailPoint;
 import com.desitum.twist.objects.MenuButton;
 import com.desitum.twist.screens.MainScreen;
 
@@ -38,6 +39,10 @@ public class GameRenderer {
 
         for (BackgroundImage bgImage: backgroundManager.getBackgroundImages()){
             bgImage.draw(gameBatch);
+        }
+
+        for (KipperTrailPoint ktp: world.kipperTrail){
+            ktp.draw(gameBatch);
         }
 
         for (Bar bar: world.getBars()){

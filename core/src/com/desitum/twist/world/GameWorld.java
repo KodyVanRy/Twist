@@ -6,6 +6,7 @@ import com.desitum.twist.data.Pattern;
 import com.desitum.twist.data.Settings;
 import com.desitum.twist.objects.Bar;
 import com.desitum.twist.objects.Kipper;
+import com.desitum.twist.objects.KipperTrailPoint;
 import com.desitum.twist.objects.MenuButton;
 import com.desitum.twist.screens.MainScreen;
 
@@ -19,6 +20,7 @@ public class GameWorld {
 
     ArrayList<Pattern> patterns;
     ArrayList<MenuButton> gameOverButtons;
+    ArrayList<KipperTrailPoint> kipperTrail;
     Kipper kipper;
     private float nextY = 0;
     private float score;
@@ -26,6 +28,7 @@ public class GameWorld {
     public GameWorld () {
         score = 0;
         patterns = new ArrayList<Pattern>();
+        kipperTrail = new ArrayList<KipperTrailPoint>();
 
         gameOverButtons = new ArrayList<MenuButton>();
         gameOverButtons.add(new MenuButton(MainScreen.PLAY, 1, 6, Assets.playButtonTexture));
@@ -56,7 +59,8 @@ public class GameWorld {
             if (kipper.getKipperOrientation() == Kipper.VERTICAL){
                 score += delta;
             }
-        } if (state == MainScreen.GAME_OVER){
+        } else if (state == MainScreen.GAME_OVER){
+            kipperTrail = new ArrayList<KipperTrailPoint>(); //clear the kipperTrail
             for (MenuButton mb: gameOverButtons){
                 if (!mb.isMoving() && !mb.isInPlace()){
                     mb.setY(mb.getY() + cam.position.y - MainScreen.FRUSTUM_HEIGHT/2);
@@ -67,6 +71,18 @@ public class GameWorld {
                 mb.isInPlace();
             }
             return;
+        }
+
+        if (state == MainScreen.GAME_BEFORE || state == MainScreen.GAME_RUNNING){
+            kipperTrail.add(new KipperTrailPoint(kipper.getX(), kipper.getY(), Settings.kipperSize, Assets.kipperTexture));
+            Iterator<KipperTrailPoint> iter = kipperTrail.iterator();
+            while (iter.hasNext()){
+                KipperTrailPoint ktp = iter.next();
+                ktp.update(delta);
+                if (ktp.getScaleSize() == 0){
+                    iter.remove();
+                }
+            }
         }
 
         Iterator<Pattern> iter = patterns.iterator();
