@@ -61,16 +61,16 @@ public class Bar extends Sprite {
     }
 
     private void adjustTexture(){
-        if (getTexture().equals(Assets.blueBarTexture)){
-            setTexture(Assets.blueBarVerticalTexture);
-        } else if (getTexture().equals(Assets.purpleBarTexture)){
-            setTexture(Assets.purpleBarVerticalTexture);
-        } else if (getTexture().equals(Assets.orangeBarTexture)){
-            setTexture(Assets.orangeBarVerticalTexture);
-        } else if (getTexture().equals(Assets.redBarTexture)){
-            setTexture(Assets.redBarVerticalTexture);
-        } else if (getTexture().equals(Assets.yellowBarTexture)){
-            setTexture(Assets.yellowBarVerticalTexture);
+        if (getTexture().equals(Assets.blueBarTexture2)){
+            setTexture(Assets.blueBarVerticalTexture2);
+        } else if (getTexture().equals(Assets.purpleBarTexture2)){
+            setTexture(Assets.purpleBarVerticalTexture2);
+        } else if (getTexture().equals(Assets.orangeBarTexture2)){
+            setTexture(Assets.orangeBarVerticalTexture2);
+        } else if (getTexture().equals(Assets.redBarTexture2)){
+            setTexture(Assets.redBarVerticalTexture2);
+        } else if (getTexture().equals(Assets.yellowBarTexture2)){
+            setTexture(Assets.yellowBarVerticalTexture2);
         }
     }
 
