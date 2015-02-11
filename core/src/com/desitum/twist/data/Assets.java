@@ -94,4 +94,8 @@ public class Assets {
         menuMusic.setLooping(true);
 
     }
+
+    public static void dispose(){
+
+    }
 }

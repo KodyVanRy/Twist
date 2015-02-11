@@ -234,7 +234,6 @@ public class MainScreen implements Screen {
     private void updateMenuBeforeTransition(float delta){
         boolean canMoveOn = true;
         for (MenuButton mb: menuWorld.getMenuButtons()){
-            //System.out.println(mb.getCommand() + ":" + mb.getX());
             if (!mb.isMoving()){
                 mb.moveIn();
                 canMoveOn = false;
@@ -271,7 +270,6 @@ public class MainScreen implements Screen {
         } else if (!menuWorld.getMenuButtons().get(2).isMoving() && menuWorld.getMenuButtons().get(1).getX() >= 4) {
             menuWorld.getMenuButtons().get(2).moveOffScreen();
         } else if (menuWorld.getMenuButtons().get(2).getX() >= FRUSTUM_WIDTH){
-            System.out.println("Switched states");
             state = GAME_BEFORE;
         }
         for (MenuButton mb: menuWorld.getMenuButtons()){
@@ -319,7 +317,6 @@ public class MainScreen implements Screen {
     }
 
     private void updateGameOverTransition(float delta){
-        System.out.println("Hrm");
         if (!gameWorld.getGameOverButtons().get(0).isMoving()) { // if first menu button isn't moving
             gameWorld.getGameOverButtons().get(0).moveOffScreen(); // start it moving
         } else if (!gameWorld.getGameOverButtons().get(1).isMoving() && gameWorld.getGameOverButtons().get(0).getX() >= 4) { // if first menu button isn't moving

@@ -52,7 +52,6 @@ public class GameRenderer {
         this.world.kipper.draw(gameBatch);
 
         for (MenuButton mb: world.getGameOverButtons()){
-            System.out.println(mb.getCommand() + ":" + mb.getX() + ":" + mb.getY());
             mb.draw(gameBatch);
         }
     }

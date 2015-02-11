@@ -37,6 +37,8 @@ public class TwistGame extends Game {
     public void dispose () {
         super.dispose();
 
+        Assets.dispose();
+
         getScreen().dispose();
     }
 
