@@ -18,12 +18,14 @@ public class Kipper extends Sprite {
     public static final int HORIZONTAL = 0;
     public static final int VERTICAL = 1;
     public static final int ROTATING = 2;
+    private static final float ROTATE_SPEED = 750;
 
     private float kipperSpeed; //Max is 8 (4 is lowest, 8 is highest, 4 = slow)
     private int kipperOrientation; //Vertical or Horizontal (0 is Vertical, 1 is Horizontal)
     private float rotationAmount; //Rotational amount for animation
     private float lastHorizontalSpeed; //Left or Right (- or +)
     private int nextDirection = 0;
+    private Rectangle lastRectangle;
 
     //This color is going to be used for a blur trail
     private Color kipperColor; //Color of Kipper (Blue?)
@@ -57,18 +59,22 @@ public class Kipper extends Sprite {
 
             setX(getX() + kipperSpeed * delta);
 
+            lastRectangle = new Rectangle(getX(), getY(), getWidth(), getHeight());
+
         } else if (kipperOrientation == VERTICAL) {
             setY(getY() + kipperSpeed * delta);
+
+            lastRectangle = new Rectangle(getX(), getY(), getWidth(), getHeight());
         } else {
             if (nextDirection == VERTICAL){
                 if (rotationAmount < 0){
-                    rotationAmount += delta * 500;
+                    rotationAmount += delta * ROTATE_SPEED;
                     if (rotationAmount >= 0){
                         rotationAmount = 0;
                         kipperOrientation = VERTICAL;
                     }
                 } else {
-                    rotationAmount -= delta * 500;
+                    rotationAmount -= delta * ROTATE_SPEED;
                     if (rotationAmount <= 0){
                         rotationAmount = 0;
                         kipperOrientation = VERTICAL;
@@ -76,13 +82,13 @@ public class Kipper extends Sprite {
                 }
             } else {
                 if (lastHorizontalSpeed < 0){
-                    rotationAmount += delta * 500;
+                    rotationAmount += delta * ROTATE_SPEED;
                     if (rotationAmount >= 90){
                         rotationAmount = 90;
                         kipperOrientation = HORIZONTAL;
                     }
                 } else {
-                    rotationAmount -= delta * 500;
+                    rotationAmount -= delta * ROTATE_SPEED;
                     if (rotationAmount <= -90){
                         rotationAmount = -90;
                         kipperOrientation = HORIZONTAL;
@@ -134,6 +140,11 @@ public class Kipper extends Sprite {
         setPosition(Settings.kipperX, Settings.kipperY);
         kipperOrientation = VERTICAL;
         kipperSpeed = Settings.kipperSpeed;
+    }
+
+    @Override
+    public Rectangle getBoundingRectangle(){
+        return lastRectangle;
     }
 }
 

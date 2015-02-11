@@ -79,7 +79,7 @@ public class GameWorld {
         if (state == MainScreen.GAME_BEFORE || state == MainScreen.GAME_RUNNING){
             addedLast = !addedLast;
             if (!addedLast) {
-                kipperTrail.add(new KipperTrailPoint(kipper.getX(), kipper.getY(), Settings.kipperSize, Assets.kipperTexture));
+                kipperTrail.add(new KipperTrailPoint(kipper.getX(), kipper.getY(), Settings.kipperSize, kipper.getRotation(), Assets.kipperTexture));
             }
             Iterator<KipperTrailPoint> iter = kipperTrail.iterator();
             while (iter.hasNext()){
