@@ -99,13 +99,6 @@ public class Kipper extends Sprite {
         }
     }
 
-    public float getKipperSpeed() {
-        return kipperSpeed;
-    }
-
-    public void setKipperSpeed(float kipperSpeed) {
-        this.kipperSpeed = kipperSpeed;
-    }
 
     public float getKipperLength() {
         return getBoundingRectangle().getWidth();
@@ -132,9 +125,6 @@ public class Kipper extends Sprite {
         }
     }
 
-    public Rectangle getKipperRect() {
-        return getBoundingRectangle();
-    }
 
     public void reset(){
         setPosition(Settings.kipperX, Settings.kipperY);

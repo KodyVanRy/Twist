@@ -96,29 +96,6 @@ public class Bar extends Sprite {
         setY(barPositionY);
     }
 
-    public float getMoveSpeed() {
-        return moveSpeed;
-    }
-
-    public void setMoveSpeed(float moveSpeed) {
-        this.moveSpeed = moveSpeed;
-    }
-
-    public float getBarLength() {
-        return barLength;
-    }
-
-    public void setBarLength(float barLength) {
-        this.barLength = barLength;
-    }
-
-    public int getBarOrientation() {
-        return barOrientation;
-    }
-
-    public void setBarOrientation(int barOrientation) {
-        this.barOrientation = barOrientation;
-    }
 
     public void setBarStoppingPointTop(float barStoppingPointTop) {
         this.barStoppingPointTop = barStoppingPointTop;
@@ -143,11 +120,4 @@ public class Bar extends Sprite {
         setY(y);
     }
 
-    public void setBarX(float x){
-        float difference = x - this.barPositionX;
-        this.barStoppingPointLeft += difference;
-        this.barStoppingPointRight += difference;
-        this.barPositionX = x;
-        setX(x);
-    }
 }

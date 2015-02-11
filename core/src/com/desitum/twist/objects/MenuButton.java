@@ -71,9 +71,6 @@ public class MenuButton extends Sprite {
         return command;
     }
 
-    public void setCommand(String command) {
-        this.command = command;
-    }
 
     public void moveOffScreen(){
         this.movingOut = true;

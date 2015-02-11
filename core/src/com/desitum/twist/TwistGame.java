@@ -9,8 +9,6 @@ import com.desitum.twist.data.Pattern;
 import com.desitum.twist.screens.MainScreen;
 
 public class TwistGame extends Game {
-	SpriteBatch batch;
-	Texture img;
     GooglePlayServicesInterface googlePlay;
 
     public TwistGame(GooglePlayServicesInterface gps){

@@ -13,7 +13,6 @@ public class BackgroundImage extends Sprite {
     public BackgroundImage(Texture texture, float sizeX, float locX, float locY) {
         super(texture, 0, 0, texture.getWidth(), texture.getHeight());
 
-        float ratio = sizeX / texture.getWidth();
         setPosition(locX, locY);
         setSize(sizeX, sizeX);
     }
