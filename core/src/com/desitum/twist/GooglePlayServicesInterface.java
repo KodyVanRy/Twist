@@ -9,4 +9,5 @@ public interface GooglePlayServicesInterface {
     public void submitScore();
     public void login();
     public void logout();
+    public void shareScore(int score);
 }

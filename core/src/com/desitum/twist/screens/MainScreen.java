@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
+import com.desitum.twist.GooglePlayServicesInterface;
 import com.desitum.twist.data.Assets;
 import com.desitum.twist.data.BackgroundManager;
 import com.desitum.twist.data.Settings;
@@ -56,8 +57,10 @@ public class MainScreen implements Screen {
 
     private BackgroundManager backgroundManager;
     private BitmapFont gameFont;
+    private GooglePlayServicesInterface gpgs;
 
-    public MainScreen() {
+    public MainScreen(GooglePlayServicesInterface gps) {
+        gpgs = gps;
         cam = new OrthographicCamera(FRUSTUM_WIDTH * 10, FRUSTUM_HEIGHT * 10);
         textCam = new OrthographicCamera(100, 150);
         cam.position.set(FRUSTUM_WIDTH * 10 / 2, FRUSTUM_HEIGHT * 10 / 2, 0);
@@ -185,6 +188,8 @@ public class MainScreen implements Screen {
                     state = GAME_OVER_TRANSITION;
                 } else if (mb.getCommand().equals(OPEN_SCORES)){
                     Assets.buttonSound.play(Settings.volume);
+                } else if (mb.getCommand().equals(SHARE)){
+                    gpgs.shareScore(gameWorld.getScore());
                 }
             }
         }
@@ -402,7 +407,7 @@ public class MainScreen implements Screen {
 
         float width = Assets.font.getBounds(String.valueOf(gameWorld.getScore())).width/2;
         float height = Assets.font.getBounds("" + gameWorld.getScore()).height;
-        Assets.font.draw(spriteBatch, String.valueOf(gameWorld.getScore()), FRUSTUM_WIDTH*10/2 - width, 8 * 10 + height);
+        Assets.font.draw(spriteBatch, String.valueOf(gameWorld.getScore()), FRUSTUM_WIDTH * 10 / 2 - width, 8 * 10 + height);
     }
     //endregion
 

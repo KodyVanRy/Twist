@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.desitum.twist.data.Assets;
 import com.desitum.twist.data.Pattern;
-import com.desitum.twist.data.Settings;
 import com.desitum.twist.screens.MainScreen;
 
 public class TwistGame extends Game {
@@ -14,7 +13,8 @@ public class TwistGame extends Game {
 	Texture img;
     GooglePlayServicesInterface googlePlay;
 
-    public TwistGame(){
+    public TwistGame(GooglePlayServicesInterface gps){
+        googlePlay = gps;
     }
 
 	@Override
@@ -24,7 +24,7 @@ public class TwistGame extends Game {
         Assets.loadBackgroundTextures();
         Assets.loadSounds();
         Pattern.loadPatterns();
-        Screen mainScreen = new MainScreen();
+        Screen mainScreen = new MainScreen(googlePlay);
         this.setScreen(mainScreen);
 	}
 

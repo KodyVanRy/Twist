@@ -1,5 +1,6 @@
 package com.desitum.twist.android;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
@@ -16,7 +17,7 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
         config.useAccelerometer = false;
         config.useCompass = false;
         config.useWakelock = false;
-		initialize(new TwistGame(), config);
+		initialize(new TwistGame(this), config);
 	}
 
     @Override
@@ -37,5 +38,14 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
     @Override
     public void logout() {
 
+    }
+
+    @Override
+    public void shareScore(int score) {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "I just got " + score + " on Twist! Try to beat me: https://play.google.com/store/apps/details?id=com.desitum.twist");
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
     }
 }
