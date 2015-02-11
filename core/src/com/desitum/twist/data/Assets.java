@@ -86,9 +86,9 @@ public class Assets {
     public static void loadSounds()
     {
         //SFX
-        buttonSound = Gdx.audio.newSound(Gdx.files.internal("sound/button.mp3"));
-        highscoreSound = Gdx.audio.newSound(Gdx.files.internal("sound/highscore.mp3"));
-        endGameSound = Gdx.audio.newSound(Gdx.files.internal("sound/endGame.mp3"));
+        buttonSound = Gdx.audio.newSound(Gdx.files.internal("sound/Button.wav"));
+        highscoreSound = Gdx.audio.newSound(Gdx.files.internal("sound/High_Score.wav"));
+        endGameSound = Gdx.audio.newSound(Gdx.files.internal("sound/Collide.wav"));
         //Music
         menuMusic = Gdx.audio.newMusic(Gdx.files.internal("sound/loop.mp3"));
         menuMusic.setLooping(true);

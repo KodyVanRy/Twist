@@ -20,7 +20,7 @@ public class KipperTrailPoint extends Sprite{
         this.setOriginCenter();
 
         alphaAmount = 0.4f;
-        scaleSize = 1;
+        scaleSize = 1f;
 
     }
 
@@ -28,7 +28,7 @@ public class KipperTrailPoint extends Sprite{
         alphaAmount -= delta;
         if (alphaAmount <= 0) alphaAmount = 0;
         setAlpha(alphaAmount);
-        scaleSize -= delta;
+        scaleSize -= delta*2;
         if (scaleSize <= 0) scaleSize = 0;
         setScale(scaleSize);
     }

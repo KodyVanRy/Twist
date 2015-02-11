@@ -22,11 +22,14 @@ public class GameWorld {
     ArrayList<MenuButton> gameOverButtons;
     ArrayList<KipperTrailPoint> kipperTrail;
     Kipper kipper;
+
+    private boolean addedLast;
     private float nextY = 0;
     private float score;
 
     public GameWorld () {
         score = 0;
+        addedLast = true;
         patterns = new ArrayList<Pattern>();
         kipperTrail = new ArrayList<KipperTrailPoint>();
 
@@ -74,7 +77,10 @@ public class GameWorld {
         }
 
         if (state == MainScreen.GAME_BEFORE || state == MainScreen.GAME_RUNNING){
-            kipperTrail.add(new KipperTrailPoint(kipper.getX(), kipper.getY(), Settings.kipperSize, Assets.kipperTexture));
+            addedLast = !addedLast;
+            if (!addedLast) {
+                kipperTrail.add(new KipperTrailPoint(kipper.getX(), kipper.getY(), Settings.kipperSize, Assets.kipperTexture));
+            }
             Iterator<KipperTrailPoint> iter = kipperTrail.iterator();
             while (iter.hasNext()){
                 KipperTrailPoint ktp = iter.next();
