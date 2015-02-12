@@ -2,7 +2,6 @@ package com.desitum.twist.objects;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.desitum.twist.data.Assets;
 import com.desitum.twist.screens.MainScreen;
 
 /**
@@ -31,15 +30,11 @@ public class Bar extends Sprite {
     public Bar(float moveSpeed, float barLength, int barOrientation, float[] position, Texture texture) {
         super(texture, 0, 0, texture.getWidth(), texture.getHeight());
 
-
-
-
         if (barOrientation == HORIZONTAL){
             setRotation(0);
             this.setSize(barLength, BAR_WIDTH);
         } else if (barOrientation == VERTICAL){
             this.setSize(BAR_WIDTH, barLength);
-            adjustTexture();
         }
 
         this.moveSpeed = moveSpeed;
@@ -57,20 +52,6 @@ public class Bar extends Sprite {
             this.setPosition(position[0], position[1]);
         } else {
             this.setPosition(position[0] - barLength/2, position[1]);
-        }
-    }
-
-    private void adjustTexture(){
-        if (getTexture().equals(Assets.blueBarTexture2)){
-            setTexture(Assets.blueBarVerticalTexture2);
-        } else if (getTexture().equals(Assets.purpleBarTexture2)){
-            setTexture(Assets.purpleBarVerticalTexture2);
-        } else if (getTexture().equals(Assets.orangeBarTexture2)){
-            setTexture(Assets.orangeBarVerticalTexture2);
-        } else if (getTexture().equals(Assets.redBarTexture2)){
-            setTexture(Assets.redBarVerticalTexture2);
-        } else if (getTexture().equals(Assets.yellowBarTexture2)){
-            setTexture(Assets.yellowBarVerticalTexture2);
         }
     }
 
@@ -120,4 +101,7 @@ public class Bar extends Sprite {
         setY(y);
     }
 
+    public void reverse(){
+        this.moveSpeed = -moveSpeed;
+    }
 }

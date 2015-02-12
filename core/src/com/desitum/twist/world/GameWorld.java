@@ -1,9 +1,11 @@
 package com.desitum.twist.world;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.desitum.twist.data.Assets;
 import com.desitum.twist.data.Pattern;
 import com.desitum.twist.data.Settings;
+import com.desitum.twist.libraries.Colors;
 import com.desitum.twist.objects.Bar;
 import com.desitum.twist.objects.Kipper;
 import com.desitum.twist.objects.KipperTrailPoint;
@@ -23,6 +25,7 @@ public class GameWorld {
     ArrayList<KipperTrailPoint> kipperTrail;
     Kipper kipper;
 
+    private Color gameColor;
     private boolean addedLast;
     private float nextY = 0;
     private float score;
@@ -32,6 +35,7 @@ public class GameWorld {
         addedLast = true;
         patterns = new ArrayList<Pattern>();
         kipperTrail = new ArrayList<KipperTrailPoint>();
+        gameColor = Colors.getRandomColor();
 
         gameOverButtons = new ArrayList<MenuButton>();
         gameOverButtons.add(new MenuButton(MainScreen.PLAY, 1, 6, Assets.playButtonTexture));
@@ -48,12 +52,12 @@ public class GameWorld {
     public void update(int state, OrthographicCamera cam, float delta){
         if (state == MainScreen.GAME_RUNNING){
             if (patterns.size() == 0){
-                Pattern patternToAdd = Pattern.getRandomPattern(kipper.getY() + 15);
+                Pattern patternToAdd = Pattern.getRandomPattern(kipper.getY() + 15, gameColor);
                 patterns.add(patternToAdd);
                 nextY = patternToAdd.getY();
             }
             else if (patterns.size() < 4){
-                Pattern patternToAdd = Pattern.getRandomPattern(nextY);
+                Pattern patternToAdd = Pattern.getRandomPattern(nextY, gameColor);
 
                 patterns.add(patternToAdd);
 
@@ -139,6 +143,7 @@ public class GameWorld {
     public void reset(){
         kipper.reset();
         score = 0;
+        gameColor = Colors.getRandomColor();
         gameOverButtons = new ArrayList<MenuButton>();
         gameOverButtons.add(new MenuButton(MainScreen.PLAY, 1, 6, Assets.playButtonTexture));
         gameOverButtons.add(new MenuButton(MainScreen.OPEN_SCORES, 1, 4, Assets.highscoreButtonTexture));

@@ -2,10 +2,9 @@ package com.desitum.twist;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.desitum.twist.data.Assets;
 import com.desitum.twist.data.Pattern;
+import com.desitum.twist.libraries.Colors;
 import com.desitum.twist.screens.MainScreen;
 
 public class TwistGame extends Game {
@@ -22,6 +21,7 @@ public class TwistGame extends Game {
         Assets.loadBackgroundTextures();
         Assets.loadSounds();
         Pattern.loadPatterns();
+        Colors.load();
         Screen mainScreen = new MainScreen(googlePlay);
         this.setScreen(mainScreen);
 	}
