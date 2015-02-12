@@ -6,6 +6,7 @@ import com.desitum.twist.data.Assets;
 import com.desitum.twist.data.Pattern;
 import com.desitum.twist.libraries.Colors;
 import com.desitum.twist.screens.MainScreen;
+import com.desitum.twist.screens.SplashScreen;
 
 public class TwistGame extends Game {
     GooglePlayServicesInterface googlePlay;
@@ -16,14 +17,8 @@ public class TwistGame extends Game {
 
 	@Override
 	public void create () {
-        Assets.loadMenuTextures();
-        Assets.loadGameTextures();
-        Assets.loadBackgroundTextures();
-        Assets.loadSounds();
-        Pattern.loadPatterns();
-        Colors.load();
-        Screen mainScreen = new MainScreen(googlePlay);
-        this.setScreen(mainScreen);
+        Screen splashScreen = new SplashScreen(googlePlay, this);
+        this.setScreen(splashScreen);
 	}
 
 	@Override
