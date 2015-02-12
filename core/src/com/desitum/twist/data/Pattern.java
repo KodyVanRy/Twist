@@ -65,9 +65,9 @@ public class Pattern {
         pattern1_bar1.setBarStoppingPointRight(6);
         Bar pattern1_bar2 = new Bar(3, 4, Bar.HORIZONTAL, new float[]{6, 3f}, Assets.whiteBarTexture4);
         pattern1_bar2.setBarStoppingPointLeft(4);
-        Bar pattern1_bar3 = new Bar(3, 4, Bar.HORIZONTAL, new float[]{1, 5.5f}, Assets.whiteBarTexture4);
+        Bar pattern1_bar3 = new Bar(3, 4, Bar.HORIZONTAL, new float[]{1, 6f}, Assets.whiteBarTexture4);
         pattern1_bar3.setBarStoppingPointRight(6);
-        Bar pattern1_bar4 = new Bar(3, 4, Bar.HORIZONTAL, new float[]{6, 8f}, Assets.whiteBarTexture4);
+        Bar pattern1_bar4 = new Bar(3, 4, Bar.HORIZONTAL, new float[]{6, 9f}, Assets.whiteBarTexture4);
         pattern1_bar4.setBarStoppingPointLeft(4);
         pattern1.add(pattern1_bar1);
         pattern1.add(pattern1_bar2);
@@ -104,7 +104,7 @@ public class Pattern {
         pattern3_bar1.setBarStoppingPointRight(5);
         Bar pattern3_bar2 = new Bar(4, 2, Bar.HORIZONTAL, new float[]{8, 0}, Assets.whiteBarTexture2);
         pattern3_bar2.setBarStoppingPointLeft(5);
-        Bar pattern3_bar3 = new Bar(4, 5, Bar.HORIZONTAL, new float[]{2, 4f}, Assets.whiteBarTexture5);
+        Bar pattern3_bar3 = new Bar(4, 5, Bar.HORIZONTAL, new float[]{2, 3.5f}, Assets.whiteBarTexture5);
         pattern3_bar3.setBarStoppingPointRight(8);
         Bar pattern3_bar4 = new Bar(4, 5, Bar.HORIZONTAL, new float[]{3, 6.5f}, Assets.whiteBarTexture5);
         pattern3_bar4.setBarStoppingPointLeft(2);
@@ -235,7 +235,7 @@ public class Pattern {
     private static ArrayList<Bar> loadPattern10()
     {
         ArrayList<Bar> pattern10 = new ArrayList<Bar>();
-        Bar pattern10_bar1 = new Bar(4, 2, Bar.HORIZONTAL, new float[]{0, 6.5f}, Assets.whiteBarTexture2);
+        Bar pattern10_bar1 =                      new Bar(4, 2, Bar.HORIZONTAL, new float[]{0, 6.5f}, Assets.whiteBarTexture2);
         pattern10_bar1.setBarStoppingPointRight(5);
         Bar pattern10_bar2 = new Bar(4, 2, Bar.HORIZONTAL, new float[]{8, 6.5f}, Assets.whiteBarTexture2);
         pattern10_bar2.setBarStoppingPointLeft(5);

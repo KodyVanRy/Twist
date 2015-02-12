@@ -409,7 +409,6 @@ public class MainScreen implements Screen {
     //endregion
 
     private void resetGame(){
-        //TODO (will be done later) check for button and do accordingly
         cam.position.set(FRUSTUM_WIDTH * 10 / 2, FRUSTUM_HEIGHT * 10 / 2, 0);
         gameWorld.reset();
         gameRenderer.resetCam();
