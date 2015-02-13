@@ -128,6 +128,9 @@ public class Kipper extends Sprite {
 
     public void reset(){
         setPosition(Settings.kipperX, Settings.kipperY);
+        rotationAmount = 0;
+        setRotation(rotationAmount);
+        lastHorizontalSpeed = Settings.kipperSpeed;
         kipperOrientation = VERTICAL;
         kipperSpeed = Settings.kipperSpeed;
     }
