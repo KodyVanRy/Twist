@@ -69,9 +69,9 @@ public class Bar extends Sprite {
                 moveSpeed = originalMoveSpeed;
             } else if (barPositionX + barLength >= barStoppingPointRight && moveSpeed > 0) {
                 moveSpeed = -originalMoveSpeed;
-            } else {
-                barPositionX += moveSpeed * delta;
             }
+
+            barPositionX += moveSpeed * delta;
         }
         setX(barPositionX);
         setY(barPositionY);

@@ -1,5 +1,7 @@
 package com.desitum.twist.data;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Color;
 import com.desitum.twist.screens.MainScreen;
 
@@ -15,8 +17,12 @@ public class Settings {
 
     public static boolean volumeOn = true;
     public static float volume = 1;
+    public static int highscore;
 
     public static void getSound() {
+        Preferences prefs = Gdx.app.getPreferences("settings");
+        prefs.putBoolean("soundOn", volumeOn);
+        prefs.flush();
         if(Settings.volumeOn == true)
         {
             Assets.menuMusic.setVolume(1);
@@ -27,5 +33,18 @@ public class Settings {
             Assets.menuMusic.setVolume(0);
             volume = 0;
         }
+    }
+
+    public static void load(){
+        Preferences prefs = Gdx.app.getPreferences("settings");
+        volumeOn = prefs.getBoolean("soundOn", true);
+        highscore = prefs.getInteger("highscore", 0);
+        getSound();
+    }
+
+    public static void saveScore(int score) {
+        Preferences prefs = Gdx.app.getPreferences("settings");
+        prefs.putInteger("highscore", score);
+        prefs.flush();
     }
 }

@@ -296,6 +296,8 @@ public class MainScreen implements Screen {
             if (CollisionDetection.overlapRectangles(b.getBoundingRectangle(), gameWorld.getKipper().getBoundingRectangle())) {
                     Assets.endGameSound.play(Settings.volume);
                 state = GAME_OVER;
+                Settings.saveScore(gameWorld.getScore());
+                gpgs.submitScore();
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.desitum.twist.world;
 
 import com.desitum.twist.data.Assets;
+import com.desitum.twist.data.Settings;
 import com.desitum.twist.objects.MenuButton;
 import com.desitum.twist.screens.MainScreen;
 
@@ -28,6 +29,7 @@ public class MenuWorld {
         MenuButton scoreButton = new MenuButton(MainScreen.OPEN_SCORES, 1, 6, Assets.highscoreButtonTexture);
         scoreButton.setMovement(-scoreButton.getWidth(), scoreButton.getX(), 1);
         MenuButton volumeButton = new MenuButton(MainScreen.VOLUMES, 1, 4, Assets.volumeOnButtonTexture);
+        if (!Settings.volumeOn) volumeButton.setTexture(Assets.volumeOffButtonTexture);
         volumeButton.setMovement(-volumeButton.getWidth(), volumeButton.getX(), 1);
 
         //Add Buttons to the MenuButtons ArrayList

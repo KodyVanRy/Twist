@@ -11,6 +11,7 @@ import com.desitum.twist.GooglePlayServicesInterface;
 import com.desitum.twist.TwistGame;
 import com.desitum.twist.data.Assets;
 import com.desitum.twist.data.Pattern;
+import com.desitum.twist.data.Settings;
 import com.desitum.twist.libraries.Colors;
 
 /**
@@ -62,6 +63,7 @@ public class SplashScreen implements Screen {
             Assets.loadSounds();
             Pattern.loadPatterns();
             Colors.load();
+            Settings.load();
         }
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glClearColor(0,0,0, 1);
