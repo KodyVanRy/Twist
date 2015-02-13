@@ -27,6 +27,7 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
 
     @Override
     public void submitScore() {
+        System.out.println("Submited score");
 
     }
 
