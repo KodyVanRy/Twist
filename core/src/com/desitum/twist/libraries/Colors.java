@@ -14,6 +14,7 @@ public class Colors {
     public static final Color ORANGE_BAR = new Color(0.99f, 0.45f, 0.07f, 1);
     public static final Color RED_BAR = new Color(0.88f, 0.07f, 0.15f, 1);
     public static final Color YELLOW_BAR = new Color(1, 1, 0.08f, 1);
+    public static final Color GREEN_BAR = new Color(0, 0.9f, 0.1f, 1);
 
     public static ArrayList<Color> gameColors;
 
@@ -25,10 +26,11 @@ public class Colors {
         gameColors.add(ORANGE_BAR);
         gameColors.add(RED_BAR);
         gameColors.add(YELLOW_BAR);
+        gameColors.add(GREEN_BAR);
     }
 
     public static Color getRandomColor(){
         Random r = new Random();
-        return gameColors.get(r.nextInt(gameColors.size() - 1));
+        return gameColors.get(r.nextInt(gameColors.size()));
     }
 }
