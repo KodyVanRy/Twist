@@ -61,7 +61,7 @@ public class Pattern {
     private static ArrayList<Bar> loadPattern1()
     {
         ArrayList<Bar> pattern1 = new ArrayList<Bar>();
-        Bar pattern1_bar1 = new Bar(3, 4, Bar.HORIZONTAL, new float[]{1, 0}, Assets.whiteBarTexture4);
+        Bar pattern1_bar1 = new Bar(3, 4, Bar.HORIZONTAL, new float[]{1, 0f}, Assets.whiteBarTexture4);
         pattern1_bar1.setBarStoppingPointRight(6);
         Bar pattern1_bar2 = new Bar(3, 4, Bar.HORIZONTAL, new float[]{6, 3f}, Assets.whiteBarTexture4);
         pattern1_bar2.setBarStoppingPointLeft(4);
