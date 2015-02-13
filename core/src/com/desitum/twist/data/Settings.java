@@ -46,6 +46,7 @@ public class Settings {
         if (highscore > score){
             return;
         }
+        highscore = score;
         Preferences prefs = Gdx.app.getPreferences("settings");
         prefs.putInteger("highscore", score);
         prefs.flush();

@@ -381,6 +381,8 @@ public class MainScreen implements Screen {
         } else {
             spriteBatch.draw(Assets.tappingHand, FRUSTUM_WIDTH/2 - 1, FRUSTUM_HEIGHT/2, 2, 3);
         }
+
+
     }
 
     private void drawMenuTransition() {
