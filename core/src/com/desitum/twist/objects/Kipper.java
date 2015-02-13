@@ -99,15 +99,6 @@ public class Kipper extends Sprite {
         }
     }
 
-
-    public float getKipperLength() {
-        return getBoundingRectangle().getWidth();
-    }
-
-    public void setKipperLength(float kipperLength) {
-        this.getBoundingRectangle().setWidth(kipperLength);
-    }
-
     public int getKipperOrientation() {
         return kipperOrientation;
     }

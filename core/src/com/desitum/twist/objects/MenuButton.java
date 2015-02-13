@@ -84,10 +84,4 @@ public class MenuButton extends Sprite {
         return false;
     }
 
-    public void reset(){
-        setMovement(-MenuButton.SIZE_X, moveToX, 0.5f);
-        setY(originalY);
-        movingIn = false;
-        movingOut = false;
-    }
 }
