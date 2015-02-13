@@ -404,8 +404,14 @@ public class MainScreen implements Screen {
         gameRenderer.render();
         spriteBatch.setProjectionMatrix(cam.combined);
 
-        float width = Assets.font.getBounds(String.valueOf(gameWorld.getScore())).width/2;
-        float height = Assets.font.getBounds("" + gameWorld.getScore()).height;
+        Assets.font.setScale(0.1f);
+        float width = Assets.font.getBounds("Highscore: " + Settings.highscore).width/2;
+        float height = Assets.font.getBounds("Highscore" + Settings.highscore).height;
+        Assets.font.draw(spriteBatch, "Highscore: " + Settings.highscore, FRUSTUM_WIDTH * 10 / 2 - width, 10 * 10 + height);
+        Assets.font.setScale(0.25f);
+
+        width = Assets.font.getBounds(String.valueOf(gameWorld.getScore())).width/2;
+        height = Assets.font.getBounds("" + gameWorld.getScore()).height;
         Assets.font.draw(spriteBatch, String.valueOf(gameWorld.getScore()), FRUSTUM_WIDTH * 10 / 2 - width, 8 * 10 + height);
     }
     //endregion

@@ -43,6 +43,9 @@ public class Settings {
     }
 
     public static void saveScore(int score) {
+        if (highscore > score){
+            return;
+        }
         Preferences prefs = Gdx.app.getPreferences("settings");
         prefs.putInteger("highscore", score);
         prefs.flush();
