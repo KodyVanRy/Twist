@@ -74,8 +74,6 @@ public class MainScreen implements Screen {
 
         menuRenderer = new MenuRenderer(menuWorld, spriteBatch, backgroundManager);
         gameRenderer = new GameRenderer(gameWorld, spriteBatch, backgroundManager);
-        gameFont = new BitmapFont(Gdx.files.internal("font/font.fnt"), Gdx.files.internal("font/font.png"), false);
-        gameFont.setScale(0.05f);
     }
 
     @Override
