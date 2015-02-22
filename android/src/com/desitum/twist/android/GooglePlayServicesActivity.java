@@ -1,26 +1,22 @@
 package com.desitum.twist.android;
 
-import android.content.Intent;
-import android.os.Bundle;
-
-import com.badlogic.gdx.backends.android.AndroidApplication;
-import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.desitum.twist.GooglePlayServicesInterface;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
+import android.os.Bundle;
 import android.util.Log;
 
-import com.desitum.twist.TwistGame;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import com.google.android.gms.games.Games;
 
-public class AndroidLauncher extends AndroidApplication implements GooglePlayServicesInterface,
+public class GooglePlayServicesActivity extends Activity implements
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener{
+        GoogleApiClient.OnConnectionFailedListener {
 
     private static final String TAG = "GooglePlayServicesActivity";
 
@@ -42,20 +38,15 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
      */
     private boolean mIsInResolution;
 
+    /**
+     * Called when the activity is starting. Restores the activity state.
+     */
     @Override
-    protected void onCreate (Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
             mIsInResolution = savedInstanceState.getBoolean(KEY_IN_RESOLUTION, false);
         }
-        AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-        config.useImmersiveMode = true;
-        config.useAccelerometer = false;
-        config.useCompass = false;
-        config.useWakelock = false;
-        initialize(new TwistGame(this), config);
-
-
     }
 
     /**
@@ -171,35 +162,5 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
             Log.e(TAG, "Exception while starting resolution activity", e);
             retryConnecting();
         }
-    }
-
-    @Override
-    public void getLeaderBoard() {
-
-    }
-
-    @Override
-    public void submitScore() {
-        System.out.println("Submited score");
-
-    }
-
-    @Override
-    public void login() {
-
-    }
-
-    @Override
-    public void logout() {
-
-    }
-
-    @Override
-    public void shareScore(int score) {
-        Intent sendIntent = new Intent();
-        sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "I just got " + score + " on Twist! Try to beat me: https://play.google.com/store/apps/details?id=com.desitum.twist");
-        sendIntent.setType("text/plain");
-        startActivity(sendIntent);
     }
 }

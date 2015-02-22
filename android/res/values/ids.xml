@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Google Play game services IDs.
+Save this file as res/values/games-ids.xml in your project.
+-->
+<resources>
+    <string name="app_id">170289127457</string>
+    <string name="achievement_first_time_twister">CgkIocCXsPoEEAIQAQ</string>
+    <string name="achievement_beginner_twister">CgkIocCXsPoEEAIQAg</string>
+    <string name="achievement_novice_twister">CgkIocCXsPoEEAIQAw</string>
+    <string name="achievement_advanced_twister">CgkIocCXsPoEEAIQBA</string>
+    <string name="achievement_master_twister">CgkIocCXsPoEEAIQBQ</string>
+    <string name="leaderboard_highscore">CgkIocCXsPoEEAIQBg</string>
+</resources>

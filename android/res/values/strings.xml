@@ -2,5 +2,6 @@
 <resources>
 
     <string name="app_name">Twist</string>
+    <string name="title_activity_google_play_services">GooglePlayServicesActivity</string>
 
 </resources>

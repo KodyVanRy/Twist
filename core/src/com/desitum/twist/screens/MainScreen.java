@@ -56,7 +56,6 @@ public class MainScreen implements Screen {
     private Vector3 touchPoint;
 
     private BackgroundManager backgroundManager;
-    private BitmapFont gameFont;
     private GooglePlayServicesInterface gpgs;
 
     public MainScreen(GooglePlayServicesInterface gps) {
