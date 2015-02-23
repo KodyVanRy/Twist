@@ -101,6 +101,7 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
     @Override
     public void unlockAchievement(int achievement) {
         if (achievement == FIRST_TIME){
+
         }
     }
 
