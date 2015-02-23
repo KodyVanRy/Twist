@@ -171,7 +171,7 @@ public class MainScreen implements Screen {
      */
     private void onClickGameRunning() {
         gameWorld.toggleKipperDirection();
-        Assets.twistSound.play(Settings.volume);
+        Assets.twistSound.play(Settings.volume * 2);
     }
 
     /**
