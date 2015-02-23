@@ -11,6 +11,12 @@ import com.desitum.twist.screens.SplashScreen;
 public class TwistGame extends Game {
     GooglePlayServicesInterface googlePlay;
 
+    public static final int FIRST_TIME = 0;
+    public static final int BEGINNER_TWISTER = 1;
+    public static final int NOVICE_TWISTER = 2;
+    public static final int ADVANCED_TWISTER = 3;
+    public static final int MASTER_TWISTER = 4;
+
     public TwistGame(GooglePlayServicesInterface gps){
         googlePlay = gps;
     }

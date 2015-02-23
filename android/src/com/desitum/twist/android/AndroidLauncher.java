@@ -30,6 +30,10 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
         GoogleApiClient.OnConnectionFailedListener{
 
     public static final int FIRST_TIME = 0;
+    public static final int BEGINNER_TWISTER = 1;
+    public static final int NOVICE_TWISTER = 2;
+    public static final int ADVANCED_TWISTER = 3;
+    public static final int MASTER_TWISTER = 4;
 
     private static final int REQUEST_CODE_RESOLVE_ERR = 9000;
 
@@ -116,19 +120,40 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
 
     @Override
     public void getLeaderBoard() {
-        startActivityForResult(Games.Leaderboards.getLeaderboardIntent(mGoogleApiClient, "CgkIocCXsPoEEAIQBg"), 100);
+        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+            startActivityForResult(Games.Leaderboards.getLeaderboardIntent(mGoogleApiClient, "CgkIocCXsPoEEAIQBg"), 100);
+        }
+        else{
+            //Nothing!
+        }
     }
 
     @Override
     public void submitScore(int score) {
-        Games.Leaderboards.submitScore(mGoogleApiClient, "CgkIocCXsPoEEAIQBg", score);
-
+        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+            Games.Leaderboards.submitScore(mGoogleApiClient, "CgkIocCXsPoEEAIQBg", score);
+        }
+        else{
+            //Nothing!
+        }
     }
 
     @Override
     public void unlockAchievement(int achievement) {
-        if (achievement == FIRST_TIME){
-
+        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+            if (achievement == FIRST_TIME) {
+                Games.Achievements.unlock(mGoogleApiClient, "CgkIocCXsPoEEAIQAQ");
+            } else if (achievement == BEGINNER_TWISTER) {
+                Games.Achievements.unlock(mGoogleApiClient, "CgkIocCXsPoEEAIQAg");
+            } else if (achievement == NOVICE_TWISTER) {
+                Games.Achievements.unlock(mGoogleApiClient, "CgkIocCXsPoEEAIQAw");
+            } else if (achievement == ADVANCED_TWISTER) {
+                Games.Achievements.unlock(mGoogleApiClient, "CgkIocCXsPoEEAIQBA");
+            } else if (achievement == MASTER_TWISTER) {
+                Games.Achievements.unlock(mGoogleApiClient, "CgkIocCXsPoEEAIQBQ");
+            }
+        } else {
+            //Nothing!
         }
     }
 
