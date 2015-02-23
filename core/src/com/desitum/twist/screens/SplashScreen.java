@@ -41,7 +41,7 @@ public class SplashScreen implements Screen {
 
         Texture desitumTexture = new Texture(Gdx.files.internal("menu/desitum.png"));
         desitum = new Sprite(desitumTexture);
-        desitum.setSize(10, 5);
+        desitum.setSize(10, 15);
         desitum.setX(0);
         desitum.setY(MainScreen.FRUSTUM_HEIGHT/2 - desitum.getHeight()/2);
     }
