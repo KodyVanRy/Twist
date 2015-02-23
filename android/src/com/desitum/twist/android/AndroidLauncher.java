@@ -23,6 +23,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
+import com.google.android.gms.plus.Plus;
 
 public class AndroidLauncher extends AndroidApplication implements GooglePlayServicesInterface,
         GoogleApiClient.ConnectionCallbacks,
