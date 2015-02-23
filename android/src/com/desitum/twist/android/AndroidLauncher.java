@@ -24,6 +24,7 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.games.Games;
+import com.google.android.gms.plus.Plus;
 import com.google.android.gms.games.achievement.Achievements;
 
 public class AndroidLauncher extends AndroidApplication implements GooglePlayServicesInterface,
