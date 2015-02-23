@@ -31,9 +31,13 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
 
     public static final int FIRST_TIME = 0;
 
+    private static final int REQUEST_CODE_RESOLVE_ERR = 9000;
+
     private static final String TAG = "GooglePlayServicesActivity";
 
     private static final String KEY_IN_RESOLUTION = "is_in_resolution";
+
+    private ConnectionResult mConnectionResult;
 
     /**
      * Request code for auto Google Play Services error resolution.
@@ -112,12 +116,12 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
 
     @Override
     public void getLeaderBoard() {
-
+        startActivityForResult(Games.Leaderboards.getLeaderboardIntent(mGoogleApiClient, "CgkIocCXsPoEEAIQBg"), 100);
     }
 
     @Override
-    public void submitScore() {
-        System.out.println("Submited score");
+    public void submitScore(int score) {
+        Games.Leaderboards.submitScore(mGoogleApiClient, "CgkIocCXsPoEEAIQBg", score);
 
     }
 
@@ -231,19 +235,17 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
      * Handles Google Play Services resolution callbacks.
      */
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case REQUEST_CODE_RESOLUTION:
-                retryConnecting();
-                break;
+    protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
+        if (requestCode == REQUEST_CODE_RESOLVE_ERR && responseCode == RESULT_OK) {
+            mConnectionResult = null;
+            mGoogleApiClient.connect();
         }
     }
 
     private void retryConnecting() {
         mIsInResolution = false;
         if (!mGoogleApiClient.isConnecting()) {
-            //mGoogleApiClient.connect();
+            mGoogleApiClient.connect();
         }
     }
 
@@ -272,30 +274,14 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
      */
     @Override
     public void onConnectionFailed(ConnectionResult result) {
-        Log.i(TAG, "GoogleApiClient connection failed: " + result.toString());
-        if (!result.hasResolution()) {
-            // Show a localized error dialog.
-            GooglePlayServicesUtil.getErrorDialog(
-                    result.getErrorCode(), this, 0, new OnCancelListener() {
-                        @Override
-                        public void onCancel(DialogInterface dialog) {
-                            retryConnecting();
-                        }
-                    }).show();
-            return;
+        if (result.hasResolution()) {
+            try {
+                result.startResolutionForResult(this, REQUEST_CODE_RESOLVE_ERR);
+            } catch (SendIntentException e) {
+                mGoogleApiClient.connect();
+            }
         }
-        // If there is an existing resolution error being displayed or a resolution
-        // activity has started before, do nothing and wait for resolution
-        // progress to be completed.
-        if (mIsInResolution) {
-            return;
-        }
-        mIsInResolution = true;
-        try {
-            result.startResolutionForResult(this, REQUEST_CODE_RESOLUTION);
-        } catch (SendIntentException e) {
-            Log.e(TAG, "Exception while starting resolution activity", e);
-            retryConnecting();
-        }
+        // Save the result and resolve the connection failure upon a user click.
+        mConnectionResult = result;
     }
 }

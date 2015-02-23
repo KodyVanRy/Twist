@@ -6,7 +6,7 @@ package com.desitum.twist;
 public interface GooglePlayServicesInterface {
 
     public void getLeaderBoard();
-    public void submitScore();
+    public void submitScore(int score);
     public void showAd();
     public void hideAd();
     public void unlockAchievement(int achievement);

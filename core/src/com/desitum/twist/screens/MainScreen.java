@@ -137,7 +137,7 @@ public class MainScreen implements Screen {
                     state = MENU_TRANSITION;
                 } else if (mb.getCommand().equals(OPEN_SCORES)) { // if the button was high scores
                         Assets.buttonSound.play(Settings.volume);
-                    //TODO add in Google Play Game Services (I'll do that)
+                    gpgs.getLeaderBoard();
                 } else if (mb.getCommand().equals(VOLUMES)) { // if the button was volumes
                     Settings.volumeOn = !Settings.volumeOn; // toggle whether volume is on
                     Settings.getSound(); //Gets the Sound (if volume is on)
@@ -186,6 +186,7 @@ public class MainScreen implements Screen {
                     state = GAME_OVER_TRANSITION;
                 } else if (mb.getCommand().equals(OPEN_SCORES)){
                     Assets.buttonSound.play(Settings.volume);
+                    gpgs.getLeaderBoard();
                 } else if (mb.getCommand().equals(SHARE)){
                     gpgs.shareScore(gameWorld.getScore());
                 }
@@ -295,7 +296,7 @@ public class MainScreen implements Screen {
                     Assets.endGameSound.play(Settings.volume);
                 state = GAME_OVER;
                 Settings.saveScore(gameWorld.getScore());
-                gpgs.submitScore();
+                gpgs.submitScore(Settings.highscore);
                 gpgs.showAd();
             }
         }
