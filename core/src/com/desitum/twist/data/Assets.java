@@ -45,6 +45,7 @@ public class Assets {
     public static Sound endGameSound;
     public static Sound highscoreSound;
     public static Sound buttonSound;
+    public static Sound twistSound;
 
     public static Music menuMusic;
 
@@ -95,6 +96,7 @@ public class Assets {
         buttonSound = Gdx.audio.newSound(Gdx.files.internal("sound/Button.wav"));
         highscoreSound = Gdx.audio.newSound(Gdx.files.internal("sound/High_Score.wav"));
         endGameSound = Gdx.audio.newSound(Gdx.files.internal("sound/Collide.wav"));
+        twistSound = Gdx.audio.newSound(Gdx.files.internal("sound/Cube_Twist.wav"));
         //Music
         menuMusic = Gdx.audio.newMusic(Gdx.files.internal("sound/loop.mp3"));
         menuMusic.setLooping(true);

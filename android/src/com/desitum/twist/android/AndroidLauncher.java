@@ -121,7 +121,7 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
         params.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
         params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
         adView.setLayoutParams(params);
-        adView.setBackgroundColor(Color.BLACK);
+        //adView.setBackgroundColor(Color.BLACK);
         return adView;
     }
 
