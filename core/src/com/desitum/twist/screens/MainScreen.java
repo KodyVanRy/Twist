@@ -157,6 +157,7 @@ public class MainScreen implements Screen {
      */
     private void onClickGameBefore() {
         state = GAME_RUNNING;
+        gpgs.hideAd();
     }
 
     /**
@@ -295,6 +296,7 @@ public class MainScreen implements Screen {
                 state = GAME_OVER;
                 Settings.saveScore(gameWorld.getScore());
                 gpgs.submitScore();
+                gpgs.showAd();
             }
         }
     }

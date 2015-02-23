@@ -4,8 +4,9 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -22,10 +23,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.games.Games;
-import com.google.android.gms.plus.Plus;
-import com.google.android.gms.games.achievement.Achievements;
 
 public class AndroidLauncher extends AndroidApplication implements GooglePlayServicesInterface,
         GoogleApiClient.ConnectionCallbacks,
@@ -57,6 +55,8 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
     protected AdView adView;
     protected View gameView;
 
+    private AdView admobView;
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,14 +78,37 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
         layout.setLayoutParams(params);
 
-        AdView admobView = createAdView();
-        layout.addView(admobView);
+
         View gameView = createGameView(config);
         layout.addView(gameView);
+        admobView = createAdView();
+        layout.addView(admobView);
 
         setContentView(layout);
         startAdvertising(admobView);
     }
+    private final int SHOW_ADS = 1;
+    private final int HIDE_ADS = 0;
+
+    protected Handler handler = new Handler()
+    {
+        @Override
+        public void handleMessage(Message msg) {
+            switch(msg.what) {
+                case SHOW_ADS:
+                {
+                    adView.setVisibility(View.VISIBLE); //change to visible
+                    break;
+                }
+                case HIDE_ADS:
+                {
+                    adView.setVisibility(View.GONE);//change to not visible
+                    // you should also disable the ad fetching here!
+                    break;
+                }
+            }
+        }
+    };
 
     @Override
     public void getLeaderBoard() {
@@ -116,6 +139,16 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
     }
 
     @Override
+    public void showAd() {
+        handler.sendEmptyMessage(SHOW_ADS);
+    }
+
+    @Override
+    public void hideAd() {
+        handler.sendEmptyMessage(HIDE_ADS);
+    }
+
+    @Override
     public void shareScore(int score) {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
@@ -142,7 +175,6 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
         params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-        params.addRule(RelativeLayout.BELOW, adView.getId());
         gameView.setLayoutParams(params);
         return gameView;
     }
