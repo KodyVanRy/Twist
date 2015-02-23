@@ -299,6 +299,22 @@ public class MainScreen implements Screen {
                 Settings.saveScore(gameWorld.getScore());
                 gpgs.submitScore(Settings.highscore);
                 gpgs.showAd();
+
+                if(Settings.highscore >= 2){
+                    gpgs.unlockAchievement(TwistGame.FIRST_TIME);
+                }
+                if(Settings.highscore >= 10){
+                    gpgs.unlockAchievement(TwistGame.BEGINNER_TWISTER);
+                }
+                if(Settings.highscore >= 25){
+                    gpgs.unlockAchievement(TwistGame.NOVICE_TWISTER);
+                }
+                if(Settings.highscore >= 50){
+                    gpgs.unlockAchievement(TwistGame.ADVANCED_TWISTER);
+                }
+                if(Settings.highscore >= 100){
+                    gpgs.unlockAchievement(TwistGame.MASTER_TWISTER);
+                }
             }
         }
     }
@@ -412,22 +428,6 @@ public class MainScreen implements Screen {
         float height = Assets.font.getBounds("Highscore" + Settings.highscore).height;
         Assets.font.draw(spriteBatch, "Highscore: " + Settings.highscore, FRUSTUM_WIDTH * 10 / 2 - width, 10 * 10 + height);
         Assets.font.setScale(0.25f);
-
-        if(gameWorld.getScore() >= 2){
-            gpgs.unlockAchievement(TwistGame.FIRST_TIME);
-        }
-        else if(gameWorld.getScore() >= 10){
-            gpgs.unlockAchievement(TwistGame.BEGINNER_TWISTER);
-        }
-        else if(gameWorld.getScore() >= 25){
-            gpgs.unlockAchievement(TwistGame.NOVICE_TWISTER);
-        }
-        else if(gameWorld.getScore() >= 50){
-            gpgs.unlockAchievement(TwistGame.ADVANCED_TWISTER);
-        }
-        else if(gameWorld.getScore() >= 100){
-            gpgs.unlockAchievement(TwistGame.MASTER_TWISTER);
-        }
 
         width = Assets.font.getBounds(String.valueOf(gameWorld.getScore())).width/2;
         height = Assets.font.getBounds("" + gameWorld.getScore()).height;

@@ -181,7 +181,7 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
     public void shareScore(int score) {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "I just got " + score + " on Twist! Try to beat me: https://play.google.com/store/apps/details?id=com.desitum.twist");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "I just got " + score + " on Twist! Try to beat me: https://play.google.com/store/apps/details?id=com.desitum.twist.android");
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
     }
